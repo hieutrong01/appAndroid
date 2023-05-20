@@ -1,0 +1,22 @@
+
+}
+java:S1192^"gDefine a constant instead of duplicating this literal "ÃO THUN DRY-EX Cá»” TRÃ’N NGáº®N TAY" 14 times.(¹–Ö
+C
+java:S1604E"(Make this anonymous inner class a lambda(±øÃŞúÿÿÿÿ
+C
+java:S1604K"(Make this anonymous inner class a lambda(„¬ÌÎûÿÿÿÿ
+f
+java:S1301\"KReplace this "switch" statement by "if" statements to increase readability.(à¶Âıÿÿÿÿ
+A
+java:S1874)"+Remove this use of "get"; it is deprecated.(ºÀÑ
+œ
+java:S11866"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(äªÁ‡ÿÿÿÿÿ
+X
+java:S1854f"BRemove this useless assignment to local variable "formattedPrice".(÷åâ»
+X
+java:S1854s"BRemove this useless assignment to local variable "formattedPrice".(÷åâ»
+<	java:S131\""Add a default case to this switch.(à¶Âıÿÿÿÿ
+I
+java:S1481f"3Remove this unused "formattedPrice" local variable.(÷åâ»
+I
+java:S1481s"3Remove this unused "formattedPrice" local variable.(÷åâ»

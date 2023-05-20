@@ -1,0 +1,8 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯øíö
+v
+java:S1450"[Remove the "mItemAdapter" field and declare it as a local variable in the relevant methods.(­«¸ ÿÿÿÿÿ
+w
+java:S1450"\Remove the "mRecyclerView" field and declare it as a local variable in the relevant methods.(Òéıÿÿÿÿ
+i
+java:S1450"SRemove the "view" field and declare it as a local variable in the relevant methods.(ØÊ»¶

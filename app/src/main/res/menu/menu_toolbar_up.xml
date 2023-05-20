@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group android:checkableBehavior="single">
+    <item
+        android:id="@+id/toolbar_trangchu"
+        android:title="@string/item_home"
+        android:icon="@drawable/ic_home"
+        />
+    <item
+        android:id="@+id/toolbar_search"
+        android:title="@string/item_search"
+        android:icon="@drawable/manage_search"
+        />
+    <item
+        android:id="@+id/toolbar_favorite"
+        android:title="@string/item_favỏite"
+        android:icon="@drawable/ic_favorite"
+        />
+    <item
+        android:id="@+id/toolbar_QR"
+        android:title="@string/item_qrCode"
+        android:icon="@drawable/ic_message"
+        />
+    <item
+        android:id="@+id/toolbar_person"
+        android:title="@string/item_person"
+        android:icon="@drawable/ic_person"
+        />
+
+</group>
+</menu>

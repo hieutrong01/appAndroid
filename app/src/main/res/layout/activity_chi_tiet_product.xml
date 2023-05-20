@@ -1,0 +1,192 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F9F9F9"
+    android:orientation="vertical"
+    tools:context=".ChiTietProductActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true"
+            android:background="@color/white"
+            android:elevation="5dp">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="40dp"
+                android:layout_height="28dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_back" />
+
+            <ImageView
+                android:id="@+id/gio_hang_a"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/add_shopping_cart"/>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_chitiet_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:padding="13dp"
+                    android:text="@string/product"
+                    android:textColor="@color/black"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="13dp"
+                    android:text="@string/mota"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:id="@+id/img_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="13dp"
+                    android:text="KÍCH CỠ:"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+                <Spinner
+                    android:id="@+id/spn_kich_co"
+                    android:layout_width="200dp"
+                    android:layout_marginStart="10dp"
+                    android:textAlignment="textEnd"
+                    android:layout_height="wrap_content"
+                   />
+
+                <TextView
+                    android:id="@+id/tv_gia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="13dp"
+                    android:text="399.000 VND"
+                    android:textColor="@color/black"
+                    android:textSize="27sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:text="SỐ LƯỢNG:"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+                <Spinner
+                    android:id="@+id/spn_so_luong"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/black"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="13dp">
+
+                    <Button
+                        android:id="@+id/btn_them_gio_hang"
+                        android:layout_width="320dp"
+                        android:layout_height="70dp"
+                        android:backgroundTint="#EC1909"
+                        android:text="@string/themproduct"
+                        android:textColor="@color/white" />
+
+                    <ImageButton
+                        android:id="@+id/btn_them_favorite"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="5dp"
+
+                        android:layout_toRightOf="@id/btn_them_gio_hang"
+                        android:background="@drawable/border_button"
+                        android:src="@drawable/ic_favorite"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="13dp"
+                    android:text="MÔ TẢ"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:id="@+id/tv_mo_ta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tv_ma_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="13dp"
+                    android:text="2311111"
+                    android:textColor="#1E1D1D"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="13dp"
+                    android:text="ĐÁNH GIÁ"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:id="@+id/tv_bang_kich_thuoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="13dp"
+                    android:text="XEM BẢNG KÍCH THƯỚC"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

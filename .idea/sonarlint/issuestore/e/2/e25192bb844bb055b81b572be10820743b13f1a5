@@ -1,0 +1,23 @@
+
+F
+java:S1066ˆ"/Merge this if statement with the enclosing one.(©§¹
+C
+java:S1604+"(Make this anonymous inner class a lambda(Þ¡ó¢úÿÿÿÿ
+C
+java:S1604a"(Make this anonymous inner class a lambda(º©±­ûÿÿÿÿ
+>
+java:S1604g"(Make this anonymous inner class a lambda(„Ñî¿
+C
+java:S1604n"(Make this anonymous inner class a lambda(Ìò¢õÿÿÿÿÿ
+D
+java:S1604¤"(Make this anonymous inner class a lambda(„¬é¿øÿÿÿÿ
+=
+java:S1659%"'Declare "imgAvatar" on a separate line.(Ÿ½è“
+A
+java:S1659&"&Declare "edtEmail" on a separate line.(”Åž÷úÿÿÿÿ
+L
+java:S18746"1Remove this use of "getBitmap"; it is deprecated.(ÇèÀêüÿÿÿÿ
+f
+java:S1874…"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Ó»×¶þÿÿÿÿ
+X
+java:S1144u"=Remove this unused private "onClickRequestPermission" method.(€ã›Õÿÿÿÿÿ

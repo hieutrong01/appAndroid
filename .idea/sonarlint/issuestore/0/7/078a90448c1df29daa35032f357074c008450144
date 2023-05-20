@@ -1,0 +1,11 @@
+
+C
+java:S1604:"(Make this anonymous inner class a lambda(„¬ÌÎûÿÿÿÿ
+H
+java:S2387"-"mView" is the name of a field in "Fragment".(¼ğŠışÿÿÿÿ
+q
+java:S1450"[Remove the "mTableLayout" field and declare it as a local variable in the relevant methods.(£ı¶
+t
+java:S1450"YRemove the "mViewPager" field and declare it as a local variable in the relevant methods.(Õîµıúÿÿÿÿ
+\
+java:S1874-"ARemove this use of "FragmentStatePagerAdapter"; it is deprecated.(‡ÑÆùÿÿÿÿ

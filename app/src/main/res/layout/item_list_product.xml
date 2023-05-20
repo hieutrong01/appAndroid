@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/card_view_product"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:layout_marginEnd="1dp"
+    android:layout_marginStart="1dp"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="6dp"
+    >
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_list_product"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img1" />
+
+        <ImageView
+            android:id="@+id/icon_list_favorite"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="5dp"
+
+            android:layout_marginRight="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/heart_plus" />
+    </RelativeLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:background="@color/white"
+          android:padding="10dp">
+          <TextView
+              android:id="@+id/tv_list_sex"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Nam"
+              android:textSize="10sp"
+              android:textColor="#7A7777"/>
+          <TextView
+
+              android:id="@+id/tv_ma_sp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="2345"
+              android:layout_marginStart="5dp"
+              android:textSize="10sp"
+              android:textColor="#7A7777"/>
+          <TextView
+              android:id="@+id/tv_list_size"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="S-XXL"
+              android:textSize="10dp"
+              android:textColor="#7A7777"
+              android:gravity="right"/>
+      </LinearLayout>
+        <TextView
+            android:id="@+id/tv_list_name_product"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/product"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+          />
+        <TextView
+            android:id="@+id/tv_list_cost_product"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/gia"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:textColor="@color/black"
+          />
+
+        </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
