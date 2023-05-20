@@ -70,6 +70,7 @@
             android:text="(các) sản phẩm"
             android:textColor="@color/black"/>
         <LinearLayout
+            android:id="@+id/linea_sap_xep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -80,18 +81,16 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_sapxep"
                 />
-
-        </LinearLayout>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
             android:text="@string/sapxep"
             android:textColor="@color/black"
 
             />
+        </LinearLayout>
 
     </LinearLayout>
 
