@@ -20,6 +20,11 @@ import com.ocr.navigation.framgent.PesonFramgent;
 import com.ocr.navigation.framgent.QRFramgent;
 import com.ocr.navigation.framgent.SearchFramgent;
 import com.ocr.navigation.framgent.ViewPageAdapter;
+import com.ocr.navigation.utils.Utils;
+
+import java.util.ArrayList;
+
+import kotlin.Unit;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -117,6 +122,9 @@ public class MainActivity extends AppCompatActivity  {
         mViewPager=findViewById( R.id.content_frame );
         mViewPager = findViewById( R.id.content_frame);
         mBottomNavigationView=findViewById( R.id.bottom_nav);
+        if (Utils.manggiohang==null){
+            Utils.manggiohang= new ArrayList<>();
+        }
     }
     @Override
     public void onBackPressed() {

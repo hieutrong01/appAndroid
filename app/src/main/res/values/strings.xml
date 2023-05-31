@@ -58,6 +58,28 @@
     <string name="xeday">XE ĐẨY</string>
     <string name="mota">Vải có gân đem lại sự phù hợp hoàn hảo. Được tạo điểm nhấn bởi các sọc và viền diềm</string>
     <string name="sapxep">SẮP XẾP THEO</string>
+    <string name="tieubieu">Tiêu biểu</string>
+    <string name="thapcao">Giá từ thấp đến cao</string>
+    <string name="caothap">Giá từ cao đến thấp</string>
+    <string name="loc">LỌC</string>
+    <string name="giohang">GIỎ HÀNG</string>
+
+    <string name="tongcong">Tổng cộng:</string>
+    <string name="soluong">Số lượng</string>
+    <string name="thue">Đã bao gồm thuế giá trị gia tăng</string>
+    <string name="tong">TỔNG ĐƠN ĐẶT HÀNG</string>
+    <string name="phieugiamgia">PHIẾU GIẢM GIÁ</string>
+    <string name="textthanhtoan">Đặt mua thêm 702.000 VND (bao gồm VAT) để được miễn phí giao hàng.</string>
+
+    <string name="danhmuc">DANH MỤC NỔI BẬT</string>
+    <string name="size">Kích thước:</string>
+    <string name="tongcongtien">TỔNG: </string>
+    <string name="masp">Mã sản phẩm:  </string>
+
+
+
+
+
 
 
 

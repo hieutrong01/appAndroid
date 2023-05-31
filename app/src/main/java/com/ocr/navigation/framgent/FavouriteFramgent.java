@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nex3z.notificationbadge.NotificationBadge;
 import com.ocr.navigation.Adapter.FavouriteAdapter;
 import com.ocr.navigation.Adapter.ItemAdapter;
 import com.ocr.navigation.GioHangActivity;
@@ -24,6 +25,7 @@ import com.ocr.navigation.OOP.Item;
 import com.ocr.navigation.OOP.ProductList;
 import com.ocr.navigation.R;
 import com.ocr.navigation.my_interface.ClickItemMenSearch;
+import com.ocr.navigation.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,7 @@ public class FavouriteFramgent extends Fragment {
     private RecyclerView mRecyclerView;
     private View mView;
     private FavouriteAdapter mItemAdapter;
+    private NotificationBadge badge;
     private ArrayList<ProductList> items = new ArrayList<>();
 
 
@@ -67,6 +70,10 @@ public class FavouriteFramgent extends Fragment {
         imgNen=mView.findViewById( R.id.img_nen );
         mRecyclerView = mView.findViewById( R.id.rcv_list_favourite );
         tvSoLuong=mView.findViewById( R.id.tv_so_luong );
+        badge=mView.findViewById( R.id.menu_sl );
+        if (Utils.manggiohang!=null){
+            badge.setText( String.valueOf( Utils.manggiohang.size() ) );
+        }
 
     }
     private void onClickList() {

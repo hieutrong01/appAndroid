@@ -26,6 +26,14 @@
            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:src="@drawable/add_shopping_cart"/>
+        <com.nex3z.notificationbadge.NotificationBadge
+            android:id="@+id/menu_sl"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"

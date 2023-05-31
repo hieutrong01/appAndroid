@@ -1,11 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="16dp"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".framgentHome.TopFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/danhmuc"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="15dp"/>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:stretchColumns="*">
 
-    <!-- TODO: Update blank fragment layout -->
-</FrameLayout>
+        <TableRow>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_avata"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/aokhoac"
+                    android:padding="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ĐỒ MẶC NGOÀI"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_avatar"
+                android:padding="5dp"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_avatar"
+                android:padding="5dp"/>
+        </TableRow>
+
+        <TableRow>
+            <de.hdodenhof.circleimageview.CircleImageView
+
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_avatar"
+                android:padding="5dp"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_avatar"
+                android:padding="5dp"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_avatar"
+                android:padding="5dp"/>
+        </TableRow>
+
+        <TableRow>
+            <de.hdodenhof.circleimageview.CircleImageView
+
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_avatar"
+                android:padding="5dp"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_avatar"
+                android:padding="5dp"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_avatar"
+                android:padding="5dp"/>
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</LinearLayout>
