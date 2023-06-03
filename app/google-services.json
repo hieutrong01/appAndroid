@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "955058871855",
+    "project_id": "store-uniqino",
+    "storage_bucket": "store-uniqino.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955058871855:android:2808c562733bfcd67a70da",
+        "android_client_info": {
+          "package_name": "com.ocr.navigation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955058871855-c3dh7vkjge3t1k3736k5upfg9ogife3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ocr.navigation",
+            "certificate_hash": "d7558fba346054ce6bba3e758c17c954e0aec507"
+          }
+        },
+        {
+          "client_id": "955058871855-f6kq6vskianhmroah6cugrohnm9be3cb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKjuwh7A74shoHTTEmWNSXgzMdE1our-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955058871855-f6kq6vskianhmroah6cugrohnm9be3cb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

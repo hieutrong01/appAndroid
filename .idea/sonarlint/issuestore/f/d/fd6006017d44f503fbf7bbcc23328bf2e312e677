@@ -1,0 +1,10 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯øíö
+H
+java:S2387"-"mView" is the name of a field in "Fragment".(¼ðŠýþÿÿÿÿ
+o
+java:S1450"TRemove the "mView" field and declare it as a local variable in the relevant methods.(¼ðŠýþÿÿÿÿ
+{
+java:S1450"YRemove the "tvItemName" field and declare it as a local variable in the relevant methods.(Öä‡¦üÿÿÿÿ8¾ê¼”ü0
+S
+java:S1874"7Remove this use of "getSerializable"; it is deprecated.(ÔÆóu8Ãê¼”ü0

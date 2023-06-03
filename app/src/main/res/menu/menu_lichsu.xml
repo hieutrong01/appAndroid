@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:title="LỊCH SỬ">
+      <menu>
+          <item
+              android:id="@+id/btn_lich_su_mua_hang"
+              android:title="@string/lich_su_don_hang"
+              android:icon="@drawable/ic_bag_shopping"
+              />
+          <item
+              android:id="@+id/btn_lich_su_don_hang"
+              android:title="@string/lich_su_mua_hang"
+              android:icon="@drawable/ic_bag_shop"
+              />
+      </menu>
+  </item>
+</menu>
