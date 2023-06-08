@@ -1,9 +1,5 @@
 package com.ocr.navigation.my_activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,19 +12,31 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.ocr.navigation.Adapter.ListProductAdapter;
 import com.ocr.navigation.ChiTietProductActivity;
 import com.ocr.navigation.GioHangActivity;
+import com.ocr.navigation.OOP.DataProduct;
 import com.ocr.navigation.OOP.Item;
-import com.ocr.navigation.OOP.ProductList;
+import com.ocr.navigation.OOP.Product;
 import com.ocr.navigation.R;
+import com.ocr.navigation.my_interface.APIService;
 import com.ocr.navigation.my_interface.ClickItemProduc;
 import com.ocr.navigation.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.rxjava3.disposables.Disposable;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class WomenListProductActivity extends AppCompatActivity {
     private TextView mtextView,tvSoLuong;
@@ -37,9 +45,11 @@ public class WomenListProductActivity extends AppCompatActivity {
     private ListProductAdapter adapter;
     private ImageView imgGioHang;
     private LinearLayout layoutSapXep;
+    private Disposable disposable;
     private NotificationBadge badge;
 
     private int selectedRadioButtonId = -1;
+    private List<Product>  mList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +69,8 @@ public class WomenListProductActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager( gridLayoutManager );
         adapter.setData( getListProduct( pos ), new ClickItemProduc() {
             @Override
-            public void onItemProductClick(ProductList productList) {
-                onClickgotoChitiet(productList);
+            public void onItemProductClick(Product product) {
+                onClickgotoChitiet(product);
             }
 
             @Override
@@ -82,6 +92,7 @@ public class WomenListProductActivity extends AppCompatActivity {
         imgGioHang=findViewById( R.id.img_gio_hang );
         tvSoLuong=findViewById( R.id.tv_so_luong );
         layoutSapXep=findViewById( R.id.linea_sap_xep );
+        mList= new ArrayList<>();
         badge=findViewById( R.id.menu_sl );
         if (Utils.manggiohang!=null){
             badge.setText( String.valueOf( Utils.manggiohang.size() ) );
@@ -152,42 +163,64 @@ public class WomenListProductActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void onClickgotoChitiet(ProductList productList) {
+    private void onClickgotoChitiet(Product product) {
         Intent intent = new Intent(WomenListProductActivity.this, ChiTietProductActivity.class );
         Bundle bundle= new Bundle();
-        bundle.putSerializable("object_product", productList);
+        bundle.putSerializable("object_product", product);
         intent.putExtras(bundle);
         startActivity(intent);
     }
-    private List<ProductList> getListProduct(int pos) {
-        List<ProductList> list = new ArrayList<>();
+    private List<Product> getListProduct(int pos) {
+        List<Product> list = new ArrayList<>();
         switch (pos){
             case 0: {
-                list.add(new ProductList(3456,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",399000,false));
-                list.add(new ProductList(3457,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",599000,false));
-                list.add(new ProductList(3458,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",499000,false));
-                list.add(new ProductList(3459,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",699000,false));
-                list.add(new ProductList(3460,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",299000,false));
-                list.add(new ProductList(3461,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",499000,false));
-                list.add(new ProductList(3462,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",399000,false));
-                for (ProductList product : list) {
-                    String formattedPrice = product.getFormattedPrice();
-                }
+                callApiAoWomen();
+
                 break;
             }
             case 1: {
-                list.add(new ProductList(3456,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",399000,false));
-                list.add(new ProductList(3457,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",599000,false));
-                list.add(new ProductList(3458,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",499000,false));
-                list.add(new ProductList(3459,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",699000,false));
-                list.add(new ProductList(3460,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",299000,false));
-                list.add(new ProductList(3461,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",499000,false));
-                list.add(new ProductList(3462,R.drawable.img1,"Nữ","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",399000,false));
-                for (ProductList product : list) {
-                    String formattedPrice = product.getFormattedPrice();
-                }
+
             }
         }
         return list;
+    }
+
+    private void callApiAoWomen() {
+        APIService.apiServiceNu.getLisAoWomen().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                Toast.makeText( WomenListProductActivity.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+
+            }
+        } );
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (disposable!=null){
+            disposable.dispose();
+        }
     }
 }

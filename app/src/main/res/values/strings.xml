@@ -64,6 +64,7 @@
     <string name="loc">LỌC</string>
     <string name="giohang">GIỎ HÀNG</string>
 
+
     <string name="tongcong">Tổng cộng:</string>
     <string name="soluong">Số lượng</string>
     <string name="thue">Đã bao gồm thuế giá trị gia tăng</string>
@@ -75,11 +76,8 @@
     <string name="size">Kích thước:</string>
     <string name="tongcongtien">TỔNG: </string>
     <string name="masp">Mã sản phẩm:  </string>
-
-
-
-
-
+    <string name="timkiem">Bạn đang tìm sản phẩm gì? </string>
+    <string name="thanhtoan">THANH TOÁN  </string>
 
 
 

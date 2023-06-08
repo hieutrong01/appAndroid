@@ -1,17 +1,20 @@
 package com.ocr.navigation;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ocr.navigation.framgent.FavouriteFramgent;
@@ -23,8 +26,6 @@ import com.ocr.navigation.framgent.ViewPageAdapter;
 import com.ocr.navigation.utils.Utils;
 
 import java.util.ArrayList;
-
-import kotlin.Unit;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -116,6 +117,12 @@ public class MainActivity extends AppCompatActivity  {
                 return false;
             }
         } );
+
+        if (isConnect( this )){
+            Toast.makeText( this, "kết nối", Toast.LENGTH_SHORT ).show();
+        }else {
+            Toast.makeText( this, "không có kết nối internet", Toast.LENGTH_SHORT ).show();
+        }
     }
     private void init() {
         mdrawerLayout = findViewById( R.id.drawer_layout );
@@ -135,6 +142,16 @@ public class MainActivity extends AppCompatActivity  {
             mToast = Toast.makeText( MainActivity.this, "Chạm lại để thoát", Toast.LENGTH_SHORT );
             mToast.show();
         } backTime=System.currentTimeMillis();
+    }
+    private boolean isConnect (Context context){
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService( Context.CONNECTIVITY_SERVICE );
+        NetworkInfo wifi = connectivityManager.getNetworkInfo( ConnectivityManager.TYPE_WIFI );
+        NetworkInfo mobile = connectivityManager.getNetworkInfo( ConnectivityManager.TYPE_MOBILE );
+        if (wifi!=null&& wifi.isConnected()||mobile!=null&&mobile.isConnected()){
+            return true;
+        }else
+            return false;
+
     }
 
 

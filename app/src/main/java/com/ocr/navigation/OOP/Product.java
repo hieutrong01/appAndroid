@@ -11,12 +11,13 @@ public class Product implements Serializable {
     private int quantity;
     private String gender;
     private String image;
-    private List<KichCo> kichco;
+    private String ngaynhap;
+    private List<String> kichco;
 
     public Product() {
     }
 
-    public Product(String name, int product_id, String description, int price, int quantity, String gender, String image, List<KichCo> kichco) {
+    public Product(String name, int product_id, String description, int price, int quantity, String gender, String image, String ngaynhap, List<String> kichco) {
         this.name = name;
         this.product_id = product_id;
         this.description = description;
@@ -24,6 +25,7 @@ public class Product implements Serializable {
         this.quantity = quantity;
         this.gender = gender;
         this.image = image;
+        this.ngaynhap = ngaynhap;
         this.kichco = kichco;
     }
 
@@ -83,11 +85,19 @@ public class Product implements Serializable {
         this.image = image;
     }
 
-    public List<KichCo> getKichco() {
+    public String getNgaynhap() {
+        return ngaynhap;
+    }
+
+    public void setNgaynhap(String ngaynhap) {
+        this.ngaynhap = ngaynhap;
+    }
+
+    public List<String> getKichco() {
         return kichco;
     }
 
-    public void setKichco(List<KichCo> kichco) {
+    public void setKichco(List<String> kichco) {
         this.kichco = kichco;
     }
 }
