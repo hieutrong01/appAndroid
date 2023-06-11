@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity_search"
     tools:context=".SearchActivity"
     android:background="@color/white">
     <androidx.appcompat.widget.Toolbar
@@ -33,24 +34,77 @@
             android:layout_marginStart="10dp"
             android:src="@drawable/ic_back" />
 
-        <EditText
-            android:id="@+id/edt_search"
+        <AutoCompleteTextView
+            android:id="@+id/auto_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:imeOptions="actionSearch"
             android:layout_marginStart="15dp"
             android:hint="@string/timkiem"
             android:textColor="@color/black"
             android:textColorHint="@color/gray" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear_layout"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:ignore="MissingConstraints">
+    <TextView
+        android:id="@+id/tv_so_luong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 "
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:text="(các) sản phẩm"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints" />
+
+        <LinearLayout
+        android:id="@+id/linea_sap_xep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        >
+        <ImageView
+            android:id="@+id/img_sap_xep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_sapxep"
+            android:layout_marginStart="25dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="10dp"
+            android:text="@string/danhmu"
+            android:textColor="@color/black"
+
+            />
+    </LinearLayout>
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recy_search"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:layout_marginStart="5dp"
         app:layout_goneMarginEnd="5dp"
 
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

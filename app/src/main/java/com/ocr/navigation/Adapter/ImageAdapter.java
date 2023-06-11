@@ -1,4 +1,4 @@
-package com.ocr.navigation.OOP;
+package com.ocr.navigation.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ocr.navigation.OOP.Image;
 import com.ocr.navigation.R;
 
 import java.util.List;

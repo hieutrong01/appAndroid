@@ -1,7 +1,7 @@
 
 l
-java:S1104	"WMake manggiohang a static final constant or non-public and provide accessors if needed.(œ©ß
+java:S1104"WMake manggiohang a static final constant or non-public and provide accessors if needed.(œ©ß
 F
-java:S1444	"1Make this "public static manggiohang" field final(œ©ß
-P
-java:S1118":Add a private constructor to hide the implicit public one.(¼Øûì
+java:S1444"1Make this "public static manggiohang" field final(œ©ß
+W
+java:S1118":Add a private constructor to hide the implicit public one.(¼Øûì8­à¹û‰1

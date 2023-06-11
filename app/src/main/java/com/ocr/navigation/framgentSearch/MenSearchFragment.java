@@ -2,22 +2,17 @@ package com.ocr.navigation.framgentSearch;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListView;
-
 import com.ocr.navigation.Adapter.ItemAdapter;
-import com.ocr.navigation.MainActivity;
 import com.ocr.navigation.OOP.Item;
 import com.ocr.navigation.R;
 import com.ocr.navigation.my_activity.MenListItem;
@@ -30,14 +25,13 @@ public class MenSearchFragment extends Fragment {
 
     private RecyclerView rcvItemMen;
     private ItemAdapter itemAdapter;
-    private MainActivity mainActivity;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View mView = inflater.inflate(R.layout.fragment_men_search, container, false);
         rcvItemMen = mView.findViewById(R.id.rcv_itemMen);
-        mainActivity = (MainActivity) getActivity();
+
         itemAdapter = new ItemAdapter(getActivity());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);

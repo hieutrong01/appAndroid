@@ -1,19 +1,17 @@
 package com.ocr.navigation.framgentHome;
 
 import android.os.Bundle;
-
-
-import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.ocr.navigation.Adapter.ImageAdapter;
 import com.ocr.navigation.OOP.Image;
-import com.ocr.navigation.OOP.ImageAdapter;
 import com.ocr.navigation.R;
 
 import java.util.ArrayList;
