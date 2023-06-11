@@ -1,7 +1,7 @@
 package com.ocr.navigation.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,37 +12,32 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ocr.navigation.OOP.Item;
-import com.ocr.navigation.OOP.ProductList;
+import com.bumptech.glide.Glide;
+import com.ocr.navigation.OOP.Product;
 import com.ocr.navigation.R;
-import com.ocr.navigation.my_interface.ClickItemMenSearch;
 import com.ocr.navigation.my_interface.ClickItemProduc;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.ListProductViewHolder> {
     private Context mContext;
-    private List<ProductList> mproList;
+    private List<Product> mproList;
 
     private ClickItemProduc clickItemProduc;
-    private int selectedPosition = -1;
 
-    private static final String PREFS_NAME = "MyPrefs";
-    private static final String FAVORITE_ITEMS_KEY = "favoriteItems";
     // Tạo bản sao của danh sách mục ban đầu
-    List<ProductList> originalItems ;
+    List<Product> originalItems ;
 
     public ListProductAdapter(Context mContext) {
         this.mContext = mContext;
        this.originalItems=new ArrayList<>();
     }
 
-    public void setData(List<ProductList> list, ClickItemProduc listener){
+    public void setData(List<Product> list, ClickItemProduc listener){
         this.mproList=list;
         this.clickItemProduc=listener;
         this.originalItems=new ArrayList<>(mproList);
@@ -50,18 +45,18 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
     }
 
     public void giathapcao() {
-        Collections.sort(mproList, new Comparator<ProductList>() {
+        Collections.sort(mproList, new Comparator<Product>() {
             @Override
-            public int compare(ProductList item1, ProductList item2) {
+            public int compare(Product item1, Product item2) {
                 return Double.compare(item1.getPrice(), item2.getPrice());
             }
         });
         notifyDataSetChanged();
     }
     public void giaCaoThap(){
-        Collections.sort( mproList, new Comparator<ProductList>() {
+        Collections.sort( mproList, new Comparator<Product>() {
             @Override
-            public int compare(ProductList o1, ProductList o2) {
+            public int compare(Product o1, Product o2) {
                 return Double.compare( o2.getPrice(),o1.getPrice() );
             }
         } );
@@ -85,33 +80,25 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
         return new ListProductViewHolder( view );
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ListProductViewHolder holder, int position) {
-        ProductList productList = mproList.get( position );
-        if (productList ==null){
+        Product product = mproList.get( position );
+        if (product ==null){
             return;
         }
-        holder.imgListProduct.setImageResource( productList.getResourceImage() );
-        holder.tvSex.setText( productList.getGender() );
-        holder.tvSize.setText( productList.getSize());
-        holder.tvNameProduct.setText( productList.getProductName() );
-        holder.tvgiaProduct.setText(productList.getFormattedPrice());
-        holder.imgFavourite.setOnClickListener( v -> {
-            if (!mproList.get( position ).getFavorite()){
-                holder.imgFavourite.setImageResource( R.drawable.ic_read_favorite );
-                mproList.get( position ).setFavorite( true );
-            } else {
-                holder.imgFavourite.setImageResource( R.drawable.heart_plus );
-                mproList.get( position ).setFavorite( false );
-            }
-            clickItemProduc.onClickFavoriteItem( position );
-        } );
-        holder.tvMaSP.setText( String.valueOf(productList.getIdProduct()) );
+
+        Glide.with( mContext ).load( product.getImage() ).into( holder.imgListProduct );
+        holder.tvSex.setText( product.getGender() );
+        holder.tvNameProduct.setText( product.getName() );
+        DecimalFormat decimalFormat= new DecimalFormat("###,###,###");
+        holder.tvgiaProduct.setText( decimalFormat.format (product.getPrice())+ " VND" );
+        holder.tvMaSP.setText( String.valueOf(product.getProduct_id()) );
         // Kiểm tra xem mục hiện tại có phải là mục được chọn không
-       holder.cardView.setOnClickListener( new View.OnClickListener() {
+        holder.cardView.setOnClickListener( new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               clickItemProduc.onItemProductClick( productList );
+               clickItemProduc.onItemProductClick( product );
            }
        } );
     }

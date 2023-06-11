@@ -1,12 +1,10 @@
 package com.ocr.navigation;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,14 +13,15 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.ocr.navigation.OOP.GioHang;
-import com.ocr.navigation.OOP.Item;
-import com.ocr.navigation.OOP.ProductList;
-import com.ocr.navigation.my_activity.KidsListProductActivity;
-import com.ocr.navigation.my_activity.MenListItem;
-import com.ocr.navigation.my_activity.WomenListProductActivity;
+import com.ocr.navigation.OOP.Product;
 import com.ocr.navigation.utils.Utils;
+
+import java.text.DecimalFormat;
 
 public class ChiTietProductActivity extends AppCompatActivity {
     private boolean isFavorite = false;
@@ -32,25 +31,30 @@ public class ChiTietProductActivity extends AppCompatActivity {
     private ImageView imgSP, imgBack, imgGioHang;
     private Spinner spnSoLuong,spnKichCo;
     private NotificationBadge badge;
-    ProductList productList;
+    private   Product productList;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_chi_tiet_product );
-        isUnit();
-        onClickListner();
+
         //lấy dữ liệu đổ vào activity từ framgentSearch
         Bundle bundle = getIntent().getExtras();
         if (bundle==null){
             return;
         }
-        productList = (ProductList) bundle.get( "object_product" );
-        imgSP.setImageResource(productList.getResourceImage()  );
-        tvTenSP.setText( productList.getProductName() );
-        tvGia.setText( productList.getFormattedPrice() );
-        tvMaSP.setText( String.valueOf(productList.getIdProduct()) );
+        productList = (Product) bundle.getSerializable( "object_product" );
+        isUnit();
+        onClickListner();
+
+        Glide.with( getApplicationContext() ).load( productList.getImage() ).into( imgSP );
+        tvTenSP.setText( productList.getName() );
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        tvGia.setText( decimalFormat.format( productList.getPrice() )+"VND"  );
+        tvMaSP.setText( String.valueOf(productList.getProduct_id()) );
+        tvMoTa.setText( productList.getDescription() );
+
 
     }
 
@@ -66,8 +70,7 @@ public class ChiTietProductActivity extends AppCompatActivity {
         btnThem=findViewById( R.id.btn_them_gio_hang );
         spnKichCo=findViewById( R.id.spn_kich_co );
         badge=findViewById( R.id.menu_sl );
-        String[]  kichco = new String[]{"S","M","L","XL","XXL"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>( this,R.layout.simple_spinner_dropdown_item,kichco );
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>( this,R.layout.simple_spinner_dropdown_item,productList.getKichco() );
         spnKichCo.setAdapter( adapter1 );
         spnSoLuong=findViewById( R.id.spn_so_luong );
         Integer[] soluong = new Integer[]{1,2,3,4,5,6,7,8,9,10};
@@ -129,14 +132,14 @@ public class ChiTietProductActivity extends AppCompatActivity {
 
     private void themGioHang() {
         int soluong = Integer.parseInt(spnSoLuong.getSelectedItem().toString());
+        String kichco = spnKichCo.getSelectedItem().toString();
         boolean flag = false;
 
         for (int i = 0; i < Utils.manggiohang.size(); i++) {
             GioHang gioHang = Utils.manggiohang.get(i);
 
-
-
-            if (gioHang.getIdProduct() == productList.getIdProduct() && gioHang.getSize().equals(productList.getSize())) {
+            if (gioHang.getProduct_id() == productList.getProduct_id() && gioHang.getKichco().equals(kichco)) {
+                Log.d("Taaa", "aaa" + kichco + " - " + gioHang.getKichco());
                 gioHang.setSoluong(soluong + gioHang.getSoluong());
                 gioHang.setPrice(productList.getPrice());
                 flag = true;
@@ -145,27 +148,23 @@ public class ChiTietProductActivity extends AppCompatActivity {
         }
 
         if (!flag) {
-            String kichco = spnKichCo.getSelectedItem().toString();
-
-            //int gia = productList.getPrice() * soluong;
-
             GioHang gioHang = new GioHang();
             gioHang.setPrice(productList.getPrice());
             gioHang.setSoluong(soluong);
-            gioHang.setIdProduct(productList.getIdProduct());
-            gioHang.setResourceImage(productList.getResourceImage());
-            gioHang.setSize(kichco);
-            gioHang.setProductName( productList.getProductName() );
-            gioHang.setGender( productList.getGender() );
+            gioHang.setProduct_id(productList.getProduct_id());
+            gioHang.setImage(productList.getImage());
+            gioHang.setKichco(kichco);
+            gioHang.setName(productList.getName());
+            gioHang.setGender(productList.getGender());
 
             Utils.manggiohang.add(gioHang);
         }
 
-        int totalItem=0;
-        for (int i =0; i<Utils.manggiohang.size();i++){
-            totalItem=totalItem + Utils.manggiohang.get(i).getSoluong();
+        int totalItem = 0;
+        for (GioHang gioHang : Utils.manggiohang) {
+            totalItem += gioHang.getSoluong();
         }
-        badge.setText( String.valueOf( totalItem ) );
+        badge.setText(String.valueOf(totalItem));
     }
 
 }

@@ -1,12 +1,12 @@
 package com.ocr.navigation.framgent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,12 +16,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ocr.navigation.R;
+import com.ocr.navigation.SearchActivity;
 import com.ocr.navigation.framgentSearch.ViewPageAdapterSearch;
 
 public class SearchFramgent extends Fragment {
     private TabLayout mTableLayout;
     private ViewPager mViewPager;
     private View mView;
+    private LinearLayout linearLayoutSerch;
     @Override
     public void onResume() {
         super.onResume();
@@ -35,17 +37,28 @@ public class SearchFramgent extends Fragment {
         ViewPageAdapterSearch adapterSearch= new ViewPageAdapterSearch(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT  );
         mViewPager.setAdapter( adapterSearch );
         mTableLayout.setupWithViewPager( mViewPager );
+        oncClickListner();
 
         return mView;
     }
     private void initUI() {
         mTableLayout = mView.findViewById( R.id.tab_search);
         mViewPager=mView.findViewById( R.id.view_search );
-        SearchView searchView = mView.findViewById(R.id.search_view );
+        linearLayoutSerch=mView.findViewById( R.id.linea_search );
+
+    }
+    public void oncClickListner(){
+        linearLayoutSerch.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getActivity(), SearchActivity.class );
+                startActivity( intent );
+            }
+        } );
+
     }
 
-    public void reloadData(){
-        Toast.makeText( getActivity(),"reload search",Toast.LENGTH_SHORT ).show();
-    }
+
+
 
 }

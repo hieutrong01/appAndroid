@@ -64,6 +64,7 @@
     <string name="loc">LỌC</string>
     <string name="giohang">GIỎ HÀNG</string>
 
+
     <string name="tongcong">Tổng cộng:</string>
     <string name="soluong">Số lượng</string>
     <string name="thue">Đã bao gồm thuế giá trị gia tăng</string>
@@ -71,15 +72,27 @@
     <string name="phieugiamgia">PHIẾU GIẢM GIÁ</string>
     <string name="textthanhtoan">Đặt mua thêm 702.000 VND (bao gồm VAT) để được miễn phí giao hàng.</string>
 
+    <string name="danhmu">DANH MỤC </string>
     <string name="danhmuc">DANH MỤC NỔI BẬT</string>
     <string name="size">Kích thước:</string>
     <string name="tongcongtien">TỔNG: </string>
     <string name="masp">Mã sản phẩm:  </string>
+    <string name="timkiem">Bạn đang tìm sản phẩm gì? </string>
+    <string name="thanhtoan">THANH TOÁN  </string>
+
+    <string name="textdh">Nhấn đặt hàng để hoàn tất thanh toán  </string>
 
 
-
-
-
+    <string name="domacngoai">ĐỒ MẶC NGOÀI  </string>
+    <string name="aosomi">ÁO SƠ-MI </string>
+    <string name="aothun">ÁO THUN </string>
+    <string name="quandai"> QUẦN DÀI  </string>
+    <string name="quanshort">QUẦN SHORT </string>
+    <string name="dam">ĐẦM </string>
+    <string name="chanvay">CHÂN VÁY  </string>
+    <string name="dolot">ĐỒ MẶC TRONG  </string>
+    <string name="domacnha">ĐỒ MẶC NHÀ  </string>
+    <string name="aopolo">ÁO POLO </string>
 
 
 

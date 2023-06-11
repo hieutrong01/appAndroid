@@ -1,11 +1,6 @@
 package com.ocr.navigation.my_activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -17,20 +12,31 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.ocr.navigation.Adapter.ListProductAdapter;
 import com.ocr.navigation.ChiTietProductActivity;
 import com.ocr.navigation.GioHangActivity;
+import com.ocr.navigation.OOP.DataProduct;
 import com.ocr.navigation.OOP.Item;
-import com.ocr.navigation.OOP.ProductList;
+import com.ocr.navigation.OOP.Product;
 import com.ocr.navigation.R;
+import com.ocr.navigation.my_interface.APIService;
 import com.ocr.navigation.my_interface.ClickItemProduc;
 import com.ocr.navigation.utils.Utils;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.rxjava3.disposables.Disposable;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class KidsListProductActivity extends AppCompatActivity {
     private TextView mtextView, tvSoLuong;
@@ -40,6 +46,8 @@ public class KidsListProductActivity extends AppCompatActivity {
     private ImageView imgGioHang;
     private LinearLayout  layoutSapXep;
     private NotificationBadge badge;
+    private Disposable disposable;
+    private List<Product>  mList;
 
     private int selectedRadioButtonId = -1;
 
@@ -49,6 +57,7 @@ public class KidsListProductActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_kids_list_product );
         initUI();
+        mList= new ArrayList<>();
         onClickListener();
         //lấy dữ liệu đổ vào activity từ framgentSearch
         Bundle bundle = getIntent().getExtras();
@@ -63,8 +72,8 @@ public class KidsListProductActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager( gridLayoutManager );
         adapter.setData( getListProduct( pos ), new ClickItemProduc() {
             @Override
-            public void onItemProductClick(ProductList productList) {
-                onClickgotoChitiet(productList);
+            public void onItemProductClick(Product product) {
+                onClickgotoChitiet(product);
             }
 
             @Override
@@ -159,42 +168,65 @@ public class KidsListProductActivity extends AppCompatActivity {
     }
 
 
-    private void onClickgotoChitiet(ProductList productList) {
+    private void onClickgotoChitiet(Product product) {
         Intent intent = new Intent(KidsListProductActivity.this, ChiTietProductActivity.class );
         Bundle bundle= new Bundle();
-        bundle.putSerializable("object_product", productList);
+        bundle.putSerializable("object_product", product);
         intent.putExtras(bundle);
         startActivity(intent);
     }
-    private List<ProductList> getListProduct(int pos) {
-        List<ProductList> list = new ArrayList<>();
+    private List<Product> getListProduct(int pos) {
+        List<Product> list = new ArrayList<>();
         switch (pos){
             case 0: {
-                list.add(new ProductList(1234,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",399000,false));
-                list.add(new ProductList(1235,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",599000,false));
-                list.add(new ProductList(1236,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",499000,false));
-                list.add(new ProductList(1237,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",699000,false));
-                list.add(new ProductList(1238,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",299000,false));
-                list.add(new ProductList(1239,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",499000,false));
-                list.add(new ProductList(1240,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",399000,false));
-                for (ProductList product : list) {
-                    String formattedPrice = product.getFormattedPrice();
-                }
+                callApiAoWomen();
+
                 break;
             }
             case 1: {
-                list.add(new ProductList(1234,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",399000,false));
-                list.add(new ProductList(1235,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",599000,false));
-                list.add(new ProductList(1236,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",499000,false));
-                list.add(new ProductList(1237,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",699000,false));
-                list.add(new ProductList(1238,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",299000,false));
-                list.add(new ProductList(1239,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",499000,false));
-                list.add(new ProductList(1240,R.drawable.img1,"Trẻ em","XXL","ÁO THUN DRY-EX CỔ TRÒN NGẮN TAY",399000,false));
-                for (ProductList product : list) {
-                    String formattedPrice = product.getFormattedPrice();
-                }
+
+               break;
             }
         }
         return list;
+    }
+
+    private void callApiAoWomen() {
+        APIService.apiServiceKids.getLisAoKids().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                Toast.makeText( KidsListProductActivity.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+
+            }
+        } );
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (disposable!=null){
+            disposable.dispose();
+        }
     }
 }
