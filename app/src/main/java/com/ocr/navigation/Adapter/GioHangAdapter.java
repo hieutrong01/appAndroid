@@ -8,10 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.ocr.navigation.GioHangActivity;
 import com.ocr.navigation.OOP.GioHang;
 import com.ocr.navigation.R;
 import com.ocr.navigation.my_interface.ClickCongTruGioHang;
@@ -19,15 +21,19 @@ import com.ocr.navigation.my_interface.ClickCongTruGioHang;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import retrofit2.http.HEAD;
+
 public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangViewHolder> {
     private Context context;
     private List<GioHang> gioHangList;
+
     private ClickCongTruGioHang clickCongTruGioHang;
 
     public GioHangAdapter(Context context, List<GioHang> gioHangList, ClickCongTruGioHang listener) {
         this.context = context;
         this.gioHangList = gioHangList;
         this.clickCongTruGioHang = listener;
+
     }
 
     @NonNull
@@ -71,11 +77,13 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
         return 0;
     }
 
+
     public class GioHangViewHolder extends RecyclerView.ViewHolder  {
         private ImageView imgProduct, imvCong, imvTru, imvRemove;
         private TextView tvTenProduct, tvSize,tvSoLuong,tvGia, tvTongGia, tvIdProduct, tvGioiTinh;
 
         private CardView cardView;
+
 
         public GioHangViewHolder(@NonNull View itemView) {
             super( itemView );
@@ -89,8 +97,10 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
             tvTongGia=itemView.findViewById( R.id.tv_tong_gia );
             tvIdProduct=itemView.findViewById( R.id.tv_ma_product );
             tvGioiTinh=itemView.findViewById( R.id.tv_gioi_tinh );
+
             imvRemove=itemView.findViewById( R.id.img_remove );
             cardView=itemView.findViewById( R.id.card_view );
+
 
         }
     }

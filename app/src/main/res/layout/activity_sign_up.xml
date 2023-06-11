@@ -10,6 +10,24 @@
     android:background="#F9F9F9"
     tools:context=".SignUpActivity">
     <EditText
+        android:id="@+id/edt_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:imeOptions="actionNext"
+        android:textColorHint="#737272"
+        android:textColor="@color/black"/>
+    <EditText
+        android:id="@+id/edt_adress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_marginTop="20dp"
+        android:textColorHint="#737272"
+        android:inputType="textPassword"
+        android:imeOptions="actionDone"
+        android:textColor="@color/black"/>
+    <EditText
         android:id="@+id/edt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
