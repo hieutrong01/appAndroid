@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:layout_gravity="center"
-            android:text="@string/loginapiwithretrofit"
+            android:text="yeuhieu3000"
             android:textSize="20sp">
 
         </TextView>

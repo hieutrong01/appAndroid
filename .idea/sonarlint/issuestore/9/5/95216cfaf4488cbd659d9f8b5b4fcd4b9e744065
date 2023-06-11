@@ -1,3 +1,17 @@
 
-J
-java:S1604"(Make this anonymous inner class a lambda(±øÃŞúÿÿÿÿ8ší¾È€1
+E
+java:S1066m"/Merge this if statement with the enclosing one.(¤ÜÔ¿
+C
+java:S1604E"(Make this anonymous inner class a lambda(±øÃŞúÿÿÿÿ
+C
+java:S1604|"(Make this anonymous inner class a lambda(ş×¬îÿÿÿÿÿ
+D
+java:S1604„"(Make this anonymous inner class a lambda(òİŸ÷ıÿÿÿÿ
+]
+java:S1659"GDeclare "tvTongCong" and all following declarations on a separate line.(Ñ‡ş¼
+@
+java:S1659 "*Declare "btnThanhToan" on a separate line.(›ÓÂİ
+n
+java:S1450 "XRemove the "btnVoCher" field and declare it as a local variable in the relevant methods.(›ÓÂİ
+C
+java:S1068 "-Remove this unused "btnVoCher" private field.(›ÓÂİ

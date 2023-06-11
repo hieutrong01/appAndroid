@@ -62,7 +62,9 @@
                     android:id="@+id/rcv_gio_hang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="1dp"
+                     />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -185,6 +187,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:text="0"
+                            android:textSize="17sp"
                             android:textStyle="bold"
                             android:textColor="@color/black" />
                     </RelativeLayout>
@@ -266,7 +269,8 @@
                     android:layout_gravity="end"
                     android:text="THANH TOÁN"
                     android:textColor="@color/white"
-                    android:backgroundTint="#EF1303" />
+                    android:backgroundTint="#EF1303"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 

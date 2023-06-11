@@ -50,6 +50,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Nam"
+              android:textAllCaps="true"
               android:textSize="10sp"
               android:textColor="#7A7777"/>
           <TextView
@@ -77,6 +78,7 @@
             android:text="@string/product"
             android:textColor="@color/black"
             android:layout_marginStart="10dp"
+            android:textAllCaps="true"
             android:textSize="13sp"
           />
         <TextView

@@ -1,16 +1,14 @@
 
+=
+java:S16040"(Make this anonymous inner class a lambda(ÑÆJ
+=
+java:S16049"(Make this anonymous inner class a lambda(ÑÆJ
 >
-java:S1604N"(Make this anonymous inner class a lambda(‹÷Ë×
+java:S1604b"(Make this anonymous inner class a lambda(‹÷Ë×
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤†åÜ
 ^
-java:S1659_"CDeclare "tvSize" and all following declarations on a separate line.(×æÀ³üÿÿÿÿ
-G
-java:S1068",Remove this unused "mContext" private field.(»úÅ¾øÿÿÿÿ
+java:S1659s"CDeclare "tvSize" and all following declarations on a separate line.(×æÀ³üÿÿÿÿ
+E
+java:S1068s"*Remove this unused "tvSize" private field.(×æÀ³üÿÿÿÿ
 F
-java:S1068"1Remove this unused "favoriteItems" private field.(Œí§|
-O
-java:S1068"4Remove this unused "selectedPosition" private field.(¶•¬Ìşÿÿÿÿ
-C
-java:S1068!".Remove this unused "PREFS_NAME" private field.(®óe
-L
-java:S1068""6Remove this unused "FAVORITE_ITEMS_KEY" private field.(ÉŒÁÙ
+java:S1068t"0Remove this unused "imgFavourite" private field.(¡»¿±

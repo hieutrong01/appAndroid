@@ -1,50 +1,68 @@
 
-C
-java:S1604/"(Make this anonymous inner class a lambda(ÿ“όΛϋÿÿÿÿ
->
-java:S1604W"(Make this anonymous inner class a lambda(Ζ®‚δ
-p
-java:S1450$"URemove the "mToast" field and declare it as a local variable in the relevant methods.(ΣΙΰώÿÿÿÿ
-w
-java:S1450"\Remove the "mdrawerLayout" field and declare it as a local variable in the relevant methods.(Η‹ÿδϋÿÿÿÿ
-V
-java:S1874+"ARemove this use of "FragmentStatePagerAdapter"; it is deprecated.(δ³
-
-
-java:S11869"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ψ΄΄ψÿÿÿÿ
-
-java:S1186R"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(™Ξ«ώÿÿÿÿ
-<	java:S131>""Add a default case to this switch.(’ÿ„Άύÿÿÿÿ
-a
-java:S1874W"KRemove this use of "setOnNavigationItemSelectedListener"; it is deprecated.(Ζ®‚δ
-[
-java:S1854]"@Remove this useless assignment to local variable "homeFramgent".(™Ύζωÿÿÿÿ
-]
-java:S1854b"BRemove this useless assignment to local variable "searchFramgent".(΅νύϋÿÿÿÿ
-`
-java:S1854g"ERemove this useless assignment to local variable "favouriteFramgent".(†Ϊόÿÿÿÿ
-T
-java:S1854l">Remove this useless assignment to local variable "qrFramgent".(¦φ¨Β
-[
-java:S1854q"@Remove this useless assignment to local variable "pesonFramgen".(„®¶Ώόÿÿÿÿ
-<	java:S131Z""Add a default case to this switch.(ψε΄΅ÿÿÿÿÿ
-L
-java:S1481]"1Remove this unused "homeFramgent" local variable.(™Ύζωÿÿÿÿ
-V	java:S125^"<This block of commented-out lines of code should be removed.(Ι«π„ώÿÿÿÿ
-N
-java:S1481b"3Remove this unused "searchFramgent" local variable.(΅νύϋÿÿÿÿ
-V	java:S125c"<This block of commented-out lines of code should be removed.(£–Νÿÿÿÿÿ
-Q
-java:S1481g"6Remove this unused "favouriteFramgent" local variable.(†Ϊόÿÿÿÿ
-V	java:S125h"<This block of commented-out lines of code should be removed.(ύ¤¥όÿÿÿÿ
+J
+java:S16040"(Make this anonymous inner class a lambda(ÿ“όΛϋÿÿÿÿ8ΈªΠ¦1
 E
-java:S1481l"/Remove this unused "qrFramgent" local variable.(¦φ¨Β
-Q	java:S125m"<This block of commented-out lines of code should be removed.(”ΠΤ
+java:S1604X"(Make this anonymous inner class a lambda(Ζ®‚δ8ΈªΠ¦1
+w
+java:S1450%"URemove the "mToast" field and declare it as a local variable in the relevant methods.(ΣΙΰώÿÿÿÿ8ηªΠ¦1
+~
+java:S1450 "\Remove the "mdrawerLayout" field and declare it as a local variable in the relevant methods.(Η‹ÿδϋÿÿÿÿ8ηªΠ¦1
+]
+java:S1874,"ARemove this use of "FragmentStatePagerAdapter"; it is deprecated.(δ³
+8ηªΠ¦1
+£
+java:S1186:"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ψ΄΄ψÿÿÿÿ8ηªΠ¦1
+£
+java:S1186S"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(™Ξ«ώÿÿÿÿ8ηªΠ¦1
+C	java:S131?""Add a default case to this switch.(’ÿ„Άύÿÿÿÿ8ηªΠ¦1
+h
+java:S1874X"KRemove this use of "setOnNavigationItemSelectedListener"; it is deprecated.(Ζ®‚δ8ηªΠ¦1
+b
+java:S1854^"@Remove this useless assignment to local variable "homeFramgent".(™Ύζωÿÿÿÿ8ηªΠ¦1
+d
+java:S1854c"BRemove this useless assignment to local variable "searchFramgent".(΅νύϋÿÿÿÿ8ηªΠ¦1
+g
+java:S1854h"ERemove this useless assignment to local variable "favouriteFramgent".(†Ϊόÿÿÿÿ8ηªΠ¦1
+[
+java:S1854m">Remove this useless assignment to local variable "qrFramgent".(¦φ¨Β8ηªΠ¦1
+b
+java:S1854r"@Remove this useless assignment to local variable "pesonFramgen".(„®¶Ώόÿÿÿÿ8ηªΠ¦1
+C	java:S131[""Add a default case to this switch.(ψε΄΅ÿÿÿÿÿ8ηªΠ¦1
+S
+java:S1481^"1Remove this unused "homeFramgent" local variable.(™Ύζωÿÿÿÿ8ηªΠ¦1
+]	java:S125_"<This block of commented-out lines of code should be removed.(Ι«π„ώÿÿÿÿ8ηªΠ¦1
+U
+java:S1481c"3Remove this unused "searchFramgent" local variable.(΅νύϋÿÿÿÿ8φªΠ¦1
+]	java:S125d"<This block of commented-out lines of code should be removed.(£–Νÿÿÿÿÿ8φªΠ¦1
+X
+java:S1481h"6Remove this unused "favouriteFramgent" local variable.(†Ϊόÿÿÿÿ8φªΠ¦1
+]	java:S125i"<This block of commented-out lines of code should be removed.(ύ¤¥όÿÿÿÿ8φªΠ¦1
 L
-java:S1481q"1Remove this unused "pesonFramgen" local variable.(„®¶Ώόÿÿÿÿ
-f
-java:S1874‚"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ƒƒ©ωÿÿÿÿ
-L
-java:S1068"1Remove this unused "mdrawerLayout" private field.(Η‹ÿδϋÿÿÿÿ
-B
-java:S1068!",Remove this unused "mToolbar" private field.(κ‹©
+java:S1481m"/Remove this unused "qrFramgent" local variable.(¦φ¨Β8φªΠ¦1
+X	java:S125n"<This block of commented-out lines of code should be removed.(”ΠΤ8φªΠ¦1
+S
+java:S1481r"1Remove this unused "pesonFramgen" local variable.(„®¶Ώόÿÿÿÿ8φªΠ¦1
+m
+java:S1874‰"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ƒƒ©ωÿÿÿÿ8φªΠ¦1
+Q
+java:S1874”"3Remove this use of "NetworkInfo"; it is deprecated.(°ή―–8φªΠ¦1
+T
+java:S1874”"6Remove this use of "getNetworkInfo"; it is deprecated.(°ή―–8φªΠ¦1
+O
+java:S1874”"1Remove this use of "TYPE_WIFI"; it is deprecated.(°ή―–8φªΠ¦1
+Q
+java:S1874•"3Remove this use of "NetworkInfo"; it is deprecated.(ΚÒ±δ8φªΠ¦1
+T
+java:S1874•"6Remove this use of "getNetworkInfo"; it is deprecated.(ΚÒ±δ8φªΠ¦1
+Q
+java:S1874•"3Remove this use of "TYPE_MOBILE"; it is deprecated.(ΚÒ±δ8φªΠ¦1
+_
+java:S1126–"AReplace this if-then-else statement by a single return statement.(ώ¨«8φªΠ¦1
+Q
+java:S1874–"3Remove this use of "isConnected"; it is deprecated.(ώ¨«8φªΠ¦1
+Q
+java:S1874–"3Remove this use of "isConnected"; it is deprecated.(ώ¨«8φªΠ¦1
+S
+java:S1068 "1Remove this unused "mdrawerLayout" private field.(Η‹ÿδϋÿÿÿÿ8φªΠ¦1
+I
+java:S1068"",Remove this unused "mToolbar" private field.(κ‹©8φªΠ¦1
