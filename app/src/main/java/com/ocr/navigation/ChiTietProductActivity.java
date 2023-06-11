@@ -9,20 +9,31 @@ import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.nex3z.notificationbadge.NotificationBadge;
+import com.ocr.navigation.OOP.GioHang;
 import com.ocr.navigation.OOP.Item;
 import com.ocr.navigation.OOP.ProductList;
+import com.ocr.navigation.my_activity.KidsListProductActivity;
+import com.ocr.navigation.my_activity.MenListItem;
+import com.ocr.navigation.my_activity.WomenListProductActivity;
+import com.ocr.navigation.utils.Utils;
 
 public class ChiTietProductActivity extends AppCompatActivity {
     private boolean isFavorite = false;
     private ImageButton btnFavorite;
+    private Button btnThem;
     private TextView tvTenSP,tvGia,tvMaSP,tvMoTa,tvBangKichThuoc;
     private ImageView imgSP, imgBack, imgGioHang;
     private Spinner spnSoLuong,spnKichCo;
+    private NotificationBadge badge;
+    ProductList productList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +46,12 @@ public class ChiTietProductActivity extends AppCompatActivity {
         if (bundle==null){
             return;
         }
-        ProductList productList = (ProductList) bundle.get( "object_product" );
+        productList = (ProductList) bundle.get( "object_product" );
         imgSP.setImageResource(productList.getResourceImage()  );
         tvTenSP.setText( productList.getProductName() );
         tvGia.setText( productList.getFormattedPrice() );
         tvMaSP.setText( String.valueOf(productList.getIdProduct()) );
+
     }
 
     public void isUnit(){
@@ -51,18 +63,23 @@ public class ChiTietProductActivity extends AppCompatActivity {
         imgSP=findViewById( R.id.img_product );
         imgBack=findViewById( R.id.iv_back );
         imgGioHang=findViewById( R.id.gio_hang_a );
+        btnThem=findViewById( R.id.btn_them_gio_hang );
         spnKichCo=findViewById( R.id.spn_kich_co );
-        String[] kicthuoc = new String[]{"S","M","L","XL","XXL"};
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>( this, me.relex.circleindicator.R.layout.support_simple_spinner_dropdown_item,kicthuoc );
-        spnKichCo.setAdapter( arrayAdapter );
-        spnKichCo.setBackgroundResource(R.drawable.spinner_bg_shadow);
-        spnSoLuong=findViewById( R.id.spn_so_luong);
+        badge=findViewById( R.id.menu_sl );
+        String[]  kichco = new String[]{"S","M","L","XL","XXL"};
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>( this,R.layout.simple_spinner_dropdown_item,kichco );
+        spnKichCo.setAdapter( adapter1 );
+        spnSoLuong=findViewById( R.id.spn_so_luong );
         Integer[] soluong = new Integer[]{1,2,3,4,5,6,7,8,9,10};
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<>( this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item ,soluong);
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<>( this, R.layout.simple_spinner_dropdown_item ,soluong);
         spnSoLuong.setAdapter( adapter );
-        spnSoLuong.setBackgroundResource(R.drawable.spinner_bg_shadow);
-
-
+        if (Utils.manggiohang!=null){
+            int totalItem=0;
+            for (int i =0; i<Utils.manggiohang.size();i++){
+                totalItem=totalItem + Utils.manggiohang.get(i).getSoluong();
+            }
+            badge.setText( String.valueOf( totalItem ) );
+        }
     }
 
     private void onClickListner() {
@@ -102,5 +119,53 @@ public class ChiTietProductActivity extends AppCompatActivity {
                 isFavorite = !isFavorite;
             }
         } );
+        btnThem.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                themGioHang();
+            }
+        } );
     }
+
+    private void themGioHang() {
+        int soluong = Integer.parseInt(spnSoLuong.getSelectedItem().toString());
+        boolean flag = false;
+
+        for (int i = 0; i < Utils.manggiohang.size(); i++) {
+            GioHang gioHang = Utils.manggiohang.get(i);
+
+
+
+            if (gioHang.getIdProduct() == productList.getIdProduct() && gioHang.getSize().equals(productList.getSize())) {
+                gioHang.setSoluong(soluong + gioHang.getSoluong());
+                gioHang.setPrice(productList.getPrice());
+                flag = true;
+                break;
+            }
+        }
+
+        if (!flag) {
+            String kichco = spnKichCo.getSelectedItem().toString();
+
+            //int gia = productList.getPrice() * soluong;
+
+            GioHang gioHang = new GioHang();
+            gioHang.setPrice(productList.getPrice());
+            gioHang.setSoluong(soluong);
+            gioHang.setIdProduct(productList.getIdProduct());
+            gioHang.setResourceImage(productList.getResourceImage());
+            gioHang.setSize(kichco);
+            gioHang.setProductName( productList.getProductName() );
+            gioHang.setGender( productList.getGender() );
+
+            Utils.manggiohang.add(gioHang);
+        }
+
+        int totalItem=0;
+        for (int i =0; i<Utils.manggiohang.size();i++){
+            totalItem=totalItem + Utils.manggiohang.get(i).getSoluong();
+        }
+        badge.setText( String.valueOf( totalItem ) );
+    }
+
 }

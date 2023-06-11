@@ -28,14 +28,21 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:src="@drawable/ic_back" />
-
+            <com.nex3z.notificationbadge.NotificationBadge
+                android:id="@+id/menu_sl"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="3dp"
+                />
             <ImageView
                 android:id="@+id/gio_hang_a"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="25dp"
                 android:src="@drawable/add_shopping_cart"/>
 
         </RelativeLayout>
@@ -73,7 +80,7 @@
                 <ImageView
                     android:id="@+id/img_product"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="400dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/img1" />
 
@@ -85,13 +92,19 @@
                     android:text="KÍCH CỠ:"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
+
                 <Spinner
                     android:id="@+id/spn_kich_co"
                     android:layout_width="200dp"
-                    android:layout_marginStart="10dp"
-                    android:textAlignment="textEnd"
                     android:layout_height="wrap_content"
-                   />
+                    android:layout_marginStart="10dp"
+                    android:minHeight="48dp"
+                    android:textAlignment="textEnd" />
+                <View
+                    android:layout_width="200dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
 
                 <TextView
                     android:id="@+id/tv_gia"
@@ -116,6 +129,11 @@
                     android:layout_marginStart="10dp"
                     android:textColor="@color/black"
                     />
+                <View
+                    android:layout_width="200dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -185,8 +203,15 @@
                     android:text="XEM BẢNG KÍCH THƯỚC"
                     android:textColor="@color/black"
                     android:textSize="17sp"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/uniqno"
+                   android:scaleType="fitStart"/>
+
 
             </LinearLayout>
+
         </ScrollView>
     </LinearLayout>
 </LinearLayout>

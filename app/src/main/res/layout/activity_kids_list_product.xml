@@ -48,6 +48,14 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:src="@drawable/add_shopping_cart" />
+            <com.nex3z.notificationbadge.NotificationBadge
+                android:id="@+id/menu_sl"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="3dp"
+                />
 
 
         </RelativeLayout>
@@ -57,17 +65,20 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:padding="10dp"
+        android:layout_marginTop="1dp"
         >
         <TextView
             android:id="@+id/tv_so_luong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="0 "
+            android:layout_marginStart="10dp"
             android:textColor="@color/black"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="(các) sản phẩm"
+            android:layout_marginStart="1dp"
             android:textColor="@color/black"/>
         <LinearLayout
             android:id="@+id/linea_sap_xep"
@@ -80,6 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_sapxep"
+                android:layout_marginStart="25dp"
                 />
         <TextView
             android:layout_width="wrap_content"

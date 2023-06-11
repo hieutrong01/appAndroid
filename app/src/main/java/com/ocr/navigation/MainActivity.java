@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,6 +21,12 @@ import com.ocr.navigation.framgent.PesonFramgent;
 import com.ocr.navigation.framgent.QRFramgent;
 import com.ocr.navigation.framgent.SearchFramgent;
 import com.ocr.navigation.framgent.ViewPageAdapter;
+import com.ocr.navigation.retrofit.com.ocr.navigation.User;
+import com.ocr.navigation.utils.Utils;
+
+import java.util.ArrayList;
+
+import kotlin.Unit;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -34,6 +41,18 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
         init();
+
+        //retrofit call data
+        TextView tvUserInfo = findViewById(R.id.tv_user_info);
+
+        Bundle bundleReceive = getIntent().getExtras();
+        if (bundleReceive != null){
+            User user = (User) bundleReceive.get("Object_user");
+            if (user != null){
+                tvUserInfo.setText(user.toString());
+            }
+        }
+
         //bắt sự kiện navigation
         ViewPageAdapter adapter= new ViewPageAdapter( getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mViewPager.setAdapter( adapter );
@@ -117,6 +136,9 @@ public class MainActivity extends AppCompatActivity  {
         mViewPager=findViewById( R.id.content_frame );
         mViewPager = findViewById( R.id.content_frame);
         mBottomNavigationView=findViewById( R.id.bottom_nav);
+        if (Utils.manggiohang==null){
+            Utils.manggiohang= new ArrayList<>();
+        }
     }
     @Override
     public void onBackPressed() {

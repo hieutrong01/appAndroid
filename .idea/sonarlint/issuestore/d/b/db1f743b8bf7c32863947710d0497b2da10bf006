@@ -1,0 +1,15 @@
+
+=
+java:S1604@"(Make this anonymous inner class a lambda(ã¾Ù[
+C
+java:S1604I"(Make this anonymous inner class a lambda(Á¾æ»ûÿÿÿÿ
+H
+java:S2387""-"mView" is the name of a field in "Fragment".(¼ğŠışÿÿÿÿ
+H
+java:S1659#"-Declare "btnChinhSuaHoSo" on a separate line.(Ü¡˜ôøÿÿÿÿ
+@
+java:S1659%"%Declare "tvEmail" on a separate line.(Ïš¨§úÿÿÿÿ
+1
+java:S3626U"Remove this redundant jump.(ûÁİ…
+K
+java:S1068'"0Remove this unused "mArrayLichSu" private field.(°ãíáûÿÿÿÿ

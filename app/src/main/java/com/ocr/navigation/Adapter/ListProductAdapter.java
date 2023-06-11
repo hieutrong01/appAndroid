@@ -19,6 +19,8 @@ import com.ocr.navigation.my_interface.ClickItemMenSearch;
 import com.ocr.navigation.my_interface.ClickItemProduc;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,23 +28,54 @@ import java.util.Set;
 public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.ListProductViewHolder> {
     private Context mContext;
     private List<ProductList> mproList;
-    private List<ProductList> favoriteItems ;
+
     private ClickItemProduc clickItemProduc;
     private int selectedPosition = -1;
 
     private static final String PREFS_NAME = "MyPrefs";
     private static final String FAVORITE_ITEMS_KEY = "favoriteItems";
+    // Tạo bản sao của danh sách mục ban đầu
+    List<ProductList> originalItems ;
 
     public ListProductAdapter(Context mContext) {
         this.mContext = mContext;
-        this.favoriteItems = new ArrayList<>();
+       this.originalItems=new ArrayList<>();
     }
 
     public void setData(List<ProductList> list, ClickItemProduc listener){
         this.mproList=list;
         this.clickItemProduc=listener;
+        this.originalItems=new ArrayList<>(mproList);
         notifyDataSetChanged();
     }
+
+    public void giathapcao() {
+        Collections.sort(mproList, new Comparator<ProductList>() {
+            @Override
+            public int compare(ProductList item1, ProductList item2) {
+                return Double.compare(item1.getPrice(), item2.getPrice());
+            }
+        });
+        notifyDataSetChanged();
+    }
+    public void giaCaoThap(){
+        Collections.sort( mproList, new Comparator<ProductList>() {
+            @Override
+            public int compare(ProductList o1, ProductList o2) {
+                return Double.compare( o2.getPrice(),o1.getPrice() );
+            }
+        } );
+        notifyDataSetChanged();
+    }
+    public void  tieuBieu(){
+        // Gán lại danh sách mục từ bản sao ban đầu vào danh sách hiện tại
+        mproList.clear();
+        mproList.addAll(originalItems);
+
+        // Cập nhật RecyclerView
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override
