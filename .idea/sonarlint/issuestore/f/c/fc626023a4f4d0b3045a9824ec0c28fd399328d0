@@ -1,68 +1,68 @@
 
 J
-java:S16040"(Make this anonymous inner class a lambda(ÿ“üËûÿÿÿÿ8¸ªÐ¦ˆ1
+java:S16043"(Make this anonymous inner class a lambda(ÿ“üËûÿÿÿÿ8¸ªÐ¦ˆ1
 E
-java:S1604X"(Make this anonymous inner class a lambda(Æ®‚ä8¸ªÐ¦ˆ1
+java:S1604["(Make this anonymous inner class a lambda(Æ®‚ä8¸ªÐ¦ˆ1
 w
-java:S1450%"URemove the "mToast" field and declare it as a local variable in the relevant methods.(ÓÉàžþÿÿÿÿ8çªÐ¦ˆ1
+java:S1450&"URemove the "mToast" field and declare it as a local variable in the relevant methods.(ÓÉàžþÿÿÿÿ8çªÐ¦ˆ1
 ~
-java:S1450 "\Remove the "mdrawerLayout" field and declare it as a local variable in the relevant methods.(Ç‹ÿäûÿÿÿÿ8çªÐ¦ˆ1
+java:S1450!"\Remove the "mdrawerLayout" field and declare it as a local variable in the relevant methods.(Ç‹ÿäûÿÿÿÿ8çªÐ¦ˆ1
 ]
-java:S1874,"ARemove this use of "FragmentStatePagerAdapter"; it is deprecated.(ä³
+java:S1874/"ARemove this use of "FragmentStatePagerAdapter"; it is deprecated.(ä³
 8çªÐ¦ˆ1
 £
-java:S1186:"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ø´´øÿÿÿÿ8çªÐ¦ˆ1
+java:S1186="€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ø´´øÿÿÿÿ8çªÐ¦ˆ1
 £
-java:S1186S"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(™Î«þÿÿÿÿ8çªÐ¦ˆ1
-C	java:S131?""Add a default case to this switch.(’ÿ„¢ýÿÿÿÿ8çªÐ¦ˆ1
+java:S1186V"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(™Î«þÿÿÿÿ8çªÐ¦ˆ1
+C	java:S131B""Add a default case to this switch.(’ÿ„¢ýÿÿÿÿ8çªÐ¦ˆ1
 h
-java:S1874X"KRemove this use of "setOnNavigationItemSelectedListener"; it is deprecated.(Æ®‚ä8çªÐ¦ˆ1
+java:S1874["KRemove this use of "setOnNavigationItemSelectedListener"; it is deprecated.(Æ®‚ä8çªÐ¦ˆ1
 b
-java:S1854^"@Remove this useless assignment to local variable "homeFramgent".(™¾Ÿæùÿÿÿÿ8çªÐ¦ˆ1
+java:S1854a"@Remove this useless assignment to local variable "homeFramgent".(™¾Ÿæùÿÿÿÿ8çªÐ¦ˆ1
 d
-java:S1854c"BRemove this useless assignment to local variable "searchFramgent".(Ÿ¡íýûÿÿÿÿ8çªÐ¦ˆ1
+java:S1854f"BRemove this useless assignment to local variable "searchFramgent".(Ÿ¡íýûÿÿÿÿ8çªÐ¦ˆ1
 g
-java:S1854h"ERemove this useless assignment to local variable "favouriteFramgent".(†ŒÚŠüÿÿÿÿ8çªÐ¦ˆ1
+java:S1854k"ERemove this useless assignment to local variable "favouriteFramgent".(†ŒÚŠüÿÿÿÿ8çªÐ¦ˆ1
 [
-java:S1854m">Remove this useless assignment to local variable "qrFramgent".(¦ö¨Â8çªÐ¦ˆ1
+java:S1854p">Remove this useless assignment to local variable "qrFramgent".(¦ö¨Â8çªÐ¦ˆ1
 b
-java:S1854r"@Remove this useless assignment to local variable "pesonFramgen".(„®¶¿üÿÿÿÿ8çªÐ¦ˆ1
-C	java:S131[""Add a default case to this switch.(øå´¡ÿÿÿÿÿ8çªÐ¦ˆ1
+java:S1854u"@Remove this useless assignment to local variable "pesonFramgen".(„®¶¿üÿÿÿÿ8çªÐ¦ˆ1
+C	java:S131^""Add a default case to this switch.(øå´¡ÿÿÿÿÿ8çªÐ¦ˆ1
 S
-java:S1481^"1Remove this unused "homeFramgent" local variable.(™¾Ÿæùÿÿÿÿ8çªÐ¦ˆ1
-]	java:S125_"<This block of commented-out lines of code should be removed.(É«ð„þÿÿÿÿ8çªÐ¦ˆ1
+java:S1481a"1Remove this unused "homeFramgent" local variable.(™¾Ÿæùÿÿÿÿ8çªÐ¦ˆ1
+]	java:S125b"<This block of commented-out lines of code should be removed.(É«ð„þÿÿÿÿ8çªÐ¦ˆ1
 U
-java:S1481c"3Remove this unused "searchFramgent" local variable.(Ÿ¡íýûÿÿÿÿ8öªÐ¦ˆ1
-]	java:S125d"<This block of commented-out lines of code should be removed.(Š£–Íÿÿÿÿÿ8öªÐ¦ˆ1
+java:S1481f"3Remove this unused "searchFramgent" local variable.(Ÿ¡íýûÿÿÿÿ8öªÐ¦ˆ1
+]	java:S125g"<This block of commented-out lines of code should be removed.(Š£–Íÿÿÿÿÿ8öªÐ¦ˆ1
 X
-java:S1481h"6Remove this unused "favouriteFramgent" local variable.(†ŒÚŠüÿÿÿÿ8öªÐ¦ˆ1
-]	java:S125i"<This block of commented-out lines of code should be removed.(Ÿý¤¥üÿÿÿÿ8öªÐ¦ˆ1
+java:S1481k"6Remove this unused "favouriteFramgent" local variable.(†ŒÚŠüÿÿÿÿ8öªÐ¦ˆ1
+]	java:S125l"<This block of commented-out lines of code should be removed.(Ÿý¤¥üÿÿÿÿ8öªÐ¦ˆ1
 L
-java:S1481m"/Remove this unused "qrFramgent" local variable.(¦ö¨Â8öªÐ¦ˆ1
-X	java:S125n"<This block of commented-out lines of code should be removed.(Œ”ÐÔ8öªÐ¦ˆ1
+java:S1481p"/Remove this unused "qrFramgent" local variable.(¦ö¨Â8öªÐ¦ˆ1
+X	java:S125q"<This block of commented-out lines of code should be removed.(Œ”ÐÔ8öªÐ¦ˆ1
 S
-java:S1481r"1Remove this unused "pesonFramgen" local variable.(„®¶¿üÿÿÿÿ8öªÐ¦ˆ1
+java:S1481u"1Remove this unused "pesonFramgen" local variable.(„®¶¿üÿÿÿÿ8öªÐ¦ˆ1
 m
-java:S1874‰"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(œƒƒ©ùÿÿÿÿ8öªÐ¦ˆ1
+java:S1874Œ"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(œƒƒ©ùÿÿÿÿ8öªÐ¦ˆ1
 Q
-java:S1874”"3Remove this use of "NetworkInfo"; it is deprecated.(°Þ¯–8öªÐ¦ˆ1
+java:S1874—"3Remove this use of "NetworkInfo"; it is deprecated.(°Þ¯–8öªÐ¦ˆ1
 T
-java:S1874”"6Remove this use of "getNetworkInfo"; it is deprecated.(°Þ¯–8öªÐ¦ˆ1
+java:S1874—"6Remove this use of "getNetworkInfo"; it is deprecated.(°Þ¯–8öªÐ¦ˆ1
 O
-java:S1874”"1Remove this use of "TYPE_WIFI"; it is deprecated.(°Þ¯–8öªÐ¦ˆ1
+java:S1874—"1Remove this use of "TYPE_WIFI"; it is deprecated.(°Þ¯–8öªÐ¦ˆ1
 Q
-java:S1874•"3Remove this use of "NetworkInfo"; it is deprecated.(ÊÒ±ä8öªÐ¦ˆ1
+java:S1874˜"3Remove this use of "NetworkInfo"; it is deprecated.(ÊÒ±ä8öªÐ¦ˆ1
 T
-java:S1874•"6Remove this use of "getNetworkInfo"; it is deprecated.(ÊÒ±ä8öªÐ¦ˆ1
+java:S1874˜"6Remove this use of "getNetworkInfo"; it is deprecated.(ÊÒ±ä8öªÐ¦ˆ1
 Q
-java:S1874•"3Remove this use of "TYPE_MOBILE"; it is deprecated.(ÊÒ±ä8öªÐ¦ˆ1
+java:S1874˜"3Remove this use of "TYPE_MOBILE"; it is deprecated.(ÊÒ±ä8öªÐ¦ˆ1
 _
-java:S1126–"AReplace this if-then-else statement by a single return statement.(þ¨«8öªÐ¦ˆ1
+java:S1126™"AReplace this if-then-else statement by a single return statement.(þ¨«8öªÐ¦ˆ1
 Q
-java:S1874–"3Remove this use of "isConnected"; it is deprecated.(þ¨«8öªÐ¦ˆ1
+java:S1874™"3Remove this use of "isConnected"; it is deprecated.(þ¨«8öªÐ¦ˆ1
 Q
-java:S1874–"3Remove this use of "isConnected"; it is deprecated.(þ¨«8öªÐ¦ˆ1
+java:S1874™"3Remove this use of "isConnected"; it is deprecated.(þ¨«8öªÐ¦ˆ1
 S
-java:S1068 "1Remove this unused "mdrawerLayout" private field.(Ç‹ÿäûÿÿÿÿ8öªÐ¦ˆ1
+java:S1068!"1Remove this unused "mdrawerLayout" private field.(Ç‹ÿäûÿÿÿÿ8öªÐ¦ˆ1
 I
-java:S1068"",Remove this unused "mToolbar" private field.(êˆ‹©8öªÐ¦ˆ1
+java:S1068#",Remove this unused "mToolbar" private field.(êˆ‹©8öªÐ¦ˆ1

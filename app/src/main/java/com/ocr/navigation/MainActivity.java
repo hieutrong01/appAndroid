@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ocr.navigation.dataLocal.DataLocalManager;
 import com.ocr.navigation.framgent.FavouriteFramgent;
 import com.ocr.navigation.framgent.HomeFramgent;
 import com.ocr.navigation.framgent.PesonFramgent;
@@ -39,7 +40,9 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
+        DataLocalManager.init( getApplicationContext() );
         init();
+
         //bắt sự kiện navigation
         ViewPageAdapter adapter= new ViewPageAdapter( getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mViewPager.setAdapter( adapter );

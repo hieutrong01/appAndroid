@@ -6,8 +6,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.ocr.navigation.OOP.UserManager;
 
 
 public class FastScreen extends AppCompatActivity {
@@ -16,6 +15,7 @@ public class FastScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_fast_screen );
+
 
         Handler handler = new Handler();
         handler.postDelayed( new Runnable() {
@@ -27,8 +27,10 @@ public class FastScreen extends AppCompatActivity {
     }
 
     private void nextActivity() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
+        UserManager userManager = UserManager.getInstance();
+
+      //  FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (userManager == null) {
             //chua login
             Intent intent = new Intent( this, SignInActivity.class );
             startActivity( intent );
@@ -39,6 +41,6 @@ public class FastScreen extends AppCompatActivity {
             startActivity( intent );
 
         }
-        finish();
+      finish();
     }
 }

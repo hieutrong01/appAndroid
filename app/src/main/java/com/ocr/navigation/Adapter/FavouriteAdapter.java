@@ -11,46 +11,52 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.ocr.navigation.OOP.Product;
 import com.ocr.navigation.OOP.ProductList;
 import com.ocr.navigation.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FavouriteAdapter  extends RecyclerView.Adapter<FavouriteAdapter.FavoriteViewHoder> {
     private Context mContext;
-    private List<ProductList> mFavoriteList;
+    private List<Product> mFavoriteList;
 
     public FavouriteAdapter(ArrayList<ProductList> items) {
     }
 
 
-    public void FavoriteAdapter(ArrayList<ProductList> favoriteItems) {
+    public void FavoriteAdapter(ArrayList<Product> favoriteItems) {
         this.mFavoriteList = favoriteItems;
     }
-    
-    public void setData(List<ProductList> list) {
-        this.mFavoriteList = list;
+
+    public void setData(List<Product> data) {
+        mFavoriteList = data;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public FavoriteViewHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from( parent.getContext() ).inflate( R.layout.item_product_favourite,parent,true );
+        View view = LayoutInflater.from( parent.getContext() ).inflate( R.layout.item_product_favourite,parent,false );
         return new FavoriteViewHoder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull FavoriteViewHoder holder, int position) {
-        ProductList item = mFavoriteList.get(position);
+        Product item = mFavoriteList.get(position);
         if (item==null){
             return;
         }
-        holder.tvTenProduct.setText( item.getProductName() );
-        holder.tvMaProduct.setText( item.getIdProduct() );
-        holder.tvGiaProduct.setText( item.getFormattedPrice() );
-        holder.imgProduct.setImageResource( item.getResourceImage() );
+        holder.tvTenProduct.setText( item.getName() );
+        holder.tvMaProduct.setText( item.getProduct_id() +"");
+        DecimalFormat decimalFormat= new DecimalFormat("###,###,###");
+        holder.tvGiaProduct.setText( decimalFormat.format (item.getPrice())+ " VND" );
+        if (holder.itemView.isAttachedToWindow()) {
+            Glide.with(holder.itemView.getContext()).load(item.getImage()).into(holder.imgProduct);
+        }
 
     }
 

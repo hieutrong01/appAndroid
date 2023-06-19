@@ -1,27 +1,21 @@
 package com.ocr.navigation;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.ocr.navigation.OOP.User;
+import com.ocr.navigation.OOP.UserManager;
 import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
 import com.ocr.navigation.retrofit.com.ocr.navigation.GetUserResponse;
-import com.ocr.navigation.retrofit.com.ocr.navigation.User;
+import com.ocr.navigation.utils.Utils;
 
 import java.util.List;
 
@@ -53,7 +47,7 @@ public class SignInActivity extends AppCompatActivity {
 
 //      Khởi tạo Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl( Utils.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -79,32 +73,32 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
-    private void clickLogin(){
+    private void clickLogin() {
         String strEmail = edtEmailSignIn.getText().toString().trim();
         String strPassword = edtPasswordSignIn.getText().toString().trim();
 
-        if (mListUser == null || mListUser.isEmpty()){
+        if (mListUser == null || mListUser.isEmpty()) {
             return;
         }
 
-        boolean isHasUser = false;
-        for (User user: mListUser){
-            if (strEmail.equals(user.getEmail()) && strPassword.equals(user.getPassword())){
-                isHasUser = true;
-                mUser = user;
+        User matchedUser = null;
+        for (User user : mListUser) {
+            if (strEmail.equals(user.getEmail()) && strPassword.equals(user.getPassword())) {
+                matchedUser = user;
                 break;
             }
         }
-        if (isHasUser){
-            //MainActivity
-            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("Object_user", mUser);
-            intent.putExtras(bundle);
-            startActivity(intent);
 
-        }
-        else {
+        if (matchedUser != null) {
+            // Lưu trạng thái đăng nhập và thông tin người dùng vào UserManager
+            UserManager userManager = UserManager.getInstance();
+            userManager.setLoggedIn(true);
+            userManager.setCurrentUser(matchedUser);
+
+            // Chuyển hướng sang MainActivity
+            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+            startActivity(intent);
+        } else {
             Toast.makeText(SignInActivity.this, "Email hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
         }
     }

@@ -1,0 +1,10 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ì¤ùÿÿÿÿ
+a
+java:S1659"DDeclare "imgSoMi" and all following declarations on a separate line.(‰Ô¦ó8ªœÀÖŠ1
+}
+java:S1450"[Remove the "linearLayout" field and declare it as a local variable in the relevant methods.(Ãîìêúÿÿÿÿ8ªœÀÖŠ1
+R
+java:S1068"0Remove this unused "linearLayout" private field.(Ãîìêúÿÿÿÿ8ºœÀÖŠ1
+O
+java:S1068"2Remove this unused "searchFragment" private field.(¯ÇÜ8ºœÀÖŠ1

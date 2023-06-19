@@ -1,47 +1,51 @@
 package com.ocr.navigation.OOP;
 
-import com.google.firebase.database.Exclude;
+import java.io.Serializable;
 
-import java.util.HashMap;
-import java.util.Map;
+public class User implements Serializable {
 
-public class User {
-    private  int id;
-    private String name;
+    private String user_id;
+    private String full_name;
+    private String phoneNumber;
+    private String email;
     private String address;
+    private String city;
+    private String country;
+    private String username;
+    private String password;
 
-    public User() {
+
+    public String getUser_id() {
+        return user_id;
     }
 
-    public User(int id, String name,  String address) {
-        this.id = id;
-        this.name = name;
-
-        this.address = address;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public User(String name,  String address) {
-        this.name = name;
-
-        this.address = address;
+    public String getFull_name() {
+        return full_name;
     }
 
-    public int getId() {
-        return id;
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public String getName() {
-        return name;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getEmail() {
+        return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getAddress() {
         return address;
@@ -51,20 +55,51 @@ public class User {
         this.address = address;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "user_id='" + user_id + '\'' +
+                ", full_name='" + full_name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
-    @Exclude
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("name", name);
-        result.put("address", address);
-
-        return result;
-    }
 }
+

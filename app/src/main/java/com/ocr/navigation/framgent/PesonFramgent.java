@@ -2,28 +2,22 @@ package com.ocr.navigation.framgent;
 
 
 import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-
 import android.view.View;
 import android.view.ViewGroup;
-
-
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.ocr.navigation.OOP.UserManager;
 import com.ocr.navigation.R;
 import com.ocr.navigation.SignInActivity;
 import com.ocr.navigation.UpDateMyProfile;
@@ -78,24 +72,24 @@ public class PesonFramgent extends Fragment {
             }
         } );
     }
-    public void showUserInformation(){
-        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-        //check user neu ko co thi return
-        if (user == null){
+    public void showUserInformation() {
+        UserManager user = UserManager.getInstance();
+        // Kiểm tra user nếu không tồn tại thì return
+        if (user == null || user.getCurrentUser() == null) {
+            Toast.makeText( getActivity(), "a", Toast.LENGTH_SHORT ).show();
             return;
-        }else {
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-            //check name neu cos thi cho hien , ko thi an di
-            if (name== null){
-                tvName.setVisibility( View.GONE );
-            }else {
-                tvName.setVisibility( View.VISIBLE );
-                tvName.setText( name );
+        } else {
+            String name = user.getCurrentUser().getFull_name();
+            String email = user.getCurrentUser().getEmail();
+
+            // Kiểm tra name nếu có thì hiển thị, không thì ẩn đi
+            if (TextUtils.isEmpty(name)) {
+                tvName.setVisibility(View.GONE);
+            } else {
+                tvName.setVisibility(View.VISIBLE);
+                tvName.setText(name);
             }
-            tvEmail.setText( email );
-            Glide.with( this ).load( photoUrl ).error( R.drawable.ic_avatar ).into( ivAvatar );
+            tvEmail.setText(email);
         }
     }
 

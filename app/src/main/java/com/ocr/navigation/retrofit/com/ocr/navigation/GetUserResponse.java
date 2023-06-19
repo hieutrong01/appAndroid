@@ -3,6 +3,7 @@ package com.ocr.navigation.retrofit.com.ocr.navigation;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.ocr.navigation.OOP.User;
 
 import java.util.List;
 

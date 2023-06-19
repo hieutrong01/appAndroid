@@ -1,17 +1,17 @@
 package com.ocr.navigation.OOP;
 
 public class Image {
-    private int resourceID;
+    private String image;
 
-    public Image(int resourceID) {
-        this.resourceID = resourceID;
+    public Image(String image) {
+        this.image = image;
     }
 
-    public int getResourceID() {
-        return resourceID;
+    public String getImage() {
+        return image;
     }
 
-    public void setResourceID(int resourceID) {
-        this.resourceID = resourceID;
+    public void setImage(String image) {
+        this.image = image;
     }
 }

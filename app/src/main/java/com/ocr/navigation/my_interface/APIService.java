@@ -46,14 +46,17 @@ public interface APIService {
             .build()
             .create( APIService.class );
 
-    @GET("customers/read.php")
+    @GET("getMan/read.php")
     Call<DataProduct> getLisAoMen();
 
-    @GET("getaonu/readAoNu.php")
+    @GET("getWommen/readAoNu.php")
     Call<DataProduct> getLisAoWomen();
 
     @GET("getkids/readao.php")
     Call<DataProduct> getLisAoKids();
+
+    @GET("sanphamnoibat/read.php")
+    Call<DataProduct> getSanPhamNoiBat();
 
     @GET("postTimKiem/getSearch.php")
     Call<DataProduct> search(

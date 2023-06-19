@@ -1,13 +1,6 @@
 package com.ocr.navigation.retrofit.com.ocr.navigation;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.util.List;
-
 import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 
 public interface ApiInterface{
@@ -22,7 +15,7 @@ public interface ApiInterface{
 //                    .build()
 //                    .create(ApiInterface.class);
 
-    @GET("userr/read.php")
+    @GET("getSignIn/readGetUser.php")
     Call<GetUserResponse> getListUser();
 }
 
