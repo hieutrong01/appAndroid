@@ -137,15 +137,23 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
                 if (isFavorite) {
                     holder.imgFavourite.setImageResource(R.drawable.heart_plus);
                     // Xử lý gỡ khỏi yêu thích
-                    Database.getInstance( mContext ).favouriteDAO().deleteFavourite( product );
+                    Database.getInstance(mContext).favouriteDAO().deleteFavourite(product);
                 } else {
-                    holder.imgFavourite.setImageResource(R.drawable.ic_read_favorite);
-                    // Xử lý thêm vào yêu thích
-                    Database.getInstance( mContext).favouriteDAO().insertFavourite( product );
+                    List<Product> favoriteProducts = Database.getInstance(mContext).favouriteDAO().getListFavourite();
+                    if (favoriteProducts.contains(product)) {
+                        // Product đã tồn tại trong danh sách yêu thích
+                        // Thực hiện các hành động cập nhật sản phẩm hoặc hiển thị thông báo
+                        notifyDataSetChanged();
+                        // Ví dụ: Toast.makeText(mContext, "Sản phẩm đã tồn tại trong danh sách yêu thích", Toast.LENGTH_SHORT).show();
+                    } else {
+                        holder.imgFavourite.setImageResource(R.drawable.ic_read_favorite);
+                        // Xử lý thêm vào yêu thích
+                        Database.getInstance(mContext).favouriteDAO().insertFavourite(product);
+                    }
                 }
                 isFavorite = !isFavorite;
             }
-        } );
+        });
     }
 
 

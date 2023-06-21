@@ -45,7 +45,7 @@ public class FavouriteFramgent extends Fragment {
         mView = inflater.inflate(R.layout.framgent_favourite, container, false);
         initUI();
 
-        mItemAdapter = new FavouriteAdapter(items);
+        mItemAdapter = new FavouriteAdapter( items );
         mRecyclerView.setAdapter(mItemAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);

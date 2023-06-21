@@ -40,8 +40,6 @@ k
 Lapp/src/main/java/com/ocr/navigation/framgentSearch/WomenSearchFramgent.java,7\e\7ee053d55cd87cbf6f1fc79afc9b09956de34406
 q
 Aapp/src/main/java/com/ocr/navigation/framgent/SearchFramgent.java,7\f\7fb32d3c2ae136d372644ae1e23e78553a984356
-r
-Bapp/src/main/java/com/ocr/navigation/framgent/ViewPageAdapter.java,a\5\a5e767c0e1b8dd10e22d5c728d1c6e60a501aebc
 t
 Dapp/src/main/java/com/ocr/navigation/framgentHome/WomenFragment.java,0\9\09dc319475c85929be5760808569f50e6b8dc569
 r
@@ -102,14 +100,8 @@ p
 @app/src/main/java/com/ocr/navigation/Adapter/GioHangAdapter.java,f\3\f3cad872ea71ed1b34f94562084f15b5b59bf097
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-e
-5app/src/main/java/com/ocr/navigation/OOP/Product.java,6\9\69e32da182975c84715d7c38fb5fc828c9ffa722
 g
 7app/src/main/java/com/ocr/navigation/dataLocal/DAO.java,6\8\68d60e966e14de2541bb658f75f804774ac5dfe1
-v
-Fapp/src/main/java/com/ocr/navigation/Adapter/SanPhamNoiBatAdapter.java,9\1\91089662879b7c27632396feea6a00c44783eb13
-f
-6app/src/main/java/com/ocr/navigation/MainActivity.java,f\c\fc626023a4f4d0b3045a9824ec0c28fd399328d0
 i
 9app/src/main/java/com/ocr/navigation/GioHangActivity.java,9\5\95216cfaf4488cbd659d9f8b5b4fcd4b9e744065
 z

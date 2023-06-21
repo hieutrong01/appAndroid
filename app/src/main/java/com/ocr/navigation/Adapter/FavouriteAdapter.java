@@ -25,17 +25,15 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
     private List<Product> mFavoriteList;
     private ClickItemProduc clickItemProduc;
 
-    private boolean isFavorite=false ;
-
-
+    private boolean isFavorite = false;
 
     public FavouriteAdapter(List<Product> favoriteItems) {
         mFavoriteList = favoriteItems;
     }
 
     public void setData(List<Product> data, ClickItemProduc listener) {
-       this.mFavoriteList = data;
-        this.clickItemProduc=listener;
+        mFavoriteList = data;
+        clickItemProduc = listener;
         notifyDataSetChanged();
     }
 
@@ -60,12 +58,12 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickItemProduc.onItemProductClick( item);
+                clickItemProduc.onItemProductClick(item);
             }
         });
 
         // Thiết lập hình ảnh yêu thích tương ứng với trạng thái
-        List<Product> favoriteProducts = Database.getInstance( mContext ).favouriteDAO().getListFavourite();
+        List<Product> favoriteProducts = Database.getInstance(mContext).favouriteDAO().getListFavourite();
         if (favoriteProducts.contains(item)) {
             isFavorite = true;
             holder.imgFavourite.setImageResource(R.drawable.ic_read_favorite);
@@ -74,35 +72,41 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
             holder.imgFavourite.setImageResource(R.drawable.ic_favorite);
         }
 
-        holder.imgFavourite.setOnClickListener( new View.OnClickListener() {
+        holder.imgFavourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isFavorite) {
                     holder.imgFavourite.setImageResource(R.drawable.ic_favorite);
                     // Xử lý gỡ khỏi yêu thích
-                    Database.getInstance( mContext ).favouriteDAO().deleteFavourite( item );
-
+                    Database.getInstance(mContext).favouriteDAO().deleteFavourite(item);
                 } else {
-                    holder.imgFavourite.setImageResource(R.drawable.ic_read_favorite);
-                    // Xử lý thêm vào yêu thích
-                    Database.getInstance( mContext).favouriteDAO().insertFavourite( item );
+                    List<Product> favoriteProducts = Database.getInstance(mContext).favouriteDAO().getListFavourite();
+                    if (favoriteProducts.contains(item)) {
+                        // Product đã tồn tại trong danh sách yêu thích
+                        // Thực hiện các hành động cập nhật sản phẩm hoặc hiển thị thông báo
+                        notifyDataSetChanged();
+                        // Ví dụ: Toast.makeText(mContext, "Sản phẩm đã tồn tại trong danh sách yêu thích", Toast.LENGTH_SHORT).show();
+                    } else {
+                        holder.imgFavourite.setImageResource(R.drawable.ic_read_favorite);
+                        // Xử lý thêm vào yêu thích
+                        Database.getInstance(mContext).favouriteDAO().insertFavourite(item);
+                    }
                 }
                 isFavorite = !isFavorite;
             }
-        } );
+        });
     }
 
     @Override
     public int getItemCount() {
-        if (mFavoriteList!=null){
+        if (mFavoriteList != null) {
             return mFavoriteList.size();
         }
         return 0;
     }
 
-
     public class FavoriteViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imgProduct,imgFavourite;
+        private ImageView imgProduct, imgFavourite;
         private TextView tvTenProduct, tvMaProduct, tvGiaProduct;
         private LinearLayout linearLayout;
 
@@ -113,11 +117,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
             tvMaProduct = itemView.findViewById(R.id.tv_id_product);
             tvGiaProduct = itemView.findViewById(R.id.tv_cost_product);
             linearLayout = itemView.findViewById(R.id.linear_layout);
-            imgFavourite=itemView.findViewById( R.id.img_favourite );
-
-            // Xử lý sự kiện khi nhấn vào một sản phẩm trong danh sách yêu thích
-
-
+            imgFavourite = itemView.findViewById(R.id.img_favourite);
         }
     }
 }
