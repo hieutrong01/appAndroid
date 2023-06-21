@@ -82,6 +82,6 @@ dependencies {
     //vuot xoa item trong recycleview
 
 
-
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
 
 }

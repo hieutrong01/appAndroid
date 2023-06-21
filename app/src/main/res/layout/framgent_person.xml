@@ -85,7 +85,7 @@
             android:drawableLeft="@drawable/ic_person"
             />
         <Button
-            android:id="@+id/btn_chinh_sua_password"
+            android:id="@+id/btn_change_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -94,7 +94,7 @@
             android:drawableLeft="@drawable/ic_baseline_password"
             />
         <Button
-            android:id="@+id/so_dia_chi"
+            android:id="@+id/btn_change_dia_chi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"

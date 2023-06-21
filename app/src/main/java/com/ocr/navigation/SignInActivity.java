@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.ocr.navigation.retrofit.RetrofitClient;
 import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
 import com.ocr.navigation.retrofit.com.ocr.navigation.GetUserResponse;
 import com.ocr.navigation.retrofit.com.ocr.navigation.User;
@@ -40,8 +41,9 @@ public class SignInActivity extends AppCompatActivity {
     private List<User> mListUser;
     private User mUser;
 
-    private static final String BASE_URL = "http://192.168.1.36/DIOR/";
     private ApiInterface apiInterface;
+
+    private TextView txtSignUp;
 
 
     @Override
@@ -49,16 +51,12 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_sign_in );
         iniUi();
+        initControll();
+
 //        initListener();
 
-//      Khởi tạo Retrofit
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
 //      Tạo đối tượng ApiInterface từ Retrofit
-        apiInterface = retrofit.create(ApiInterface.class);
+        apiInterface = RetrofitClient.getApi();
         getListUser();
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -70,12 +68,23 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
+    private void initControll() {
+        txtSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
     private void iniUi(){
         layoutSignUp =findViewById( R.id.layout_sign_up );
         edtEmailSignIn=findViewById( R.id.edt_email_in );
         edtPasswordSignIn=findViewById( R.id.edt_password_in );
         btnSignIn=findViewById( R.id.btn_sign_in );
-//        textViewResult = findViewById(R.id.text_view_result);
+        txtSignUp=findViewById(R.id.txt_sign_up);
+
 
     }
 

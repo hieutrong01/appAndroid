@@ -9,43 +9,79 @@
     android:gravity="center"
     android:background="#F9F9F9"
     tools:context=".SignUpActivity">
+
     <EditText
         android:id="@+id/edt_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
-        android:imeOptions="actionNext"
-        android:textColorHint="#737272"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="20dp"
+        android:hint="Tên người dùng"
+        android:imeOptions="actionDone"
+        android:textColor="@color/black"
+        android:textColorHint="#737272" />
+
     <EditText
-        android:id="@+id/edt_adress"
+        android:id="@+id/edt_phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
         android:layout_marginTop="20dp"
-        android:textColorHint="#737272"
-        android:inputType="textPassword"
+        android:hint="Số điện thoại"
         android:imeOptions="actionDone"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textColorHint="#737272" />
+
+    <EditText
+        android:id="@+id/edt_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Địa chỉ"
+        android:imeOptions="actionDone"
+        android:textColor="@color/black"
+        android:textColorHint="#737272" />
+
+    <EditText
+        android:id="@+id/edt_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Tỉnh/Thành phố"
+        android:imeOptions="actionDone"
+        android:textColor="@color/black"
+        android:textColorHint="#737272" />
+
     <EditText
         android:id="@+id/edt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:hint="Email"
-        android:imeOptions="actionNext"
-        android:textColorHint="#737272"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/black"/>
+        android:imeOptions="actionDone"
+        android:textColor="@color/black"
+        android:textColorHint="#737272" />
+
     <EditText
         android:id="@+id/edt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
         android:layout_marginTop="20dp"
-        android:textColorHint="#737272"
-        android:inputType="textPassword"
+        android:hint="Mật khẩu"
         android:imeOptions="actionDone"
-        android:textColor="@color/black"/>
+        android:inputType="textPassword"
+        android:textColor="@color/black"
+        android:textColorHint="#737272" />
+
+    <EditText
+        android:id="@+id/edt_repassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Nhập lại mật khẩu"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:textColor="@color/black"
+        android:textColorHint="#737272" />
+
     <Button
         android:id="@+id/btn_sign_up"
         android:layout_width="match_parent"

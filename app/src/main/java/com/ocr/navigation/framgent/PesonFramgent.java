@@ -20,19 +20,23 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.ocr.navigation.ChangeAddress;
+import com.ocr.navigation.ChangePassword;
 import com.ocr.navigation.R;
 import com.ocr.navigation.SignInActivity;
+import com.ocr.navigation.SignUpActivity;
 import com.ocr.navigation.UpDateMyProfile;
 
 import java.util.ArrayList;
 
 public class PesonFramgent extends Fragment {
     private View mView;
-    private Button btnDangXuat,btnChinhSuaHoSo;
+    private Button btnDangXuat,btnChinhSuaHoSo, btnChangePassword, btnChangeDiaChi;
     private ImageView ivAvatar;
     private TextView tvName,tvEmail;
 
@@ -49,55 +53,71 @@ public class PesonFramgent extends Fragment {
         mView= inflater.inflate( R.layout.framgent_person,container,false );
         initUI();
         onClickListener();
-        showUserInformation();
+//        showUserInformation();
 
         return mView;
     }
+
+
+
     public void initUI(){
         btnDangXuat=mView.findViewById( R.id.btn_dang_xuat );
         ivAvatar=mView.findViewById( R.id.img_avatar );
         tvName=mView.findViewById( R.id.tv_name );
         tvEmail=mView.findViewById( R.id.tv_email );
         btnChinhSuaHoSo=mView.findViewById( R.id.btn_chinh_sua_profile );
+        btnChangePassword=mView.findViewById(R.id.btn_change_password);
+        btnChangeDiaChi=mView.findViewById(R.id.btn_change_dia_chi);
     }
     private void onClickListener() {
         btnDangXuat.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
                 Intent intent= new Intent(getActivity(), SignInActivity.class );
                 startActivity(intent);
                 getActivity().finish();
             }
         } );
-        btnChinhSuaHoSo.setOnClickListener( new View.OnClickListener() {
+
+        btnChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getActivity(), UpDateMyProfile.class);
-                startActivity( intent );
+                openChangePasswordActivity();
             }
-        } );
+        });
+
+
+
     }
-    public void showUserInformation(){
-        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-        //check user neu ko co thi return
-        if (user == null){
-            return;
-        }else {
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-            //check name neu cos thi cho hien , ko thi an di
-            if (name== null){
-                tvName.setVisibility( View.GONE );
-            }else {
-                tvName.setVisibility( View.VISIBLE );
-                tvName.setText( name );
-            }
-            tvEmail.setText( email );
-            Glide.with( this ).load( photoUrl ).error( R.drawable.ic_avatar ).into( ivAvatar );
-        }
+
+    private void openChangePasswordActivity() {
+        Intent intent = new Intent(getActivity(), ChangePassword.class);
+        startActivity(intent);
     }
+
+
+
+
+//    public void showUserInformation(){
+//        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+//        //check user neu ko co thi return
+//        if (user == null){
+//            return;
+//        }else {
+//            String name = user.getDisplayName();
+//            String email = user.getEmail();
+//            Uri photoUrl = user.getPhotoUrl();
+//            //check name neu cos thi cho hien , ko thi an di
+//            if (name== null){
+//                tvName.setVisibility( View.GONE );
+//            }else {
+//                tvName.setVisibility( View.VISIBLE );
+//                tvName.setText( name );
+//            }
+//            tvEmail.setText( email );
+//            Glide.with( this ).load( photoUrl ).error( R.drawable.ic_avatar ).into( ivAvatar );
+//        }
+//    }
 
 
 }
