@@ -1,7 +1,8 @@
 package com.ocr.navigation.Adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.ocr.navigation.OOP.Product;
 import com.ocr.navigation.R;
+import com.ocr.navigation.dataLocal.Database;
 import com.ocr.navigation.my_interface.ClickItemProduc;
 
 import java.text.DecimalFormat;
@@ -28,6 +30,7 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
     private List<Product> mproList;
 
     private ClickItemProduc clickItemProduc;
+    private boolean isFavorite=false ;
 
     // Tạo bản sao của danh sách mục ban đầu
     List<Product> originalItems ;
@@ -80,28 +83,72 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
         return new ListProductViewHolder( view );
     }
 
-    @SuppressLint("SetTextI18n")
+
     @Override
+
     public void onBindViewHolder(@NonNull ListProductViewHolder holder, int position) {
-        Product product = mproList.get( position );
-        if (product ==null){
+        Product product = mproList.get(position);
+        if (product == null) {
             return;
         }
 
-        Glide.with( mContext ).load( product.getImage() ).into( holder.imgListProduct );
-        holder.tvSex.setText( product.getGender() );
-        holder.tvNameProduct.setText( product.getName() );
-        DecimalFormat decimalFormat= new DecimalFormat("###,###,###");
-        holder.tvgiaProduct.setText( decimalFormat.format (product.getPrice())+ " VND" );
-        holder.tvMaSP.setText( String.valueOf(product.getProduct_id()) );
-        // Kiểm tra xem mục hiện tại có phải là mục được chọn không
-        holder.cardView.setOnClickListener( new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               clickItemProduc.onItemProductClick( product );
-           }
-       } );
+        Glide.with(mContext).load(product.getImage()).into(holder.imgListProduct);
+        holder.tvSex.setText(product.getGender());
+        holder.tvNameProduct.setText(product.getName());
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        holder.tvgiaProduct.setText(decimalFormat.format(product.getPrice()) + " VND");
+        holder.tvMaSP.setText(String.valueOf(product.getProduct_id()));
+        int giaSale = product.getPrice() - (product.getPrice() * product.getSale() / 100);
+        if (product.getSale() == 0) {
+            holder.tvSale.setVisibility(View.GONE);
+            holder.tvphamtramSale.setVisibility( View.GONE );
+            // Xóa gạch ngang khi không có giá sale
+            holder.tvgiaProduct.setPaintFlags(holder.tvgiaProduct.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.tvgiaProduct.setTextColor( Color.BLACK);
+
+        } else {
+            holder.tvSale.setVisibility(View.VISIBLE);
+            holder.tvSale.setText(decimalFormat.format(giaSale) + " VND");
+            holder.tvphamtramSale.setVisibility( View.VISIBLE );
+            holder.tvphamtramSale.setText("-"+ decimalFormat.format( product.getSale() )+"%" );
+            // Gạch ngang tvgiaProduct
+            holder.tvgiaProduct.setPaintFlags(holder.tvgiaProduct.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.tvgiaProduct.setTextColor(Color.GRAY);
+
+        }
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickItemProduc.onItemProductClick(product);
+            }
+        });
+        // Thiết lập hình ảnh yêu thích tương ứng với trạng thái
+        List<Product> favoriteProducts = Database.getInstance( mContext ).favouriteDAO().getListFavourite();
+        if (favoriteProducts.contains(product)) {
+            isFavorite = true;
+            holder.imgFavourite.setImageResource(R.drawable.ic_read_favorite);
+        } else {
+            isFavorite = false;
+            holder.imgFavourite.setImageResource(R.drawable.heart_plus);
+        }
+        holder.imgFavourite.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isFavorite) {
+                    holder.imgFavourite.setImageResource(R.drawable.heart_plus);
+                    // Xử lý gỡ khỏi yêu thích
+                    Database.getInstance( mContext ).favouriteDAO().deleteFavourite( product );
+                } else {
+                    holder.imgFavourite.setImageResource(R.drawable.ic_read_favorite);
+                    // Xử lý thêm vào yêu thích
+                    Database.getInstance( mContext).favouriteDAO().insertFavourite( product );
+                }
+                isFavorite = !isFavorite;
+            }
+        } );
     }
+
+
     @Override
     public int getItemCount() {
         if (mproList!=null){
@@ -112,7 +159,7 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
 
     public class ListProductViewHolder extends RecyclerView.ViewHolder{
         private ImageView imgListProduct;
-        private TextView tvSex,tvSize,tvNameProduct,tvgiaProduct,tvMaSP;
+        private TextView tvSex,tvSize,tvNameProduct,tvgiaProduct,tvMaSP,tvSale,tvphamtramSale;
         private ImageView imgFavourite;
         private CardView cardView;
 
@@ -125,7 +172,9 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
             tvgiaProduct=itemView.findViewById( R.id.tv_list_cost_product );
             imgFavourite=itemView.findViewById( R.id.icon_list_favorite );
             tvMaSP=itemView.findViewById( R.id.tv_ma_sp );
+            tvSale=itemView.findViewById( R.id.tv_cost_sale );
             cardView=itemView.findViewById( R.id.card_view_product );
+            tvphamtramSale=itemView.findViewById( R.id.tv_sale );
 
         }
     }

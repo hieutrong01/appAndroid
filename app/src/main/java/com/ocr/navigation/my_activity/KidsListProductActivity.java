@@ -51,6 +51,8 @@ public class KidsListProductActivity extends AppCompatActivity {
 
     private int selectedRadioButtonId = -1;
 
+    private boolean isFavorite=false ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +80,6 @@ public class KidsListProductActivity extends AppCompatActivity {
 
             @Override
             public void onClickFavoriteItem(int pos) {
-
             }
         } );
         mRecyclerView.setAdapter( adapter );
@@ -88,8 +89,7 @@ public class KidsListProductActivity extends AppCompatActivity {
 
 
     }
-
-    public void  initUI(){
+ public void  initUI(){
         mtextView = findViewById( R.id.tv_id_item_men );
         mRecyclerView=findViewById( R.id.rcv_list_product );
         imgGioHang=findViewById( R.id.img_gio_hang );
@@ -175,6 +175,8 @@ public class KidsListProductActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+
     private List<Product> getListProduct(int pos) {
         List<Product> list = new ArrayList<>();
         switch (pos){

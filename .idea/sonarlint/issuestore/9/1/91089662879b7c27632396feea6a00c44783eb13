@@ -1,0 +1,14 @@
+
+>
+java:S1604>"(Make this anonymous inner class a lambda(‹÷Ë×
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤†åÜ
+^
+java:S1659O"CDeclare "tvSize" and all following declarations on a separate line.(×æÀ³üÿÿÿÿ
+D
+java:S1068O")Remove this unused "tvSex" private field.(×æÀ³üÿÿÿÿ
+L
+java:S1068O"*Remove this unused "tvSize" private field.(×æÀ³üÿÿÿÿ8öÂ™1
+L
+java:S1068O"*Remove this unused "tvMaSP" private field.(×æÀ³üÿÿÿÿ8‹©Ä™1
+F
+java:S1068P"0Remove this unused "imgFavourite" private field.(¡»¿±

@@ -58,6 +58,9 @@ public interface APIService {
     @GET("sanphamnoibat/read.php")
     Call<DataProduct> getSanPhamNoiBat();
 
+    @GET("sanphamnoibat/readSale.php")
+    Call<DataProduct> getSanPhamSale();
+
     @GET("postTimKiem/getSearch.php")
     Call<DataProduct> search(
             @Query("search") String search

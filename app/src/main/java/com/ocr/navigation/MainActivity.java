@@ -11,13 +11,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.ocr.navigation.dataLocal.DataLocalManager;
 import com.ocr.navigation.framgent.FavouriteFramgent;
 import com.ocr.navigation.framgent.HomeFramgent;
 import com.ocr.navigation.framgent.PesonFramgent;
@@ -32,15 +30,16 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity  {
     private DrawerLayout mdrawerLayout;
     private ViewPager mViewPager;
-    private Toolbar mToolbar;
     private BottomNavigationView mBottomNavigationView;
+
+
     private long backTime;
     private Toast mToast;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
-        DataLocalManager.init( getApplicationContext() );
+
         init();
 
         //bắt sự kiện navigation
@@ -55,6 +54,9 @@ public class MainActivity extends AppCompatActivity  {
                 return true;
             }
         });
+
+
+
         //vuốt sang trái phải thanh navigation bên dưới
         mViewPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {
             @Override
@@ -128,13 +130,13 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
     private void init() {
-        mdrawerLayout = findViewById( R.id.drawer_layout );
-        mViewPager=findViewById( R.id.content_frame );
-        mViewPager = findViewById( R.id.content_frame);
-        mBottomNavigationView=findViewById( R.id.bottom_nav);
-        if (Utils.manggiohang==null){
-            Utils.manggiohang= new ArrayList<>();
+        mdrawerLayout = findViewById(R.id.drawer_layout);
+        mViewPager = findViewById(R.id.content_frame);
+        mBottomNavigationView = findViewById(R.id.bottom_nav);
+        if (Utils.manggiohang == null) {
+            Utils.manggiohang = new ArrayList<>();
         }
+
     }
     @Override
     public void onBackPressed() {

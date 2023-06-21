@@ -38,9 +38,11 @@ public class TopFragment extends Fragment {
     private CircleIndicator3 mIndicator3;
     private List<Image> imageList;
     private View view;
-    private RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView, saleRecyclerView;
     private List<Product> mList;
     private SanPhamNoiBatAdapter adapter;
+    private SanPhamNoiBatAdapter adapterSale;
+
     private Handler mHandler= new Handler( Looper.getMainLooper());
     private Runnable mRunnable= new Runnable() {
         @Override
@@ -94,11 +96,29 @@ public class TopFragment extends Fragment {
             }
         } );
         mRecyclerView.setAdapter( adapter );
+        //
+        GridLayoutManager gridLayoutManager1= new GridLayoutManager( getActivity(),3);
+        saleRecyclerView.setLayoutManager( gridLayoutManager1 );
+        adapterSale.setData( getListProductSale( ), new ClickItemProduc() {
+            @Override
+            public void onItemProductClick(Product product) {
+                onClickgotoChitiet(product);
+            }
+
+            @Override
+            public void onClickFavoriteItem(int pos) {
+
+            }
+        } );
+        saleRecyclerView.setAdapter( adapterSale );
+
         return view;
     }
     public void initUI(){
         mRecyclerView =view.findViewById( R.id.recyc_product );
+        saleRecyclerView=view.findViewById( R.id.recyc_product_sale );
         adapter = new SanPhamNoiBatAdapter( getActivity() );
+        adapterSale=new SanPhamNoiBatAdapter( getActivity() );
 
     }
 
@@ -117,6 +137,12 @@ public class TopFragment extends Fragment {
         List<Product> list = new ArrayList<>();
 
         callApiAoWomen();
+        return list;
+    }
+    private List<Product> getListProductSale() {
+        List<Product> list = new ArrayList<>();
+
+        callApiProductSale();
         return list;
     }
 
@@ -146,10 +172,35 @@ public class TopFragment extends Fragment {
                     }
                 } );
                 mRecyclerView.setAdapter( adapter );
-
+            }
+                    @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                Toast.makeText( getActivity(), "Call api fall", Toast.LENGTH_SHORT ).show();
 
             }
+        } );
+    }
 
+    private void callApiProductSale() {
+        APIService.apiServiceKids.getSanPhamSale().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapterSale.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                saleRecyclerView.setAdapter( adapterSale );
+            }
             @Override
             public void onFailure(Call<DataProduct> call, Throwable t) {
                 Toast.makeText( getActivity(), "Call api fall", Toast.LENGTH_SHORT ).show();

@@ -8,12 +8,11 @@
     android:layout_marginStart="10dp"
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="6dp"
-    >
+    app:cardCornerRadius="6dp">
     <LinearLayout
         android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="240dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -26,15 +25,12 @@
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/img1" />
-
-
         </RelativeLayout>
-
 
         <TextView
             android:id="@+id/tv_list_name_product"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/product"
             android:textColor="@color/black"
             android:layout_marginTop="10dp"
@@ -49,12 +45,7 @@
             android:text="@string/gia"
             android:textSize="20sp"
             android:padding="10dp"
-            android:textColor="@color/black"
-            />
-
+            android:textColor="@color/black" />
     </LinearLayout>
-
-
-
 
 </androidx.cardview.widget.CardView>
