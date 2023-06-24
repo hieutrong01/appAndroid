@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/gia"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:padding="10dp"
             android:textColor="@color/black" />
     </LinearLayout>
