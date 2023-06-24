@@ -40,7 +40,6 @@ public class FavouriteFramgent extends Fragment {
     private ArrayList<ProductList> items = new ArrayList<>();
 
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

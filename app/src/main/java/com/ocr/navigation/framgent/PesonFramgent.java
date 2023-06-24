@@ -86,13 +86,12 @@ public class PesonFramgent extends Fragment {
             }
         });
 
-
-
     }
 
     private void openChangePasswordActivity() {
         Intent intent = new Intent(getActivity(), ChangePassword.class);
         startActivity(intent);
+        getActivity().finish();
     }
 
 

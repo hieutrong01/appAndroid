@@ -22,7 +22,7 @@ import retrofit2.Response;
 public class SignUpActivity extends AppCompatActivity {
     ApiInterface apiInterface;
 //    CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private EditText editUsername, editPhoneNumber, editAddress, editCity, editEmail, editPassword, editRePassword;
+    private EditText editUsername, editGender, editDateOfBirth, editPhoneNumber, editAddress, editCity, editEmail, editPassword, editRePassword;
     private Button btnSignUp;
 
     @Override
@@ -46,6 +46,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void dangKy() {
         String str_user_name = editUsername.getText().toString().trim();
+        String str_gender = editGender.getText().toString().trim();
+        String str_dateofbirth = editDateOfBirth.getText().toString().trim();
         String str_phone_number = editPhoneNumber.getText().toString().trim();
         String str_address = editAddress.getText().toString().trim();
         String str_city = editCity.getText().toString().trim();
@@ -55,6 +57,10 @@ public class SignUpActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(str_user_name)) {
             Toast.makeText(getApplicationContext(), "Bạn chưa nhập tên người dùng", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(str_gender)) {
+            Toast.makeText(getApplicationContext(), "Bạn chưa chọn giới tính", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(str_dateofbirth)) {
+            Toast.makeText(getApplicationContext(), "Bạn chưa nhập ngày sinh", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(str_phone_number)) {
             Toast.makeText(getApplicationContext(), "Bạn chưa nhập số điên thoại", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(str_address)) {
@@ -67,7 +73,7 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Bạn chưa nhập mật khẩu", Toast.LENGTH_SHORT).show();
         } else {
             if (str_password.equals(str_repassword)) {
-                apiInterface.dangky(str_user_name, str_phone_number, str_address, str_city, str_email, str_password).enqueue(new Callback<SignUpResponse>() {
+                apiInterface.dangky(str_user_name,str_gender,str_dateofbirth, str_phone_number, str_address, str_city, str_email, str_password).enqueue(new Callback<SignUpResponse>() {
                     @Override
                     public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
                         if (response.isSuccessful()) {
@@ -95,6 +101,8 @@ public class SignUpActivity extends AppCompatActivity {
         apiInterface = RetrofitClient.getApi();
 
         editUsername = findViewById(R.id.edt_username);
+        editGender = findViewById(R.id.edt_gender);
+        editDateOfBirth = findViewById(R.id.edt_date_of_bỉth);
         editPhoneNumber = findViewById(R.id.edt_phone_number);
         editAddress = findViewById(R.id.edt_address);
         editCity = findViewById(R.id.edt_city);

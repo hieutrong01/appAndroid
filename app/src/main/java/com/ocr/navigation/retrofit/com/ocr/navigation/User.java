@@ -5,15 +5,14 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private String user_id;
-    private String full_name;
+    private String username;
+    private String gender;
+    private String dateofbirth;
     private String phoneNumber;
-    private String email;
     private String address;
     private String city;
-    private String country;
-    private String username;
+    private String email;
     private String password;
-
 
     public String getUser_id() {
         return user_id;
@@ -23,12 +22,28 @@ public class User implements Serializable {
         this.user_id = user_id;
     }
 
-    public String getFull_name() {
-        return full_name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public void setDateofbirth(String dateofbirth) {
+        this.dateofbirth = dateofbirth;
     }
 
     public String getPhoneNumber() {
@@ -37,14 +52,6 @@ public class User implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getAddress() {
@@ -63,20 +70,12 @@ public class User implements Serializable {
         this.city = city;
     }
 
-    public String getCountry() {
-        return country;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -91,13 +90,13 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "user_id='" + user_id + '\'' +
-                ", full_name='" + full_name + '\'' +
+                ", username='" + username + '\'' +
+                ", gender='" + gender + '\'' +
+                ", dateofbirth='" + dateofbirth + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

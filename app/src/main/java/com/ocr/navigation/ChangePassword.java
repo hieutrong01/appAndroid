@@ -18,8 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 
 public class ChangePassword extends AppCompatActivity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );

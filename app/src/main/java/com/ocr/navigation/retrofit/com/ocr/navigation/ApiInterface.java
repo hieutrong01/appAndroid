@@ -25,6 +25,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<SignUpResponse> dangky(
             @Field("username") String username,
+            @Field("gender") String gender,
+            @Field("dateofbirth") String dateofbirth,
             @Field("phoneNumber") String phonenumber,
             @Field("address") String address,
             @Field("city") String city,
