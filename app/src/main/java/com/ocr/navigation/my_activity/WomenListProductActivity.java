@@ -211,6 +211,7 @@ public class WomenListProductActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
                 Toast.makeText( WomenListProductActivity.this, "Call api fall", Toast.LENGTH_SHORT ).show();
 
             }

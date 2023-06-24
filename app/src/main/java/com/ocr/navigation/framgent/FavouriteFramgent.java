@@ -2,13 +2,11 @@ package com.ocr.navigation.framgent;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,53 +17,69 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.ocr.navigation.Adapter.FavouriteAdapter;
-import com.ocr.navigation.Adapter.ItemAdapter;
+import com.ocr.navigation.ChiTietProductActivity;
 import com.ocr.navigation.GioHangActivity;
-import com.ocr.navigation.OOP.Item;
-import com.ocr.navigation.OOP.ProductList;
+import com.ocr.navigation.OOP.Product;
 import com.ocr.navigation.R;
-import com.ocr.navigation.my_interface.ClickItemMenSearch;
+import com.ocr.navigation.dataLocal.Database;
+import com.ocr.navigation.my_interface.ClickItemProduc;
 import com.ocr.navigation.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FavouriteFramgent extends Fragment {
-    private ImageView imgGioHang, imgNen;
+    private ImageView imgGioHang, imgNen,imvChinhSua ;
     private TextView tvSoLuong;
     private RecyclerView mRecyclerView;
     private View mView;
     private FavouriteAdapter mItemAdapter;
     private NotificationBadge badge;
-    private ArrayList<ProductList> items = new ArrayList<>();
+    private List<Product> items = new ArrayList<>();
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView= inflater.inflate( R.layout.framgent_favourite,container,false );
+        mView = inflater.inflate(R.layout.framgent_favourite, container, false);
         initUI();
 
-
         mItemAdapter = new FavouriteAdapter( items );
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false );
-        mRecyclerView.setLayoutManager( linearLayoutManager );
-        mRecyclerView.setAdapter( mItemAdapter );
+        mRecyclerView.setAdapter(mItemAdapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        //phân ngang giưax các item
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration( mRecyclerView.getContext(),linearLayoutManager.getOrientation() );
-        mRecyclerView.addItemDecoration( dividerItemDecoration );
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), linearLayoutManager.getOrientation());
+        mRecyclerView.addItemDecoration(dividerItemDecoration);
+
+        // Cập nhật dữ liệu cho adapter từ FavoriteProductsManager
+        items= Database.getInstance( getActivity() ).favouriteDAO().getListFavourite();
+        mItemAdapter.setData( items, new ClickItemProduc() {
+            @Override
+            public void onItemProductClick(Product product) {
+                onClickgotoChitiet(product);
+            }
+
+            @Override
+            public void onClickFavoriteItem(int pos) {
+
+            }
+        } );
+
         if (mItemAdapter != null && mItemAdapter.getItemCount() == 0) {
-            imgNen.setVisibility(View.GONE);
-        } else {
             imgNen.setVisibility(View.VISIBLE);
+
+        } else {
+            imgNen.setVisibility(View.GONE);
         }
+        tvSoLuong.setText( Integer.toString(mItemAdapter.getItemCount()) );
+
         onClickList();
         return mView;
     }
-
     public void initUI(){
         imgGioHang=mView.findViewById( R.id.img_gio_hang );
+        imvChinhSua = mView.findViewById(R.id.imv_chinh_sua);
         imgNen=mView.findViewById( R.id.img_nen );
         mRecyclerView = mView.findViewById( R.id.rcv_list_favourite );
         tvSoLuong=mView.findViewById( R.id.tv_so_luong );
@@ -83,11 +97,15 @@ public class FavouriteFramgent extends Fragment {
                 startActivity( intent );
             }
         } );
-
     }
 
-    public void reloadData(){
-        Toast.makeText( getActivity(),"reload favorite",Toast.LENGTH_SHORT ).show();
+    private void onClickgotoChitiet(Product product) {
+        Intent intent = new Intent( getActivity(), ChiTietProductActivity.class );
+        Bundle bundle= new Bundle();
+        bundle.putSerializable("object_product", product);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
+
 
 }

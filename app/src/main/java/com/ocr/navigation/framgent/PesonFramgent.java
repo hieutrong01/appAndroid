@@ -79,20 +79,20 @@ public class PesonFramgent extends Fragment {
             }
         } );
 
-        btnChangePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openChangePasswordActivity();
-            }
-        });
+//        btnChangePassword.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openChangePasswordActivity();
+//            }
+//        });
 
     }
 
-    private void openChangePasswordActivity() {
-        Intent intent = new Intent(getActivity(), ChangePassword.class);
-        startActivity(intent);
-        getActivity().finish();
-    }
+//    private void openChangePasswordActivity() {
+//        Intent intent = new Intent(getActivity(), ChangePassword.class);
+//        startActivity(intent);
+//        getActivity().finish();
+//    }
 
 
 

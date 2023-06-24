@@ -199,6 +199,7 @@ public class MenListItem extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
                 Toast.makeText( MenListItem.this, "Call api fall", Toast.LENGTH_SHORT ).show();
 
             }

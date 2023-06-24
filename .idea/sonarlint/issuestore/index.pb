@@ -24,8 +24,6 @@ m
 =app/src/main/java/com/ocr/navigation/framgent/QRFramgent.java,a\e\aed1f1dbab03caf15c480bc0af32d975753e66f3
 y
 Iapp/src/main/java/com/ocr/navigation/my_interface/ClickItemMenSearch.java,7\8\78fc53a4abde86dea18374651ece4699b5a6146a
-t
-Dapp/src/main/java/com/ocr/navigation/framgent/FavouriteFramgent.java,5\0\50a5ab73bec760362d91a1e50d556887ceee437f
 i
 9app/src/main/java/com/ocr/navigation/UpDateMyProfile.java,e\2\e25192bb844bb055b81b572be10820743b13f1a5
 v
@@ -54,14 +52,10 @@ i
 9app/src/main/java/com/ocr/navigation/OOP/DataProduct.java,b\4\b45ef00cd5ba74d1f443217ad814209319462c42
 |
 Lapp/src/main/java/com/ocr/navigation/framgentSearch/ListProductFragment.java,f\d\fd6006017d44f503fbf7bbcc23328bf2e312e677
-r
-Bapp/src/main/java/com/ocr/navigation/Adapter/FavouriteAdapter.java,2\2\22faf45fe2f4364222abeeb3ff91b790bfc35f91
 ~
 Napp/src/main/java/com/ocr/navigation/my_activity/WomenListProductActivity.java,a\3\a3210312f5c9c76d3f192edce82b8371e1faca3f
 z
 Japp/src/main/java/com/ocr/navigation/my_interface/ClickCongTruGioHang.java,3\3\33477aa92cfe3365096af4de0d901bfcaa4d27d4
-e
-5app/src/main/java/com/ocr/navigation/OOP/Product.java,6\9\69e32da182975c84715d7c38fb5fc828c9ffa722
 d
 4app/src/main/java/com/ocr/navigation/FastScreen.java,a\b\ab1bf3d3aab98f89acef38b0afb97911c591b3a3
 t
@@ -80,10 +74,6 @@ q
 Aapp/src/main/java/com/ocr/navigation/my_interface/APIService.java,5\a\5aa6a37b407946f6060d2a5eef06b7b2e34b7441
 q
 Aapp/src/main/java/com/ocr/navigation/my_activity/MenListItem.java,9\a\9a068e698b76e7e1667ba69f479421ed0efa0628
-e
-5app/src/main/java/com/ocr/navigation/utils/Utils.java,e\c\ec99b09f452e97958b2059d1bfaeffa818ea4043
-t
-Dapp/src/main/java/com/ocr/navigation/Adapter/ListProductAdapter.java,1\2\127d4c7954f2028f7fbce7a596680353848ef1d2
 |
 Lapp/src/main/java/com/ocr/navigation/framgentSearch/WomenSearchFramgent.java,7\e\7ee053d55cd87cbf6f1fc79afc9b09956de34406
 }
@@ -94,11 +84,7 @@ Japp/src/main/java/com/ocr/navigation/framgentSearch/MenSearchFragment.java,f\6
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 z
 Japp/src/main/java/com/ocr/navigation/framgentHome/HomeViewPageAdapter.java,1\d\1d6622cb566fdba3147c7d7215df71fe121f250c
-f
-6app/src/main/java/com/ocr/navigation/MainActivity.java,f\c\fc626023a4f4d0b3045a9824ec0c28fd399328d0
 {
 Kapp/src/main/java/com/ocr/navigation/framgentSearch/KidsSearchFragment.java,8\3\830871b6c51862b531e6eedb6294fb528389d8c6
 q
 Aapp/src/main/java/com/ocr/navigation/framgent/SearchFramgent.java,7\f\7fb32d3c2ae136d372644ae1e23e78553a984356
-p
-@app/src/main/java/com/ocr/navigation/ChiTietProductActivity.java,d\6\d6b9bde098b664fe218944a45b8e6983a1ffde91

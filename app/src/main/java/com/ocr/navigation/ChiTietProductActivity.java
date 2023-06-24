@@ -1,7 +1,10 @@
 package com.ocr.navigation;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -19,19 +22,23 @@ import com.bumptech.glide.Glide;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.ocr.navigation.OOP.GioHang;
 import com.ocr.navigation.OOP.Product;
+import com.ocr.navigation.dataLocal.Database;
 import com.ocr.navigation.utils.Utils;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 public class ChiTietProductActivity extends AppCompatActivity {
-    private boolean isFavorite = false;
+    private boolean isFavorite=false ;
     private ImageButton btnFavorite;
     private Button btnThem;
-    private TextView tvTenSP,tvGia,tvMaSP,tvMoTa,tvBangKichThuoc;
+    private TextView tvTenSP,tvGia,tvMaSP,tvMoTa,tvGiaSale,tvPhanTramSale,tvSaleOff;
     private ImageView imgSP, imgBack, imgGioHang;
     private Spinner spnSoLuong,spnKichCo;
     private NotificationBadge badge;
     private   Product productList;
+    private boolean isAnimationRunning = false;
+    private Handler handler = new Handler();
 
 
     @Override
@@ -46,14 +53,47 @@ public class ChiTietProductActivity extends AppCompatActivity {
         }
         productList = (Product) bundle.getSerializable( "object_product" );
         isUnit();
-        onClickListner();
+
 
         Glide.with( getApplicationContext() ).load( productList.getImage() ).into( imgSP );
         tvTenSP.setText( productList.getName() );
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        int giaSale = productList.getPrice() - (productList.getPrice() * productList.getSale() / 100);
+        if (productList.getSale() == 0) {
+            tvGiaSale.setVisibility(View.GONE);
+            tvPhanTramSale.setVisibility( View.GONE );
+            tvSaleOff.setVisibility( View.GONE );
+            // Xóa gạch ngang khi không có giá sale
+            tvGia.setPaintFlags(tvGia.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+            tvGia.setTextColor( Color.BLACK);
+
+        } else {
+            tvGiaSale.setVisibility(View.VISIBLE);
+            tvGiaSale.setText(decimalFormat.format(giaSale) + " VND");
+            tvSaleOff.setVisibility( View.VISIBLE );
+            tvPhanTramSale.setVisibility( View.VISIBLE );
+            tvPhanTramSale.setText("-"+ decimalFormat.format( productList.getSale() )+"%" );
+            // Gạch ngang tvgiaProduct
+            tvGia.setPaintFlags(tvGia.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            tvGia.setTextColor(Color.GRAY);
+
+        }
         tvGia.setText( decimalFormat.format( productList.getPrice() )+"VND"  );
         tvMaSP.setText( String.valueOf(productList.getProduct_id()) );
         tvMoTa.setText( productList.getDescription() );
+
+        // Kiểm tra xem sản phẩm có trong danh sách yêu thích hay không
+        List<Product> favoriteProducts = Database.getInstance( this ).favouriteDAO().getListFavourite();
+
+        if (favoriteProducts.contains(productList)) {
+            isFavorite = true;
+            btnFavorite.setImageResource(R.drawable.ic_read_favorite);
+        } else {
+            isFavorite = false;
+            btnFavorite.setImageResource(R.drawable.ic_favorite);
+        }
+        onClickListner();
+
 
 
     }
@@ -70,6 +110,9 @@ public class ChiTietProductActivity extends AppCompatActivity {
         btnThem=findViewById( R.id.btn_them_gio_hang );
         spnKichCo=findViewById( R.id.spn_kich_co );
         badge=findViewById( R.id.menu_sl );
+        tvGiaSale=findViewById( R.id.tv_cost_sale );
+        tvSaleOff=findViewById( R.id.tv_sale_off );
+        tvPhanTramSale=findViewById( R.id.tvphantramSale );
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>( this,R.layout.simple_spinner_dropdown_item,productList.getKichco() );
         spnKichCo.setAdapter( adapter1 );
         spnSoLuong=findViewById( R.id.spn_so_luong );
@@ -102,26 +145,38 @@ public class ChiTietProductActivity extends AppCompatActivity {
             }
         } );
 
-        btnFavorite.setOnClickListener( new View.OnClickListener() {
+        btnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Animation anim = new ScaleAnimation(1f, 0.9f, 1f, 0.9f,
-                        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-                anim.setDuration(100);
-                anim.setFillAfter(true);
-                btnFavorite.startAnimation(anim);
-                if (isFavorite) {
-                    btnFavorite.setImageResource(R.drawable.ic_favorite);
-                    //sử lý thêm vào yêu thích
-
-                } else {
-                    btnFavorite.setImageResource(R.drawable.ic_read_favorite);
-                    //sử lý gỡ khỏi yêu thích
-
+                if (isAnimationRunning) {
+                    return;
                 }
-                isFavorite = !isFavorite;
+
+                isAnimationRunning = true;
+                animateFavoriteButton();
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (isFavorite) {
+                            btnFavorite.setImageResource(R.drawable.ic_favorite);
+                            // Xử lý gỡ khỏi yêu thích
+                            deleteFavorite();
+
+
+                        } else {
+                            btnFavorite.setImageResource(R.drawable.ic_read_favorite);
+                            // Xử lý thêm vào yêu thích
+                            addFavorite();
+
+                        }
+
+                        isFavorite = !isFavorite;
+                        isAnimationRunning = false;
+                    }
+                }, 100);
             }
-        } );
+        });
         btnThem.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,6 +184,23 @@ public class ChiTietProductActivity extends AppCompatActivity {
             }
         } );
     }
+
+    private void deleteFavorite() {
+        Database.getInstance( this ).favouriteDAO().deleteFavourite( productList );
+    }
+
+    private void addFavorite() {
+        Database.getInstance( this ).favouriteDAO().insertFavourite( productList );
+    }
+
+    private void animateFavoriteButton() {
+        Animation anim = new ScaleAnimation(1f, 0.9f, 1f, 0.9f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        anim.setDuration(100);
+        anim.setFillAfter(true);
+        btnFavorite.startAnimation(anim);
+    }
+
 
     private void themGioHang() {
         int soluong = Integer.parseInt(spnSoLuong.getSelectedItem().toString());
@@ -149,7 +221,8 @@ public class ChiTietProductActivity extends AppCompatActivity {
 
         if (!flag) {
             GioHang gioHang = new GioHang();
-            gioHang.setPrice(productList.getPrice());
+            int giaSale = productList.getPrice() - (productList.getPrice() * productList.getSale() / 100);
+            gioHang.setPrice(giaSale);
             gioHang.setSoluong(soluong);
             gioHang.setProduct_id(productList.getProduct_id());
             gioHang.setImage(productList.getImage());

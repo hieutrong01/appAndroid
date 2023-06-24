@@ -1,29 +1,48 @@
 package com.ocr.navigation.framgentHome;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.ocr.navigation.Adapter.ImageAdapter;
+import com.ocr.navigation.Adapter.SanPhamNoiBatAdapter;
+import com.ocr.navigation.ChiTietProductActivity;
+import com.ocr.navigation.OOP.DataProduct;
 import com.ocr.navigation.OOP.Image;
+import com.ocr.navigation.OOP.Product;
 import com.ocr.navigation.R;
+import com.ocr.navigation.my_interface.APIService;
+import com.ocr.navigation.my_interface.ClickItemProduc;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator3;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class TopFragment extends Fragment {
     private ViewPager2 mViewPager2;
     private CircleIndicator3 mIndicator3;
     private List<Image> imageList;
+    private View view;
+    private RecyclerView mRecyclerView, saleRecyclerView;
+    private List<Product> mList;
+    private SanPhamNoiBatAdapter adapter;
+    private SanPhamNoiBatAdapter adapterSale;
+
     private Handler mHandler= new Handler( Looper.getMainLooper());
     private Runnable mRunnable= new Runnable() {
         @Override
@@ -41,7 +60,7 @@ public class TopFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate( R.layout.fragment_top, container, false );
+         view = inflater.inflate( R.layout.fragment_top, container, false );
 
         //setting img view_page
         mViewPager2= view.findViewById( R.id.view_page_top );
@@ -50,7 +69,7 @@ public class TopFragment extends Fragment {
         mViewPager2.setClipToPadding( false );
         mViewPager2.setClipChildren( false );
         imageList=getListImage();
-        ImageAdapter imageAdapter= new ImageAdapter( imageList );
+        ImageAdapter imageAdapter= new ImageAdapter(getActivity(), imageList );
         mViewPager2.setAdapter( imageAdapter );
         mIndicator3.setViewPager( mViewPager2 );
         mViewPager2.registerOnPageChangeCallback( new ViewPager2.OnPageChangeCallback() {
@@ -61,16 +80,137 @@ public class TopFragment extends Fragment {
                 mHandler.postDelayed( mRunnable,3000 );
             }
         } );
+        initUI();
+
+        GridLayoutManager gridLayoutManager= new GridLayoutManager( getActivity(),3);
+        mRecyclerView.setLayoutManager( gridLayoutManager );
+        adapter.setData( getListProduct( ), new ClickItemProduc() {
+            @Override
+            public void onItemProductClick(Product product) {
+                onClickgotoChitiet(product);
+            }
+
+            @Override
+            public void onClickFavoriteItem(int pos) {
+
+            }
+        } );
+        mRecyclerView.setAdapter( adapter );
+        //
+        GridLayoutManager gridLayoutManager1= new GridLayoutManager( getActivity(),3);
+        saleRecyclerView.setLayoutManager( gridLayoutManager1 );
+        adapterSale.setData( getListProductSale( ), new ClickItemProduc() {
+            @Override
+            public void onItemProductClick(Product product) {
+                onClickgotoChitiet(product);
+            }
+
+            @Override
+            public void onClickFavoriteItem(int pos) {
+
+            }
+        } );
+        saleRecyclerView.setAdapter( adapterSale );
+
         return view;
     }
+    public void initUI(){
+        mRecyclerView =view.findViewById( R.id.recyc_product );
+        saleRecyclerView=view.findViewById( R.id.recyc_product_sale );
+        adapter = new SanPhamNoiBatAdapter( getActivity() );
+        adapterSale=new SanPhamNoiBatAdapter( getActivity() );
+
+    }
+
 
     private List<Image> getListImage() {
         List<Image> list =new ArrayList<>();
-        list.add( new Image( R.drawable.img1) );
-        list.add( new Image( R.drawable.img1) );
-        list.add( new Image( R.drawable.img1) );
+        list.add( new Image("https://im.uniqlo.com/global-cms/spa/resd4df83327e0165e6f1b21207cdbbcdeafr.jpg") );
+        list.add( new Image("https://im.uniqlo.com/global-cms/spa/resf46418d98dcb9ff1ad47b614a696f3b9fr.jpg") );
+        list.add( new Image("https://im.uniqlo.com/global-cms/spa/rese8b304dae4f49f367231e604109cea41fr.jpg") );
+        list.add( new Image("https://im.uniqlo.com/global-cms/spa/res2388cafae032a2125e66e05733ce5614fr.jpg") );
+        list.add( new Image("https://im.uniqlo.com/global-cms/spa/res8938b3e00989a47ea34a2008814ee3e9fr.jpg") );
         return list;
     }
+
+    private List<Product> getListProduct() {
+        List<Product> list = new ArrayList<>();
+
+        callApiAoWomen();
+        return list;
+    }
+    private List<Product> getListProductSale() {
+        List<Product> list = new ArrayList<>();
+
+        callApiProductSale();
+        return list;
+    }
+
+    private void onClickgotoChitiet(Product product) {
+        Intent intent = new Intent( getActivity(), ChiTietProductActivity.class );
+        Bundle bundle= new Bundle();
+        bundle.putSerializable("object_product", product);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+    private void callApiAoWomen() {
+        APIService.apiServiceKids.getSanPhamNoiBat().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+            }
+                    @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( getActivity(), "Call api fall", Toast.LENGTH_SHORT ).show();
+
+            }
+        } );
+    }
+
+    private void callApiProductSale() {
+        APIService.apiServiceKids.getSanPhamSale().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapterSale.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                saleRecyclerView.setAdapter( adapterSale );
+            }
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( getActivity(), "Call api fall", Toast.LENGTH_SHORT ).show();
+
+            }
+        } );
+    }
+
 
     @Override
     public void onPause() {

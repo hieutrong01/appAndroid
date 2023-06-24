@@ -141,6 +141,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<DataProduct> call, Throwable t) {
                 // Handle failure
+                t.printStackTrace();
                 Toast.makeText(SearchActivity.this, "call ", Toast.LENGTH_SHORT).show();
             }
         });
