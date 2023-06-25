@@ -66,6 +66,7 @@
 
 
     <string name="tongcong">Tổng cộng:</string>
+    <string name="phivanchuyen1">Phí vận chuyển:</string>
     <string name="soluong">Số lượng</string>
     <string name="thue">Đã bao gồm thuế giá trị gia tăng</string>
     <string name="tong">TỔNG ĐƠN ĐẶT HÀNG</string>
@@ -96,7 +97,19 @@
     <string name="spbanchay">SẢN PHẨM NỔI BẬT </string>
     <string name="saleoff">SALE OFF: </string>
     <string name="sanphamsale">SẢN PHẨM GIẢM GIÁ </string>
+    <string name="tuychon">1.TÙY CHỌN GIAO HÀNG </string>
+    <string name="phuongthuc">2.PHƯƠNG THỨC THANH TOÁN </string>
+    <string name="tuychongiao">GIAO ĐẾN ĐỊA CHỈ </string>
+    <string name="demo">Hieu Nguyen  </string>
+    <string name="demo1">số 1 hẻm 22/135 Chiến Thắng, phường Văn Quán, quận Hà Đông, Hà Nội  </string>
+    <string name="ngaygiao">NGÀY GIAO HÀNG </string>
+    <string name="phivanchuyen">Phí vận chuyển: 50.000 VND </string>
+    <string name="thoigian">Thời gian giao hàng dự kiến: </string>
+    <string name="thoigian1">Vui lòng xem thông tin giao hàng trong email được gửi sau khi đơn hàng bắt đầu vận chuyển. Thời gian vận chuyển của các đơn hàng với yêu cầu chỉnh sửa sẽ dài hơn từ 2-4 ngày</string>
+    <string name="sanpham">SẢN PHẨM ĐẶT HÀNG </string>
 
+    <string name="phuongthuc1">THANH TOÁN KHI NHẬN HÀNG </string>
+    <string name="phuongthuc2">THANH TOÁN ZALOPAY </string>
 
 
 

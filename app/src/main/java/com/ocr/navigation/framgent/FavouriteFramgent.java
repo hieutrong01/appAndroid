@@ -123,7 +123,7 @@ public class FavouriteFramgent extends Fragment implements SwipeRefreshLayout.On
             public void run() {
                 swipeRefreshLayout.setRefreshing( false );
             }
-        },3000 );
+        },2000 );
 
     }
 }

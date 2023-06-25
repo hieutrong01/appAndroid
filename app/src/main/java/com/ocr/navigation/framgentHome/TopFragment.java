@@ -124,11 +124,11 @@ public class TopFragment extends Fragment {
 
     private List<Image> getListImage() {
         List<Image> list =new ArrayList<>();
+        list.add( new Image("https://im.uniqlo.com/global-cms/spa/res6b8ce45b8387ddcf7cec6a3e92848c23fr.jpg") );
         list.add( new Image("https://im.uniqlo.com/global-cms/spa/resd4df83327e0165e6f1b21207cdbbcdeafr.jpg") );
-        list.add( new Image("https://im.uniqlo.com/global-cms/spa/resf46418d98dcb9ff1ad47b614a696f3b9fr.jpg") );
-        list.add( new Image("https://im.uniqlo.com/global-cms/spa/rese8b304dae4f49f367231e604109cea41fr.jpg") );
+        list.add( new Image("https://im.uniqlo.com/global-cms/spa/res0883ec0339f52ea55c053dff593ecbbbfr.jpg") );
         list.add( new Image("https://im.uniqlo.com/global-cms/spa/res2388cafae032a2125e66e05733ce5614fr.jpg") );
-        list.add( new Image("https://im.uniqlo.com/global-cms/spa/res8938b3e00989a47ea34a2008814ee3e9fr.jpg") );
+        list.add( new Image("https://im.uniqlo.com/global-cms/spa/reseef4ead8734e46647f914d68b13cc4dffr.jpg") );
         return list;
     }
 
