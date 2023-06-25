@@ -17,7 +17,10 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.ocr.navigation.R;
 import com.ocr.navigation.SearchActivity;
+import com.ocr.navigation.framgentSearch.KidsSearchFragment;
+import com.ocr.navigation.framgentSearch.MenSearchFragment;
 import com.ocr.navigation.framgentSearch.ViewPageAdapterSearch;
+import com.ocr.navigation.framgentSearch.WomenSearchFramgent;
 
 public class SearchFramgent extends Fragment {
     private TabLayout mTableLayout;
@@ -34,12 +37,25 @@ public class SearchFramgent extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        mView= inflater.inflate( R.layout.framgent_search,container,false );
         initUI();
+
+        WomenSearchFramgent womenFragment = new WomenSearchFramgent();
+        MenSearchFragment menFragment = new MenSearchFragment();
+        KidsSearchFragment kidsSearchFragment= new KidsSearchFragment();
         ViewPageAdapterSearch adapterSearch= new ViewPageAdapterSearch(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT  );
+
+        adapterSearch.addFragment( menFragment );
+        adapterSearch.addFragment( womenFragment );
+        adapterSearch.addFragment( kidsSearchFragment );
         mViewPager.setAdapter( adapterSearch );
         mTableLayout.setupWithViewPager( mViewPager );
         oncClickListner();
 
         return mView;
+    }
+
+    public void setCurrentPage(int i){
+        mViewPager.setCurrentItem( i );
+        mTableLayout.setScrollPosition( i, 0f, true );
     }
     private void initUI() {
         mTableLayout = mView.findViewById( R.id.tab_search);

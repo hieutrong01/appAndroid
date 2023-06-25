@@ -2,6 +2,7 @@ package com.ocr.navigation.framgent;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.ocr.navigation.Adapter.FavouriteAdapter;
@@ -28,15 +30,15 @@ import com.ocr.navigation.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavouriteFramgent extends Fragment {
+public class FavouriteFramgent extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private ImageView imgGioHang, imgNen,imvChinhSua ;
     private TextView tvSoLuong;
     private RecyclerView mRecyclerView;
     private View mView;
     private FavouriteAdapter mItemAdapter;
     private NotificationBadge badge;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private List<Product> items = new ArrayList<>();
-
 
     @Nullable
     @Override
@@ -52,29 +54,8 @@ public class FavouriteFramgent extends Fragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), linearLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        // Cập nhật dữ liệu cho adapter từ FavoriteProductsManager
-        items= Database.getInstance( getActivity() ).favouriteDAO().getListFavourite();
-        mItemAdapter.setData( items, new ClickItemProduc() {
-            @Override
-            public void onItemProductClick(Product product) {
-                onClickgotoChitiet(product);
-            }
-
-            @Override
-            public void onClickFavoriteItem(int pos) {
-
-            }
-        } );
-
-        if (mItemAdapter != null && mItemAdapter.getItemCount() == 0) {
-            imgNen.setVisibility(View.VISIBLE);
-
-        } else {
-            imgNen.setVisibility(View.GONE);
-        }
-        tvSoLuong.setText( Integer.toString(mItemAdapter.getItemCount()) );
-
         onClickList();
+        swipeRefreshLayout.setOnRefreshListener( this );
         return mView;
     }
     public void initUI(){
@@ -84,6 +65,7 @@ public class FavouriteFramgent extends Fragment {
         mRecyclerView = mView.findViewById( R.id.rcv_list_favourite );
         tvSoLuong=mView.findViewById( R.id.tv_so_luong );
         badge=mView.findViewById( R.id.menu_sl );
+        swipeRefreshLayout=mView.findViewById( R.id.swiperefresh );
         if (Utils.manggiohang!=null){
             badge.setText( String.valueOf( Utils.manggiohang.size() ) );
         }
@@ -93,19 +75,55 @@ public class FavouriteFramgent extends Fragment {
         imgGioHang.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getActivity(), GioHangActivity.class);
+                Intent intent= new Intent(requireActivity(), GioHangActivity.class);
                 startActivity( intent );
             }
         } );
     }
 
     private void onClickgotoChitiet(Product product) {
-        Intent intent = new Intent( getActivity(), ChiTietProductActivity.class );
+        Intent intent = new Intent( requireActivity(), ChiTietProductActivity.class );
         Bundle bundle= new Bundle();
         bundle.putSerializable("object_product", product);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+//
+    }
 
+    @Override
+    public void onRefresh() {
+        // Cập nhật dữ liệu cho adapter từ FavoriteProductsManager
+        items= Database.getInstance( getActivity() ).favouriteDAO().getListFavourite();
+        mItemAdapter.setData( items, new ClickItemProduc() {
+            @Override
+            public void onItemProductClick(Product product) {
+                onClickgotoChitiet( product );
+            }
+
+            @Override
+            public void onClickFavoriteItem(int pos) {
+
+            }
+        } );
+        if (mItemAdapter != null && mItemAdapter.getItemCount() == 0) {
+            imgNen.setVisibility(View.VISIBLE);
+
+        } else {
+            imgNen.setVisibility(View.GONE);
+        }
+        tvSoLuong.setText( Integer.toString(mItemAdapter.getItemCount()) );
+        Handler handler = new Handler();
+        handler.postDelayed( new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing( false );
+            }
+        },3000 );
+
+    }
 }

@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ViewPageAdapterSearch extends FragmentStatePagerAdapter {
 
@@ -14,27 +17,24 @@ public class ViewPageAdapterSearch extends FragmentStatePagerAdapter {
         super( fm, behavior );
     }
 
+    private List<Fragment> listFm = new ArrayList<>();
+
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return new MenSearchFragment();
-            case 1:
-                return new WomenSearchFramgent();
-            case 2:
-                return new KidsSearchFragment();
-            default:
-                return new MenSearchFragment();
+        if ( position < getCount()){
+            return listFm.get( position );
         }
+        return new Fragment();
     }
-
+    public void addFragment(Fragment fragment){
+        listFm.add( fragment );
+    }
 
     @Override
     public int getCount() {
-        return 3;
+        return listFm.size();
     }
-
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {

@@ -3,30 +3,35 @@ package com.ocr.navigation.framgent;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentPagerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class ViewPageAdapter extends FragmentStatePagerAdapter {
+public class ViewPageAdapter extends FragmentPagerAdapter {
 
     public ViewPageAdapter(@NonNull FragmentManager fm, int behavior) {
         super( fm, behavior );
     }
 
+    private List<Fragment> listFm = new ArrayList<>();
+
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position)
-        {
-            case 0: return new HomeFramgent();
-            case 1: return new SearchFramgent();
-            case 2: return new FavouriteFramgent();
-            case 3: return new QRFramgent();
-            case 4: return new PesonFramgent();
-            default:return new HomeFramgent();
+        if ( position < getCount()){
+            return listFm.get( position );
         }
+          return new Fragment();
     }
+
+    public void addFragment(Fragment fragment){
+        listFm.add( fragment );
+    }
+
     @Override
     public int getCount() {
-        return 5;
+        return listFm.size();
     }
 }

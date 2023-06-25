@@ -1,12 +1,7 @@
 package com.ocr.navigation;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.ocr.navigation.retrofit.RetrofitClient;
 import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
 import com.ocr.navigation.retrofit.com.ocr.navigation.GetUserResponse;
@@ -29,8 +22,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SignInActivity extends AppCompatActivity {
     private LinearLayout layoutSignUp;
@@ -123,7 +114,7 @@ public class SignInActivity extends AppCompatActivity {
                 .enqueue(new Callback<GetUserResponse>() {
                     @Override
                     public void onResponse(Call<GetUserResponse> call, Response<GetUserResponse> response) {
-                        Log.d("check", "onResponse: message = "+response.message() +"  body=" +response.body().toString());
+                      //  Log.d("check", "onResponse: message = "+response.message() +"  body=" +response.body().toString());
                         if (response.isSuccessful()) {
                             mListUser = response.body().getData();
                             Log.d("List User", mListUser.size() + "");

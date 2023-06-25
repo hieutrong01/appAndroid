@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 
 import androidx.fragment.app.Fragment;
 
 import com.ocr.navigation.R;
 import com.ocr.navigation.framgent.SearchFramgent;
+import com.ocr.navigation.my_interface.IntegerCallBack;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -21,15 +23,27 @@ public class MenFragment extends Fragment {
     private View view;
     private LinearLayout linearLayout;
     private SearchFramgent searchFragment;
+
+    private IntegerCallBack integerCallBack;
+
+    private TableLayout tableLayout;
+
+    public MenFragment(IntegerCallBack listener) {
+        this.integerCallBack = listener;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate( R.layout.fragment_men, container, false );
         unitUI();
+        onClick();
         loadURLImg();
         return view;
     }
+
+
     private void unitUI() {
         imgMacNgoai=view.findViewById( R.id.img_mac_ngoai );
         imgSoMi=view.findViewById( R.id.img_so_mi );
@@ -40,6 +54,14 @@ public class MenFragment extends Fragment {
         imgDoMacNha=view.findViewById( R.id.img_do_mac_nha );
         imgDoLot=view.findViewById( R.id.img_do_lot );
         linearLayout=view.findViewById( R.id.linear_layout );
+        tableLayout = view.findViewById( R.id.tb_featured_category );
+    }
+
+
+    private void onClick() {
+        tableLayout.setOnClickListener( v -> {
+            integerCallBack.integerCallBack( 1 );
+        } );
     }
     private void loadURLImg() {
         String imageUrl1 = "https://im.uniqlo.com/global-cms/spa/res4834fdd5cdf58a93a28010d6a3757696fr.jpg";
