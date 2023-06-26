@@ -1,7 +1,9 @@
 package com.ocr.navigation;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.ocr.navigation.OOP.UserManager;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+
 import com.ocr.navigation.retrofit.RetrofitClient;
 import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
 import com.ocr.navigation.retrofit.com.ocr.navigation.GetUserResponse;
@@ -119,7 +126,7 @@ public class SignInActivity extends AppCompatActivity {
                 .enqueue(new Callback<GetUserResponse>() {
                     @Override
                     public void onResponse(Call<GetUserResponse> call, Response<GetUserResponse> response) {
-                        Log.d("check", "onResponse: message = "+response.message() +"  body=" +response.body().toString());
+                      //  Log.d("check", "onResponse: message = "+response.message() +"  body=" +response.body().toString());
                         if (response.isSuccessful()) {
                             mListUser = response.body().getData();
                             Log.d("List_User", mListUser.size() + "");

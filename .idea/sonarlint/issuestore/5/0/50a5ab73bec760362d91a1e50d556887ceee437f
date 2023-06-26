@@ -1,0 +1,23 @@
+
+C
+java:S1604K"(Make this anonymous inner class a lambda(„¬ÌÎûÿÿÿÿ
+>
+java:S1604y"(Make this anonymous inner class a lambda(†£°î
+Y
+java:S2589q"7Remove this expression which always evaluates to "true"(Ê·æûÿÿÿÿ8¡ìüñŽ1
+H
+java:S2387%"-"mView" is the name of a field in "Fragment".(¼ðŠýþÿÿÿÿ
+X
+java:S1659""CDeclare "imgNen" and all following declarations on a separate line.(õƒˆ
+o
+java:S1450'"TRemove the "badge" field and declare it as a local variable in the relevant methods.(¢äÿÑùÿÿÿÿ
+v
+java:S1450""ZRemove the "imvChinhSua" field and declare it as a local variable in the relevant methods.(õƒˆ8†ÅüñŽ1
+>
+java:S1185]"(Remove this method to simply inherit it.(öÿÕÅ
+œ
+java:S1186m"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(äªÁ‡ÿÿÿÿÿ
+E
+java:S1874x"/Remove this use of "Handler"; it is deprecated.(’Ú©Š
+K
+java:S1068""/Remove this unused "imvChinhSua" private field.(õƒˆ8ŸÅüñŽ1

@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeViewPageAdapter extends FragmentStatePagerAdapter {
@@ -15,26 +17,23 @@ public class HomeViewPageAdapter extends FragmentStatePagerAdapter {
         super( fm, behavior );
     }
 
+    private List<Fragment> listFm = new ArrayList<>();
+
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return new TopFragment();
-            case 1:
-                return new WomenFragment();
-            case 2:
-                return new MenFragment();
-            case 3:
-                return new KidsFragment();
-            default:
-                return new TopFragment();
+        if ( position < getCount()){
+            return listFm.get( position );
         }
+        return new Fragment();
+    }
+    public void addFragment(Fragment fragment){
+        listFm.add( fragment );
     }
 
     @Override
     public int getCount() {
-        return 4;
+        return listFm.size();
     }
 
     @Nullable
@@ -44,9 +43,9 @@ public class HomeViewPageAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return "TOP";
             case 1:
-                return "WOMEN";
-            case 2:
                 return "MEN";
+            case 2:
+                return "WOMEN";
             case 3:
                 return "KIDS";
             default:return "TOP";

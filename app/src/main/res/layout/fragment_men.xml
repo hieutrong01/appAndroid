@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/linearlayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,11 +16,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
+        android:paddingTop="5dp"
         android:id="@+id/linear_layout"
         android:background="@color/white"
         android:orientation="vertical"
         tools:context=".framgentHome.TopFragment">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_page_top"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                tools:ignore="MissingConstraints" />
+
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/circleIndicator3"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+
+                android:layout_gravity="center_horizontal"
+                app:ci_drawable="@drawable/bg_indi"
+                app:layout_constraintBottom_toBottomOf="@+id/view_page_top"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/view_page_top"
+                tools:ignore="MissingConstraints"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,6 +53,7 @@
             android:gravity="center"
             android:padding="15dp"/>
         <TableLayout
+            android:id="@+id/tb_featured_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
@@ -187,3 +219,4 @@
 
     </LinearLayout>
 </ScrollView>
+</LinearLayout>

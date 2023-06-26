@@ -20,6 +20,11 @@ import com.ocr.navigation.GioHangActivity;
 import com.ocr.navigation.R;
 import com.ocr.navigation.SearchActivity;
 import com.ocr.navigation.framgentHome.HomeViewPageAdapter;
+import com.ocr.navigation.framgentHome.KidsFragment;
+import com.ocr.navigation.framgentHome.MenFragment;
+import com.ocr.navigation.framgentHome.TopFragment;
+import com.ocr.navigation.framgentHome.WomenFragment;
+import com.ocr.navigation.my_interface.IntegerCallBack;
 
 public class HomeFramgent extends Fragment {
     private TabLayout mTableLayout;
@@ -27,6 +32,13 @@ public class HomeFramgent extends Fragment {
     private View mView;
     private ImageView imgGioHang;
     private LinearLayout linearLayoutSerch;
+
+    private IntegerCallBack integerCallBack;
+
+    public HomeFramgent(IntegerCallBack listener){
+        this.integerCallBack = listener;
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -39,7 +51,15 @@ public class HomeFramgent extends Fragment {
           mView= inflater.inflate( R.layout.framgent_home,container,false );
           initUI();
 
+        TopFragment topFragment = new TopFragment();
+        MenFragment menFragment= new MenFragment(integerCallBack);
+        WomenFragment womenFragment = new WomenFragment(integerCallBack);
+        KidsFragment kidsFragment= new KidsFragment();
           HomeViewPageAdapter adapter=new HomeViewPageAdapter( getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT );
+        adapter.addFragment( topFragment );
+        adapter.addFragment( menFragment );
+        adapter.addFragment( womenFragment );
+        adapter.addFragment( kidsFragment );
           mViewPager.setAdapter( adapter );
           mTableLayout.setupWithViewPager( mViewPager );
 
@@ -70,8 +90,4 @@ public class HomeFramgent extends Fragment {
         } );
 
     }
-
-
-
-
 }

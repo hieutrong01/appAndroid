@@ -23,16 +23,22 @@ import com.ocr.navigation.framgent.PesonFramgent;
 import com.ocr.navigation.framgent.QRFramgent;
 import com.ocr.navigation.framgent.SearchFramgent;
 import com.ocr.navigation.framgent.ViewPageAdapter;
+import com.ocr.navigation.my_interface.IntegerCallBack;
 import com.ocr.navigation.utils.Utils;
 
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements IntegerCallBack {
     private DrawerLayout mdrawerLayout;
     private ViewPager mViewPager;
     private BottomNavigationView mBottomNavigationView;
     private MainViewModel mainViewModel;
+
+    private ViewPageAdapter adapter;
+
+    private SearchFramgent searchFramgent;
+
 
 
     private long backTime;
@@ -44,9 +50,21 @@ public class MainActivity extends AppCompatActivity  {
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         init();
 
+        HomeFramgent homeFramgent= new HomeFramgent(this::integerCallBack);
+        PesonFramgent pesonFramgent= new PesonFramgent();
+        searchFramgent = new SearchFramgent();
+        QRFramgent qrFramgent= new QRFramgent();
+        FavouriteFramgent favouriteFramgent= new FavouriteFramgent();
+
         //bắt sự kiện navigation
-        ViewPageAdapter adapter= new ViewPageAdapter( getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        adapter= new ViewPageAdapter( getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+         adapter.addFragment( homeFramgent );
+          adapter.addFragment( searchFramgent );
+          adapter.addFragment( favouriteFramgent );
+          adapter.addFragment( qrFramgent );
+          adapter.addFragment( pesonFramgent );
         mViewPager.setAdapter( adapter );
+        mViewPager.setOffscreenPageLimit( 4 );
 
         //tắt chức năng vuốt băngf onTouch
         mViewPager.setOnTouchListener(new View.OnTouchListener() {
@@ -77,6 +95,7 @@ public class MainActivity extends AppCompatActivity  {
                           break;
                       case 2:
                           mBottomNavigationView.getMenu().findItem( R.id.toolbar_favorite ).setChecked( true );
+
                           break;
                       case 3:
                           mBottomNavigationView.getMenu().findItem( R.id.toolbar_QR).setChecked( true );
@@ -98,27 +117,18 @@ public class MainActivity extends AppCompatActivity  {
                 switch (item.getItemId()){
                     case R.id.toolbar_trangchu:
                         mViewPager.setCurrentItem( 0);
-                        HomeFramgent homeFramgent= (HomeFramgent) mViewPager.getAdapter().instantiateItem( mViewPager,0 );
-                       // homeFramgent.reloadData();
                         break;
                     case R.id.toolbar_search:
                         mViewPager.setCurrentItem( 1);
-                        SearchFramgent searchFramgent =(SearchFramgent) mViewPager.getAdapter().instantiateItem( mViewPager,1 );
-                        //searchFramgent.reloadData();
                         break;
                     case R.id.toolbar_favorite:
                         mViewPager.setCurrentItem( 2);
-                        FavouriteFramgent favouriteFramgent=(FavouriteFramgent) mViewPager.getAdapter().instantiateItem( mViewPager,2 ) ;
-                       // favouriteFramgent.reloadData();
                         break;
                     case R.id.toolbar_QR:
                         mViewPager.setCurrentItem( 3);
-                        QRFramgent qrFramgent=(QRFramgent) mViewPager.getAdapter().instantiateItem( mViewPager,3 );
-                      //  qrFramgent.reloadData();
                         break;
                     case R.id.toolbar_person:
                         mViewPager.setCurrentItem( 4);
-                      PesonFramgent pesonFramgen=(PesonFramgent)  mViewPager.getAdapter().instantiateItem( mViewPager,4 );
                         break;
                 }
                 return false;
@@ -158,8 +168,13 @@ public class MainActivity extends AppCompatActivity  {
             return true;
         }else
             return false;
-
     }
-
-
+    @Override
+    public void integerCallBack(int i) {
+        mViewPager.setCurrentItem( 1 );
+        mBottomNavigationView.setSelectedItemId( R.id.toolbar_search );
+            if (searchFramgent != null){
+                searchFramgent.setCurrentPage( i - 1);
+            }
+    }
 }

@@ -1,15 +1,15 @@
 
 >
-java:S1604:"(Make this anonymous inner class a lambda(ÂÇ­å
+java:S16045"(Make this anonymous inner class a lambda(ÂÇ­å
+E
+java:S1604?"(Make this anonymous inner class a lambda(³ù £8••‹é1
 J
-java:S1659"/Declare "edtPasswordSignIn" on a separate line.(¼ÇÚíùÿÿÿÿ
+java:S1659"/Declare "edtPasswordSignIn" on a separate line.(¼ÇÚíùÿÿÿÿ
 }
-java:S1450"[Remove the "layoutSignUp" field and declare it as a local variable in the relevant methods.(ğÜ˜µùÿÿÿÿ8Ø˜ãØŠ1
-X	java:S125 "<This block of commented-out lines of code should be removed.(ö‹êæ8á˜ãØŠ1
-]	java:S125."<This block of commented-out lines of code should be removed.(Ô²òáşÿÿÿÿ8ç˜ãØŠ1
-X	java:S125H"<This block of commented-out lines of code should be removed.(¼ÿìá8ì˜ãØŠ1
-^	java:S125‚"<This block of commented-out lines of code should be removed.(Œ¼Ğ¬üÿÿÿÿ8ş˜ãØŠ1
+java:S1450"[Remove the "layoutSignUp" field and declare it as a local variable in the relevant methods.(ğÜ˜µùÿÿÿÿ8Ø˜ãØŠ1
+X	java:S125"<This block of commented-out lines of code should be removed.(ö‹êæ8á˜ãØŠ1
+]	java:S125/"<This block of commented-out lines of code should be removed.(Ô²òáşÿÿÿÿ8ç˜ãØŠ1
+]	java:S125u"<This block of commented-out lines of code should be removed.(¾Öèâùÿÿÿÿ8áÏé1
+^	java:S125ˆ"<This block of commented-out lines of code should be removed.(Œ¼Ğ¬üÿÿÿÿ8ş˜ãØŠ1
 R
-java:S1068"0Remove this unused "layoutSignUp" private field.(ğÜ˜µùÿÿÿÿ8ÿ˜ãØŠ1
-F
-java:S1068#")Remove this unused "mUser" private field.(®²…ø8³×ÂÚŠ1
+java:S1068"0Remove this unused "layoutSignUp" private field.(ğÜ˜µùÿÿÿÿ8ÿ˜ãØŠ1

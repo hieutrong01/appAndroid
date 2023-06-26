@@ -2,13 +2,15 @@ package com.ocr.navigation.retrofit;
 
 import com.google.gson.GsonBuilder;
 import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
+import com.ocr.navigation.utils.Utils;
 
-import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
+import kotlin.Unit;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static final String BASE_URL = "http://192.168.1.34/DIOR/";
+
+//    private static final String BASE_URL = "http://192.168.1.34/DIOR/";
 
     private static Retrofit instance;
     private static ApiInterface apiInterface;
@@ -16,7 +18,7 @@ public class RetrofitClient {
     public static Retrofit getInstance() {
         if (instance == null) {
             instance = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(Utils.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create(
                             new GsonBuilder()
                                     .setLenient()
