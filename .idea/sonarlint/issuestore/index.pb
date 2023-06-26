@@ -24,8 +24,6 @@ y
 Iapp/src/main/java/com/ocr/navigation/my_interface/ClickItemMenSearch.java,7\8\78fc53a4abde86dea18374651ece4699b5a6146a
 v
 Fapp/src/main/java/com/ocr/navigation/my_interface/ClickItemProduc.java,4\a\4a4d5eac8479b0f60eaf322d4c6634bead968412
-g
-7app/src/main/java/com/ocr/navigation/FirstFragment.java,7\4\74e856fc5ea231b7a341e5c5014916396430a185
 h
 8app/src/main/java/com/ocr/navigation/SecondFragment.java,1\0\10b92b4ac34d04e4f838375ea042e412160aba59
 h
@@ -44,8 +42,6 @@ Lapp/src/main/java/com/ocr/navigation/framgentSearch/ListProductFragment.java,f
 Napp/src/main/java/com/ocr/navigation/my_activity/WomenListProductActivity.java,a\3\a3210312f5c9c76d3f192edce82b8371e1faca3f
 z
 Japp/src/main/java/com/ocr/navigation/my_interface/ClickCongTruGioHang.java,3\3\33477aa92cfe3365096af4de0d901bfcaa4d27d4
-d
-4app/src/main/java/com/ocr/navigation/FastScreen.java,a\b\ab1bf3d3aab98f89acef38b0afb97911c591b3a3
 t
 Dapp/src/main/java/com/ocr/navigation/OOP/EventBus/TinhTongEvent.java,5\f\5fed10d0d803229f3f5fded75bf69bab993298e3
 p
@@ -106,8 +102,6 @@ q
 Aapp/src/main/java/com/ocr/navigation/framgent/SearchFramgent.java,7\f\7fb32d3c2ae136d372644ae1e23e78553a984356
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-i
-9app/src/main/java/com/ocr/navigation/GioHangActivity.java,9\5\95216cfaf4488cbd659d9f8b5b4fcd4b9e744065
 t
 Dapp/src/main/java/com/ocr/navigation/framgent/FavouriteFramgent.java,5\0\50a5ab73bec760362d91a1e50d556887ceee437f
 k
@@ -116,3 +110,5 @@ o
 ?app/src/main/java/com/ocr/navigation/framgent/HomeFramgent.java,0\7\078a90448c1df29daa35032f357074c008450144
 f
 6app/src/main/java/com/ocr/navigation/MainActivity.java,f\c\fc626023a4f4d0b3045a9824ec0c28fd399328d0
+r
+Bapp/src/main/java/com/ocr/navigation/framgentHome/MenFragment.java,1\e\1e26ba491d603fdba07a3b97e5bff03a7ca38a95
