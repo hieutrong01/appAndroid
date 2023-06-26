@@ -15,6 +15,7 @@ public class FastScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_fast_screen );
+        UserManager.getInstance().init(this);
 
 
         Handler handler = new Handler();
@@ -30,7 +31,7 @@ public class FastScreen extends AppCompatActivity {
         UserManager userManager = UserManager.getInstance();
 
       //  FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (userManager == null) {
+        if (!userManager.isLoggedIn()) {
             //chua login
             Intent intent = new Intent( this, SignInActivity.class );
             startActivity( intent );

@@ -94,7 +94,7 @@
             android:drawableLeft="@drawable/ic_baseline_password"
             />
         <Button
-            android:id="@+id/btn_change_dia_chi"
+            android:id="@+id/btn_change_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"

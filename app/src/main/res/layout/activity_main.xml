@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:layout_gravity="center"
-            android:text="yeuhieu3000"
+            android:text="DataRespon"
             android:textSize="20sp">
 
         </TextView>
@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             tools:ignore="SpeakableTextPresentCheck" />
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
             android:layout_width="match_parent"

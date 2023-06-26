@@ -2,8 +2,6 @@ package com.ocr.navigation.framgent;
 
 
 import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,35 +10,39 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.ocr.navigation.ChangeAddress;
-import com.ocr.navigation.ChangePassword;
+import com.ocr.navigation.ChangeAddressActivity;
+import com.ocr.navigation.OOP.UserManager;
 import com.ocr.navigation.R;
 import com.ocr.navigation.SignInActivity;
-import com.ocr.navigation.SignUpActivity;
-import com.ocr.navigation.UpDateMyProfile;
+import com.ocr.navigation.MainViewModel;
+import com.ocr.navigation.retrofit.com.ocr.navigation.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PesonFramgent extends Fragment {
     private View mView;
     private Button btnDangXuat,btnChinhSuaHoSo, btnChangePassword, btnChangeDiaChi;
+    private EditText edtEmailSignIn, edtPasswordSignIn;
     private ImageView ivAvatar;
     private TextView tvName,tvEmail;
 
-   private ArrayList<String> mArrayLichSu;
+    private List<User> mListUser;
+
+    private OnChangeAddressClickListener changeAddressClickListener;
+
+    private MainViewModel mainViewModel;
+
+    private ArrayList<String> mArrayLichSu;
 
     @Override
     public void onResume() {
@@ -48,17 +50,27 @@ public class PesonFramgent extends Fragment {
         Log.e( "Check","reload framgent Person" );
     }
 
+    public interface OnChangeAddressClickListener {
+        void onChangeAddressClick();
+    }
+
+    public void setOnChangeAddressClickListener(OnChangeAddressClickListener listener) {
+        changeAddressClickListener = listener;
+    }
+
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView= inflater.inflate( R.layout.framgent_person,container,false );
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         initUI();
         onClickListener();
 //        showUserInformation();
 
+        mListUser = mainViewModel.users;
         return mView;
     }
-
-
 
     public void initUI(){
         btnDangXuat=mView.findViewById( R.id.btn_dang_xuat );
@@ -67,7 +79,8 @@ public class PesonFramgent extends Fragment {
         tvEmail=mView.findViewById( R.id.tv_email );
         btnChinhSuaHoSo=mView.findViewById( R.id.btn_chinh_sua_profile );
         btnChangePassword=mView.findViewById(R.id.btn_change_password);
-        btnChangeDiaChi=mView.findViewById(R.id.btn_change_dia_chi);
+        btnChangeDiaChi=mView.findViewById(R.id.btn_change_address);
+//        edtEmailSignIn = mView.findViewById(R.id.edt_email)
     }
     private void onClickListener() {
         btnDangXuat.setOnClickListener( new View.OnClickListener() {
@@ -75,6 +88,7 @@ public class PesonFramgent extends Fragment {
             public void onClick(View v) {
                 Intent intent= new Intent(getActivity(), SignInActivity.class );
                 startActivity(intent);
+                UserManager.getInstance().dangXuat();
                 getActivity().finish();
             }
         } );
@@ -82,19 +96,35 @@ public class PesonFramgent extends Fragment {
 //        btnChangePassword.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                openChangePasswordActivity();
+//                Intent intent= new Intent(getActivity(), ChangePasswordActivity.class );
+//                startActivity(intent);
+//                getActivity().finish();
 //            }
 //        });
 
+
+
+        btnChangeDiaChi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+//                        String address = UserManager.getInstance().getCurrentUser().getAddress();
+//                        String city = UserManager.getInstance().getCurrentUser().getCity();
+
+                        // Gửi dữ liệu thông qua Intent
+                        Intent intent = new Intent(getActivity(), ChangeAddressActivity.class);
+//                        intent.putExtra("address", address);
+//                        intent.putExtra("city", city);
+                        startActivity(intent);
+
+                        return;
+
+
+                }
+        });
+
     }
-
-//    private void openChangePasswordActivity() {
-//        Intent intent = new Intent(getActivity(), ChangePassword.class);
-//        startActivity(intent);
-//        getActivity().finish();
-//    }
-
-
 
 
 //    public void showUserInformation(){

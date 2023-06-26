@@ -16,35 +16,37 @@ public interface APIService {
 
     //http://localhost/uniquilo/getaonu/readAoNu.php
 
-    Gson gson = new GsonBuilder().setDateFormat( "dd-MM-yyy" ).create();
+    Gson gson = new GsonBuilder()
+            .setLenient()
+            .setDateFormat("dd-MM-yyy").create();
     //https://jsonplaceholder.typicode.com/posts?userId=1
     //http://192.168.1.6/uniquilo/customers/read.php
     //
     APIService apiService = new Retrofit.Builder()
-            .baseUrl( Utils.BASE_URL )
-            .addConverterFactory( GsonConverterFactory.create(gson) )
+            .baseUrl(Utils.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-            .create( APIService.class );
+            .create(APIService.class);
 
     APIService apiServiceNu = new Retrofit.Builder()
-            .baseUrl( Utils.BASE_URL)
-            .addConverterFactory( GsonConverterFactory.create(gson) )
+            .baseUrl(Utils.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-            .create( APIService.class );
+            .create(APIService.class);
 
-   // http://localhost/uniquilo/getkids/readao.php
+    // http://localhost/uniquilo/getkids/readao.php
 
     APIService apiServiceKids = new Retrofit.Builder()
-            .baseUrl( Utils.BASE_URL)
-            .addConverterFactory( GsonConverterFactory.create(gson) )
+            .baseUrl(Utils.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-            .create( APIService.class );
+            .create(APIService.class);
 
     APIService apiServiceSearch = new Retrofit.Builder()
-            .baseUrl( Utils.BASE_URL)
-            .addConverterFactory( GsonConverterFactory.create(gson) )
+            .baseUrl(Utils.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-            .create( APIService.class );
+            .create(APIService.class);
 
     @GET("getMan/read.php")
     Call<DataProduct> getLisAoMen();
@@ -65,10 +67,6 @@ public interface APIService {
     Call<DataProduct> search(
             @Query("search") String search
     );
-
-
-
-
 }
 
 

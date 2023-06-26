@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity  {
     private DrawerLayout mdrawerLayout;
     private ViewPager mViewPager;
     private BottomNavigationView mBottomNavigationView;
+    private MainViewModel mainViewModel;
 
 
     private long backTime;
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
-
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         init();
 
         //bắt sự kiện navigation

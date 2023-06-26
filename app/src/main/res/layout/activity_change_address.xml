@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F9F9F9"
-    android:orientation="vertical"
-    tools:context=".UpDateMyProfile">
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +17,7 @@
             android:elevation="5dp"
             android:background="@color/white">
             <ImageView
-                android:id="@+id/iv_back"
+                android:id="@+id/iv_back_address"
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
                 android:layout_centerVertical="true"
@@ -32,7 +31,7 @@
                 android:text="THAY ĐỔI ĐỊA CHỈ "
                 android:textSize="20sp"
                 android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@+id/iv_back"
+                android:layout_toRightOf="@+id/iv_back_address"
                 />
         </RelativeLayout>
 
@@ -67,17 +66,6 @@
             android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="#737272" />
-
-        <EditText
-            android:id="@+id/edt_change_country"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:background="#EDEBEB"
-            android:layout_marginTop="20dp"
-            android:hint="Country"
-            android:textColor="@color/black"
-            android:textColorHint="#737272"/>
 
         <Button
             android:id="@+id/btn_update_pass"

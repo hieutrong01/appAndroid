@@ -205,7 +205,7 @@ public class TopFragment extends Fragment {
             @Override
             public void onFailure(Call<DataProduct> call, Throwable t) {
                 t.printStackTrace();
-                Toast.makeText( getActivity(), "Call api fall", Toast.LENGTH_SHORT ).show();
+//                Toast.makeText( getActivity(), "Call api fall", Toast.LENGTH_SHORT ).show();
 
             }
         } );
