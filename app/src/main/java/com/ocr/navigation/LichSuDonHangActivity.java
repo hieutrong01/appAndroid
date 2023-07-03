@@ -1,7 +1,8 @@
 package com.ocr.navigation;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -25,6 +26,7 @@ public class LichSuDonHangActivity extends AppCompatActivity {
     private List<Thanhtoan> list;
     private RecyclerView recyclerView;
     private DonHangAdapter donHangAdapter;
+    private ImageView imgBack;
 
 
     @Override
@@ -32,8 +34,9 @@ public class LichSuDonHangActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_lich_su_don_hang );
         initUI();
+        onClickLister();
         int userId = Integer.parseInt(UserManager.getInstance().getCurrentUser().getUser_id());
-       APIService.apiService.xemDonHang(userId).enqueue(new Callback<DonHangResponse>() {
+        APIService.apiService.xemDonHang(userId).enqueue(new Callback<DonHangResponse>() {
             @Override
             public void onResponse(Call<DonHangResponse> call, Response<DonHangResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -42,13 +45,9 @@ public class LichSuDonHangActivity extends AppCompatActivity {
                         list = donHangResponse.getResult();
                         donHangAdapter=new DonHangAdapter( list,LichSuDonHangActivity.this );
                         recyclerView.setAdapter( donHangAdapter );
-
-                        Log.d("List_hoadon", list.size() + "");
-
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<DonHangResponse> call, Throwable t) {
                 // Xử lý lỗi khi gọi API thất bại
@@ -56,12 +55,23 @@ public class LichSuDonHangActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void initUI() {
         recyclerView=findViewById( R.id.recycler_view );
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager( this );
         recyclerView.setLayoutManager( linearLayoutManager );
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration( recyclerView.getContext(),linearLayoutManager.getOrientation() );
         recyclerView.addItemDecoration( dividerItemDecoration );
+        imgBack=findViewById( R.id.iv_back );
 
+    }
+    private void onClickLister() {
+        imgBack.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        } );
     }
 }
