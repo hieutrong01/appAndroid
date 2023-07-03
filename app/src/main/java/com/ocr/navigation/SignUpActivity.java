@@ -9,18 +9,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.ocr.navigation.retrofit.ApiInterface;
 import com.ocr.navigation.retrofit.RetrofitClient;
-import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
-import com.ocr.navigation.retrofit.com.ocr.navigation.SignUpResponse;
-import com.ocr.navigation.retrofit.com.ocr.navigation.UserModel;
+import com.ocr.navigation.retrofit.SignUpResponse;
 
-import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
-    ApiInterface apiInterface;
+    private ApiInterface apiInterface;
 //    CompositeDisposable compositeDisposable = new CompositeDisposable();
     private EditText editUsername, editGender, editDateOfBirth, editPhoneNumber, editAddress, editCity, editEmail, editPassword, editRePassword;
     private Button btnSignUp;

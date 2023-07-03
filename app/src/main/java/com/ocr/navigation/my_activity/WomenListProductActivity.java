@@ -179,10 +179,229 @@ public class WomenListProductActivity extends AppCompatActivity {
                 break;
             }
             case 1: {
-
+                callApiDoMacNgoai();
+                break;
+            }
+            case 2:{
+                callApiQuan();
+                break;
+            }
+            case 3:{
+                callApiVay();
+                break;
+            }
+            case 4: {
+                callApiBau();
+                break;
+            }
+            case 5:{
+                callApiDoLot();
+                break;
+            }
+            case 6:{
+                callApiDoMacNha();
+                break;
             }
         }
         return list;
+    }
+
+    private void callApiDoMacNha() {
+        APIService.apiService.getLisBauWomen().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( WomenListProductActivity.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+
+            }
+        } );
+    }
+
+    private void callApiDoLot() {
+        APIService.apiService.getLisLotWomen().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( WomenListProductActivity.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+
+            }
+        } );
+    }
+
+    private void callApiBau() {
+        APIService.apiService.getLisBauWomen().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( WomenListProductActivity.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+
+            }
+        } );
+    }
+
+    private void callApiVay() {
+        APIService.apiService.getLisVayWomen().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( WomenListProductActivity.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+
+            }
+        } );
+    }
+
+    private void callApiQuan() {
+        APIService.apiServiceNu.getLisQuanWomen().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( WomenListProductActivity.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+
+            }
+        } );
+    }
+
+    private void callApiDoMacNgoai() {
+        APIService.apiServiceNu.getLisDoMacNgoaiWomem().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( WomenListProductActivity.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+
+            }
+        } );
     }
 
     private void callApiAoWomen() {

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
-import com.ocr.navigation.retrofit.com.ocr.navigation.User;
+
 
 public class UserManager {
     private static UserManager instance;

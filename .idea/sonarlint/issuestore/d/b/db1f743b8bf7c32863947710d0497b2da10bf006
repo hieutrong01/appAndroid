@@ -1,19 +1,58 @@
 
 =
-java:S1604:"(Make this anonymous inner class a lambda(ã¾Ù[
-C
-java:S1604C"(Make this anonymous inner class a lambda(Á¾æ»ûÿÿÿÿ
+java:S1604U"(Make this anonymous inner class a lambda(ã¾Ù[
+>
+java:S1604j"(Make this anonymous inner class a lambda(³À•¿
+>
+java:S1604x"(Make this anonymous inner class a lambda(à¼è
 H
-java:S2387"-"mView" is the name of a field in "Fragment".(¼ğŠışÿÿÿÿ
-H
-java:S1659"-Declare "btnChinhSuaHoSo" on a separate line.(Ü¡˜ôøÿÿÿÿ
+java:S2387"-"mView" is the name of a field in "Fragment".(¼ğŠışÿÿÿÿ
+g
+java:S1659 "LDeclare "btnChinhSuaHoSo" and all following declarations on a separate line.(ïÃ°Àÿÿÿÿÿ
+J
+java:S1659!"/Declare "edtPasswordSignIn" on a separate line.(¼ÇÚíùÿÿÿÿ
 @
-java:S1659"%Declare "tvEmail" on a separate line.(Ïš¨§úÿÿÿÿ
+java:S1659#"%Declare "tvEmail" on a separate line.(Ïš¨§úÿÿÿÿ
+{
+java:S1450 "`Remove the "btnChangePassword" field and declare it as a local variable in the relevant methods.(ïÃ°Àÿÿÿÿÿ
+y
+java:S1450 "^Remove the "btnChinhSuaHoSo" field and declare it as a local variable in the relevant methods.(ïÃ°Àÿÿÿÿÿ
+
+java:S1450'"iRemove the "changeAddressClickListener" field and declare it as a local variable in the relevant methods.(²‚
 m
-java:S1450"WRemove the "ivAvatar" field and declare it as a local variable in the relevant methods.(æüÜ’
+java:S1450""WRemove the "ivAvatar" field and declare it as a local variable in the relevant methods.(æüÜ’
+s
+java:S1450%"XRemove the "mListUser" field and declare it as a local variable in the relevant methods.(¥©–½ùÿÿÿÿ
+r
+java:S1450)"\Remove the "mainViewModel" field and declare it as a local variable in the relevant methods.(™®Õâ
+q
+java:S1450#"VRemove the "tvEmail" field and declare it as a local variable in the relevant methods.(Ïš¨§úÿÿÿÿ
+p
+java:S1450#"URemove the "tvName" field and declare it as a local variable in the relevant methods.(Ïš¨§úÿÿÿÿ
+V	java:S125C"<This block of commented-out lines of code should be removed.(×˜ãùÿÿÿÿ
+V	java:S125_"<This block of commented-out lines of code should be removed.(ò³ÆĞüÿÿÿÿ
 1
-java:S3626P"Remove this redundant jump.(ûÁİ…
+java:S3626u"Remove this redundant jump.(ûÁİ…
+V	java:S125n"<This block of commented-out lines of code should be removed.(¿Üìˆúÿÿÿÿ
+Q	java:S125r"<This block of commented-out lines of code should be removed.(®˜ºª
+R	java:S125„"<This block of commented-out lines of code should be removed.(¿ŞÜ–
+N
+java:S1068 "3Remove this unused "btnChinhSuaHoSo" private field.(ïÃ°Àÿÿÿÿÿ
+P
+java:S1068 "5Remove this unused "btnChangePassword" private field.(ïÃ°Àÿÿÿÿÿ
+M
+java:S1068!"2Remove this unused "edtEmailSignIn" private field.(¼ÇÚíùÿÿÿÿ
+P
+java:S1068!"5Remove this unused "edtPasswordSignIn" private field.(¼ÇÚíùÿÿÿÿ
 B
-java:S1068",Remove this unused "ivAvatar" private field.(æüÜ’
+java:S1068"",Remove this unused "ivAvatar" private field.(æüÜ’
+E
+java:S1068#"*Remove this unused "tvName" private field.(Ïš¨§úÿÿÿÿ
+F
+java:S1068#"+Remove this unused "tvEmail" private field.(Ïš¨§úÿÿÿÿ
+H
+java:S1068%"-Remove this unused "mListUser" private field.(¥©–½ùÿÿÿÿ
+T
+java:S1068'">Remove this unused "changeAddressClickListener" private field.(²‚
 K
-java:S1068!"0Remove this unused "mArrayLichSu" private field.(°ãíáûÿÿÿÿ
+java:S1068+"0Remove this unused "mArrayLichSu" private field.(°ãíáûÿÿÿÿ

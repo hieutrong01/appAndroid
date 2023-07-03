@@ -1,6 +1,7 @@
-package com.ocr.navigation.retrofit.com.ocr.navigation;
+package com.ocr.navigation.retrofit;
 
-import java.util.List;
+
+import com.ocr.navigation.OOP.ResponePost;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -20,7 +21,7 @@ public interface ApiInterface {
 //                    .build()
 //                    .create(ApiInterface.class);
 
-    @GET("read.php")
+    @GET("getSignIn/readGetUser.php")
     Call<GetUserResponse> getListUser();
 
     @POST("dangky.php")
@@ -35,6 +36,23 @@ public interface ApiInterface {
             @Field("email") String email,
             @Field("password") String password
     );
+
+    @POST("donhang.php")
+    @FormUrlEncoded
+    Call<ResponePost> createOder(
+            @Field("user_id")int user_id,
+            @Field("soluong") int soluong,
+            @Field("total_money") int total_money,
+            @Field("status") String status,
+            @Field("payment_methods") String payment_methods,
+            @Field("note") String note,
+            @Field("email") String email,
+            @Field("sdt") String sdt,
+            @Field("diachi") String diachi,
+            @Field("created_date") String created_date,
+            @Field("chitiet") String chitiet
+    );
+
 }
 
 

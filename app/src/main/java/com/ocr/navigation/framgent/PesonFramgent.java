@@ -5,11 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-
 import android.view.View;
 import android.view.ViewGroup;
-
-
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,18 +17,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.ocr.navigation.ChangeAddressActivity;
+import com.ocr.navigation.LichSuDonHangActivity;
+import com.ocr.navigation.MainViewModel;
+import com.ocr.navigation.OOP.User;
 import com.ocr.navigation.OOP.UserManager;
 import com.ocr.navigation.R;
 import com.ocr.navigation.SignInActivity;
-import com.ocr.navigation.MainViewModel;
-import com.ocr.navigation.retrofit.com.ocr.navigation.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PesonFramgent extends Fragment {
     private View mView;
-    private Button btnDangXuat,btnChinhSuaHoSo, btnChangePassword, btnChangeDiaChi;
+    private Button btnDangXuat,btnChinhSuaHoSo, btnChangePassword, btnChangeDiaChi,btnLichSuDonHang;
     private EditText edtEmailSignIn, edtPasswordSignIn;
     private ImageView ivAvatar;
     private TextView tvName,tvEmail;
@@ -80,6 +78,7 @@ public class PesonFramgent extends Fragment {
         btnChinhSuaHoSo=mView.findViewById( R.id.btn_chinh_sua_profile );
         btnChangePassword=mView.findViewById(R.id.btn_change_password);
         btnChangeDiaChi=mView.findViewById(R.id.btn_change_address);
+        btnLichSuDonHang=mView.findViewById( R.id.btn_lich_su_don_hang );
 //        edtEmailSignIn = mView.findViewById(R.id.edt_email)
     }
     private void onClickListener() {
@@ -108,21 +107,24 @@ public class PesonFramgent extends Fragment {
             @Override
             public void onClick(View v) {
 
-
 //                        String address = UserManager.getInstance().getCurrentUser().getAddress();
 //                        String city = UserManager.getInstance().getCurrentUser().getCity();
-
                         // Gửi dữ liệu thông qua Intent
                         Intent intent = new Intent(getActivity(), ChangeAddressActivity.class);
 //                        intent.putExtra("address", address);
 //                        intent.putExtra("city", city);
                         startActivity(intent);
-
                         return;
-
-
                 }
         });
+        btnLichSuDonHang.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LichSuDonHangActivity.class );
+                startActivity( intent );
+            }
+        } );
+
 
     }
 

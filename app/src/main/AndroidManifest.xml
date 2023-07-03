@@ -19,6 +19,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".LichSuDonHangActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ChangePasswordActivity"
             android:exported="false">
             <meta-data
@@ -106,6 +113,7 @@
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/title_activity_fast_screen"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.Navigation.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"

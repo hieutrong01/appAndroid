@@ -1,8 +1,29 @@
 
+m	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ×ö’8ŸÂÂ1
+r	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Éôöñúÿÿÿÿ8ŸÂÂ1
+r	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ´Ñ°úÿÿÿÿ8ŸÂÂ1
+r	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âƒˆºşÿÿÿÿ8ŸŸÂÂ1
+m	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìí§ƒ8ŸŸÂÂ1
+l	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê”78ŸŸÂÂ1
+r	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âŒüªúÿÿÿÿ8ŸŸÂÂ1
+m	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÛœ8¡ŸÂÂ1
+m	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µÖìæ8¡ŸÂÂ1
 >
-java:S1604*"(Make this anonymous inner class a lambda(±×„®
-C
-java:S1604@"(Make this anonymous inner class a lambda(¥íîŸÿÿÿÿÿ
-@
-java:S1659"*Declare "editPassword" on a separate line.(õ‹ë÷
-V	java:S125E"<This block of commented-out lines of code should be removed.(Îèôèøÿÿÿÿ
+java:S1604$"(Make this anonymous inner class a lambda(±×„®
+d
+java:S1659"GDeclare "editGender" and all following declarations on a separate line.(Ù—ª¥8öŸÂÂ1
+]	java:S125"<This block of commented-out lines of code should be removed.(¸è›óùÿÿÿÿ8ûŸÂÂ1
+]	java:S125"<This block of commented-out lines of code should be removed.(¸è›óùÿÿÿÿ8üŸÂÂ1
+]	java:S125"<This block of commented-out lines of code should be removed.(¸è›óùÿÿÿÿ8üŸÂÂ1
+]	java:S125"<This block of commented-out lines of code should be removed.(¸è›óùÿÿÿÿ8üŸÂÂ1
+]	java:S125"<This block of commented-out lines of code should be removed.(¸è›óùÿÿÿÿ8üŸÂÂ1
+]	java:S125"<This block of commented-out lines of code should be removed.(¸è›óùÿÿÿÿ8ıŸÂÂ1
+]	java:S125"<This block of commented-out lines of code should be removed.(¸è›óùÿÿÿÿ8ıŸÂÂ1
+]	java:S125"<This block of commented-out lines of code should be removed.(¸è›óùÿÿÿÿ8ıŸÂÂ1
+]	java:S125"<This block of commented-out lines of code should be removed.(¸è›óùÿÿÿÿ8ıŸÂÂ1
+]	java:S125 "<This block of commented-out lines of code should be removed.(Ô²òáşÿÿÿÿ8€ ÂÂ1
+o
+java:S3776-"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(Ë‰¶Ì8Ã ÂÂ1
+]	java:S125r"<This block of commented-out lines of code should be removed.(ÄÜÍğÿÿÿÿÿ8ó ÂÂ1
+]	java:S125x"<This block of commented-out lines of code should be removed.(Œ¼Ğ¬üÿÿÿÿ8ô ÂÂ1
+^	java:S125"<This block of commented-out lines of code should be removed.(ÌÚŞ‰ùÿÿÿÿ8ô ÂÂ1

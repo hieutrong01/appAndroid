@@ -121,6 +121,7 @@
            android:textColor="@color/black"
            android:background="@color/white"/>
        <Button
+           android:id="@+id/btn_lich_su_don_hang"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:backgroundTint="@color/white"

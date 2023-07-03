@@ -1,0 +1,12 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤†åÜ
+@
+java:S16599"*Declare "imgFavourite" on a separate line.(íçû„
+^
+java:S1659:"HDeclare "tvMaProduct" and all following declarations on a separate line.(ŽôÒž
+@
+java:S1068"+Remove this unused "context" private field.(êÝç
+F
+java:S10689"0Remove this unused "imgFavourite" private field.(íçû„
+F
+java:S1068:"0Remove this unused "tvGiaProduct" private field.(ŽôÒž

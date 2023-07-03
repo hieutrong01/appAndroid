@@ -232,6 +232,22 @@
 
 
     </TableLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HÀNG MỚI VỀ"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:layout_marginTop="44dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyc_product_sale"
+        android:padding="15dp"/>
+
 
 
 </LinearLayout>

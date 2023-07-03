@@ -1,9 +1,9 @@
-package com.ocr.navigation.retrofit.com.ocr.navigation;
+package com.ocr.navigation.retrofit;
 
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.ocr.navigation.retrofit.com.ocr.navigation.User;
+import com.ocr.navigation.OOP.User;
 
 import java.util.List;
 
