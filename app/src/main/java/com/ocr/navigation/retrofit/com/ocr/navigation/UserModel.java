@@ -10,7 +10,7 @@ public class UserModel {
 
     @SerializedName("message")
     String message;
-    List<com.ocr.navigation.retrofit.com.ocr.navigation.User> result = null;
+    List<com.ocr.navigation.OOP.User> result = null;
 
     public boolean isSuccess() {
         return success;
@@ -28,11 +28,11 @@ public class UserModel {
         this.message = message;
     }
 
-    public List<com.ocr.navigation.retrofit.com.ocr.navigation.User> getResult() {
+    public List<com.ocr.navigation.OOP.User> getResult() {
         return result;
     }
 
-    public void setResult(List<com.ocr.navigation.retrofit.com.ocr.navigation.User> result) {
+    public void setResult(List<com.ocr.navigation.OOP.User> result) {
         this.result = result;
     }
 }

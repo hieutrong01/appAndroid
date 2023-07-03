@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +23,8 @@ import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
     ApiInterface apiInterface;
-//    CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private EditText editUsername, editGender, editDateOfBirth, editPhoneNumber, editAddress, editCity, editEmail, editPassword, editRePassword;
+    private EditText editUsername, editPhoneNumber, editAddress, editCity, editEmail, editPassword, editRePassword;
+    private RadioButton rbNam, rbNu;
     private Button btnSignUp;
 
     @Override
@@ -46,21 +48,21 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void dangKy() {
         String str_user_name = editUsername.getText().toString().trim();
-        String str_gender = editGender.getText().toString().trim();
-        String str_dateofbirth = editDateOfBirth.getText().toString().trim();
         String str_phone_number = editPhoneNumber.getText().toString().trim();
         String str_address = editAddress.getText().toString().trim();
         String str_city = editCity.getText().toString().trim();
         String str_email = editEmail.getText().toString().trim();
         String str_password = editPassword.getText().toString().trim();
         String str_repassword = editRePassword.getText().toString().trim();
+        //checked nam nu
+        Boolean isGenderChecked = rbNam.isChecked() || rbNu.isChecked();
+        boolean isMale = isGenderChecked && rbNam.isChecked();
+
 
         if (TextUtils.isEmpty(str_user_name)) {
             Toast.makeText(getApplicationContext(), "Bạn chưa nhập tên người dùng", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(str_gender)) {
+        } else if (!isGenderChecked) {
             Toast.makeText(getApplicationContext(), "Bạn chưa chọn giới tính", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(str_dateofbirth)) {
-            Toast.makeText(getApplicationContext(), "Bạn chưa nhập ngày sinh", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(str_phone_number)) {
             Toast.makeText(getApplicationContext(), "Bạn chưa nhập số điên thoại", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(str_address)) {
@@ -73,11 +75,12 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Bạn chưa nhập mật khẩu", Toast.LENGTH_SHORT).show();
         } else {
             if (str_password.equals(str_repassword)) {
-                apiInterface.dangky(str_user_name,str_gender,str_dateofbirth, str_phone_number, str_address, str_city, str_email, str_password).enqueue(new Callback<SignUpResponse>() {
+                apiInterface.dangky(str_user_name, isMale ? "Nam" : "Nữ", str_phone_number, str_address, str_city, str_email, str_password).enqueue(new Callback<SignUpResponse>() {
                     @Override
                     public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(SignUpActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                            finish();
                         } else {
                             Toast.makeText(SignUpActivity.this, "Đăng ký thất bại" + response.code(), Toast.LENGTH_SHORT).show();
                         }
@@ -101,8 +104,8 @@ public class SignUpActivity extends AppCompatActivity {
         apiInterface = RetrofitClient.getApi();
 
         editUsername = findViewById(R.id.edt_username);
-        editGender = findViewById(R.id.edt_gender);
-        editDateOfBirth = findViewById(R.id.edt_date_of_bỉth);
+        rbNam = findViewById(R.id.rb_nam);
+        rbNu = findViewById(R.id.rb_nu);
         editPhoneNumber = findViewById(R.id.edt_phone_number);
         editAddress = findViewById(R.id.edt_address);
         editCity = findViewById(R.id.edt_city);
@@ -111,13 +114,6 @@ public class SignUpActivity extends AppCompatActivity {
         editRePassword = findViewById(R.id.edt_repassword);
         btnSignUp = findViewById(R.id.btn_sign_up);
     }
-
-//    @Override
-//    protected void onDestroy() {
-//        compositeDisposable.clear();
-//        super.onDestroy();
-//    }
-
 
     //    private void initListener() {
 //        btnSignUp.setOnClickListener( new View.OnClickListener() {

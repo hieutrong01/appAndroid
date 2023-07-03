@@ -1,8 +1,9 @@
 package com.ocr.navigation.retrofit.com.ocr.navigation;
 
-import java.util.List;
+import com.ocr.navigation.OOP.User;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -20,21 +21,35 @@ public interface ApiInterface {
 //                    .build()
 //                    .create(ApiInterface.class);
 
-    @GET("read.php")
+    @GET("getUser/read.php")
     Call<GetUserResponse> getListUser();
 
-    @POST("dangky.php")
+    @POST("getUser/dangky.php")
     @FormUrlEncoded
     Call<SignUpResponse> dangky(
             @Field("username") String username,
             @Field("gender") String gender,
-            @Field("dateofbirth") String dateofbirth,
             @Field("phoneNumber") String phonenumber,
             @Field("address") String address,
             @Field("city") String city,
             @Field("email") String email,
             @Field("password") String password
     );
+
+
+    @POST("getUser/update_user.php")
+    @FormUrlEncoded
+    Call<ResponseUpDateUser> updateUser(
+            @Field("user_id") String user_id,
+            @Field("username") String username,
+            @Field("gender") String gender,
+            @Field("phoneNumber") String phonenumber,
+            @Field("address") String address,
+            @Field("city") String city,
+            @Field("email") String email,
+            @Field("password") String password
+    );
+
 }
 
 

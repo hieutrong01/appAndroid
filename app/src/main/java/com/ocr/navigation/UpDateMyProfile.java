@@ -1,177 +1,185 @@
 package com.ocr.navigation;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.IOException;
+import com.ocr.navigation.OOP.User;
+import com.ocr.navigation.OOP.UserManager;
+import com.ocr.navigation.retrofit.RetrofitClient;
+import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
+import com.ocr.navigation.retrofit.com.ocr.navigation.ResponseUpDateUser;
+
+
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UpDateMyProfile extends AppCompatActivity {
-    private static final int MY_REQUEST_CODE=10;
-    private ImageView ivBack,imgAvatar;
-    private EditText edtFullName,edtEmail;
+    ApiInterface apiInterface;
+    private ImageView ivBackAddress;
+    private TextView tvEmail;
+    private EditText edtChangeName, edtChangeCity, edtChangeAddress, edtChangePhone;
     private Button btnUpdate;
-    private Uri mUri;
-    private ActivityResultLauncher<Intent> mActivityResultLauncher= registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-        @Override
-        public void onActivityResult(ActivityResult result) {
-            if (result.getResultCode()==RESULT_OK){
-                Intent intent=result.getData();
-                if (intent==null){
-                    return;
-                }
-                 Uri uri =intent.getData();
-                setmUri( uri );
-                try {
-                    Bitmap bitmap= MediaStore.Images.Media.getBitmap( getContentResolver(),mUri );
-                    imgAvatar.setImageBitmap( bitmap );
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+    private RadioButton radio_Nam, radio_nu;
+    private  User user;
 
-        }
-    } );
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_up_date_my_profile );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_up_date_my_profile);
         initUI();
-        setUserInformation();
         onClickListener();
     }
 
-
-    public void initUI(){
-        ivBack=findViewById( R.id.iv_back );
-        imgAvatar=findViewById( R.id.img_avata );
-        edtFullName=findViewById( R.id.edt_full_name );
-        edtEmail=findViewById( R.id.edt_email1 );
-        btnUpdate=findViewById( R.id.btn_up_date );
-
-    }
-    //set dữ liệu lên các item
-    private void setUserInformation() {
-        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-        if (user==null){
-            return;
-        }
-        edtFullName.setText( user.getDisplayName() );
-        edtEmail.setText( user.getEmail() );
-        //set ảnh lên giao diện, nếu ko load đc ảnh thì lấy ảnh mặc định.
-        Glide.with(UpDateMyProfile.this).load( user.getPhotoUrl() ).
-                error( R.drawable.ic_avatar ).into( imgAvatar );
-
-    }
-
-
     private void onClickListener() {
-        ivBack.setOnClickListener( new View.OnClickListener() {
+        ivBackAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
-        } );
-        imgAvatar.setOnClickListener( new View.OnClickListener() {
-            @Override
-            //chọn ảnh từ Gallery, thì phải request permission READ_EXTERNAL_STORAGE
-            public void onClick(View v) {
-              openGallery();
-            }
-        } );
-        btnUpdate.setOnClickListener( new View.OnClickListener() {
+        });
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickUpdatProfile();
+                updateUserAddress();
             }
-        } );
-    }
-    private void onClickRequestPermission() {
-        //từ android 6 trở lên thì ta thực hiện request permission
-
-        if (checkSelfPermission( Manifest.permission.READ_EXTERNAL_STORAGE )== PackageManager.PERMISSION_GRANTED){
-
-            openGallery();
-        }else {
-
-            String[] permission ={Manifest.permission.READ_EXTERNAL_STORAGE };
-
-            requestPermissions( permission,MY_REQUEST_CODE );
-            Toast.makeText( this, "hello", Toast.LENGTH_SHORT ).show();
-        }
+        });
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult( requestCode, permissions, grantResults );
-        if (requestCode==MY_REQUEST_CODE){
-            if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                openGallery();
+    private void updateUserAddress() {
+        String id = UserManager.getInstance().getCurrentUser().getUser_id();
+
+        String str_user_name = edtChangeName.getText().toString().trim();
+        edtChangeName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
-        }
-    }
 
-    private void openGallery() {
-        Intent intent =new Intent();
-        intent.setType( "image/*" );
-        intent.setAction( Intent.ACTION_GET_CONTENT );
-        mActivityResultLauncher.launch( Intent.createChooser( intent,"Select Picture" ) );
-    }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-    public void setmUri(Uri mUri) {
-        this.mUri = mUri;
-    }
+            }
 
-    private void clickUpdatProfile() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user== null){
-            return;
-        }
-        String strFullname =edtFullName.getText().toString().trim();
+            @Override
+            public void afterTextChanged(Editable s) {
+                user.setUsername(edtChangeName.getText().toString().trim());
+            }
+        });
+        String str_phone_number = edtChangePhone.getText().toString().trim();
+        edtChangePhone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                .setDisplayName( strFullname )
-                .setPhotoUri( mUri ).build();
-        user.updateProfile(profileUpdates)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText( UpDateMyProfile.this, "Update thanh cong", Toast.LENGTH_SHORT ).show();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                user.setPhoneNumber(edtChangePhone.getText().toString().trim());
+
+            }
+        });
+        String str_address = edtChangeAddress.getText().toString().trim();
+        String str_city = edtChangeCity.getText().toString().trim();
+        String email= tvEmail.getText().toString().trim();
+        String password=UserManager.getInstance().getCurrentUser().getPassword();
+        //checked nam nu
+        Boolean isGenderChecked = radio_Nam.isChecked() || radio_nu.isChecked();
+        boolean isMale = isGenderChecked && radio_Nam.isChecked();
+
+        if (TextUtils.isEmpty(str_user_name)) {
+            Toast.makeText(getApplicationContext(), "Bạn chưa nhập tên người dùng", Toast.LENGTH_SHORT).show();
+        } else if (!isGenderChecked) {
+            Toast.makeText(getApplicationContext(), "Bạn chưa chọn giới tính", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(str_phone_number)) {
+            Toast.makeText(getApplicationContext(), "Bạn chưa nhập số điên thoại", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(str_address)) {
+            Toast.makeText(getApplicationContext(), "Bạn chưa nhập địa chỉ", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(str_city)) {
+            Toast.makeText(getApplicationContext(), "Bạn chưa nhập thành phố", Toast.LENGTH_SHORT).show();
+        } else {
+            apiInterface.updateUser(id,str_user_name, isMale ? "Nam" : "Nữ", str_phone_number, str_address, str_city,email,password).enqueue(new Callback<ResponseUpDateUser>() {
+                @Override
+                public void onResponse(Call<ResponseUpDateUser> call, Response<ResponseUpDateUser> response) {
+                    if (response.isSuccessful()) {
+
+                        if (response.body() != null) {
+                            String status = String.valueOf(response.body().getMessage());
+                            Log.d("AAA","aa"+status);
+
+
+
+
                         }
-                        else {
-                            Toast.makeText( UpDateMyProfile.this, "Update fail", Toast.LENGTH_SHORT ).show();
-                        }
+
+                        Toast.makeText(UpDateMyProfile.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                    Toast.makeText(UpDateMyProfile.this, "Cập nhật thất ", Toast.LENGTH_SHORT).show();
+
                     }
-                });
+                }
+
+                @Override
+                public void onFailure(Call<ResponseUpDateUser> call, Throwable t) {
+                    Toast.makeText(UpDateMyProfile.this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                    t.printStackTrace();
+                }
+            });
+        }
+
+////
     }
+
+
+    private void initUI() {
+        apiInterface = RetrofitClient.getApi();
+
+        ivBackAddress = findViewById(R.id.iv_back_address);
+        tvEmail = findViewById(R.id.tv_email);
+        edtChangeName = findViewById(R.id.edt_change_name);
+        edtChangeCity = findViewById(R.id.edt_change_city);
+        edtChangeAddress = findViewById(R.id.edt_change_address);
+        edtChangePhone = findViewById(R.id.edt_change_phone);
+        radio_Nam = findViewById(R.id.radio_nam);
+        radio_nu = findViewById(R.id.radio_nu);
+        btnUpdate = findViewById(R.id.btn_update);
+
+        tvEmail.setText(UserManager.getInstance().getCurrentUser().getEmail());
+        edtChangeName.setText(UserManager.getInstance().getCurrentUser().getUsername());
+        edtChangeAddress.setText(UserManager.getInstance().getCurrentUser().getAddress());
+        edtChangeCity.setText(UserManager.getInstance().getCurrentUser().getCity());
+        edtChangePhone.setText(UserManager.getInstance().getCurrentUser().getPhoneNumber());
+
+        radio_Nam.setChecked(UserManager.getInstance().getCurrentUser().getGender().equals("Nam"));
+        radio_nu.setChecked(UserManager.getInstance().getCurrentUser().getGender().equals("Nữ"));
+
+    }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        // Thực hiện các thao tác khác (nếu cần) khi quay lại màn hình trước đó.git
+    }
+
 
 }

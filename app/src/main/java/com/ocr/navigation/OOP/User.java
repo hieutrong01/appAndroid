@@ -1,10 +1,22 @@
-package com.ocr.navigation.retrofit.com.ocr.navigation;
+package com.ocr.navigation.OOP;
 
 import java.io.Serializable;
 
 public class User implements Serializable {
 
     private String user_id;
+
+    public User(String user_id, String username, String gender, String phoneNumber, String address, String city, String email, String password) {
+        this.user_id = user_id;
+        this.username = username;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.city = city;
+        this.email = email;
+        this.password = password;
+    }
+
     private String username;
     private String gender;
     private String dateofbirth;
@@ -13,11 +25,6 @@ public class User implements Serializable {
     private String city;
     private String email;
     private String password;
-
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
 
     public String getUser_id() {
         return user_id;

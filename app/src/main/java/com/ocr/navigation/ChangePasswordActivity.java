@@ -32,7 +32,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private void initUI() {
         ivBackPass = findViewById(R.id.iv_back_pass);
         edtNewPass = findViewById(R.id.edt_new_pass);
-        edtReNewPass = findViewById(R.id.edt_confirm_pass);
+//        edtReNewPass = findViewById(R.id.edt_confirm_pass);
 
     }
 

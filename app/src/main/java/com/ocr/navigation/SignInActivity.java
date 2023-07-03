@@ -24,7 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ocr.navigation.retrofit.RetrofitClient;
 import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
 import com.ocr.navigation.retrofit.com.ocr.navigation.GetUserResponse;
-import com.ocr.navigation.retrofit.com.ocr.navigation.User;
+import com.ocr.navigation.OOP.User;
 
 import java.util.List;
 

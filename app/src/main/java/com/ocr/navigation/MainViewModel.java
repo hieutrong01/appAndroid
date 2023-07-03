@@ -3,7 +3,7 @@ package com.ocr.navigation;
 import androidx.lifecycle.ViewModel;
 
 import com.ocr.navigation.OOP.UserManager;
-import com.ocr.navigation.retrofit.com.ocr.navigation.User;
+import com.ocr.navigation.OOP.User;
 
 import java.util.ArrayList;
 import java.util.List;
