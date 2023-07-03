@@ -20,8 +20,9 @@
         android:id="@+id/edt_email_in"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
-        android:hint="Email"
+        android:background="@drawable/bocong1"
+        android:hint="  Email"
+        android:elevation="2dp"
         android:imeOptions="actionNext"
         android:inputType="textEmailAddress"
         android:textColor="@color/black"
@@ -30,8 +31,9 @@
         android:id="@+id/edt_password_in"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Password"
-        android:background="@color/white"
+        android:hint="  Password"
+        android:elevation="2dp"
+        android:background="@drawable/bocong1"
         android:textColorHint="#737272"
         android:layout_marginTop="20dp"
         android:inputType="textPassword"
@@ -43,6 +45,8 @@
         android:layout_height="wrap_content"
        android:backgroundTint="@color/white"
         android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:textSize="18sp"
         android:textColor="@color/black"
         android:text="Sign In"/>
     <LinearLayout
@@ -68,7 +72,6 @@
             android:textSize="16sp"
             android:textColor="#1A37DC"
             android:text="Sign Up"/>
-
 
     </LinearLayout>
 
