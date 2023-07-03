@@ -1,9 +1,7 @@
 package com.ocr.navigation;
 
 import android.os.Bundle;
-import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -22,8 +20,6 @@ import com.ocr.navigation.retrofit.RetrofitClient;
 import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
 import com.ocr.navigation.retrofit.com.ocr.navigation.ResponseUpDateUser;
 
-
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +31,7 @@ public class UpDateMyProfile extends AppCompatActivity {
     private EditText edtChangeName, edtChangeCity, edtChangeAddress, edtChangePhone;
     private Button btnUpdate;
     private RadioButton radio_Nam, radio_nu;
-    private  User user;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +52,9 @@ public class UpDateMyProfile extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateUserAddress();
+                updateUser();
             }
         });
-    }
-
-    private void updateUserAddress() {
-        String id = UserManager.getInstance().getCurrentUser().getUser_id();
-
-        String str_user_name = edtChangeName.getText().toString().trim();
         edtChangeName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -78,10 +68,13 @@ public class UpDateMyProfile extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                user.setUsername(edtChangeName.getText().toString().trim());
+                if (edtChangeName.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Bạn chưa nhập tên người dùng", Toast.LENGTH_SHORT).show();
+                } else {
+                    user.setUsername(edtChangeName.getText().toString().trim());
+                }
             }
         });
-        String str_phone_number = edtChangePhone.getText().toString().trim();
         edtChangePhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -95,47 +88,84 @@ public class UpDateMyProfile extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                user.setPhoneNumber(edtChangePhone.getText().toString().trim());
-
+                if (edtChangePhone.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Bạn chưa nhập số điên thoại", Toast.LENGTH_SHORT).show();
+                } else {
+                    user.setPhoneNumber(edtChangePhone.getText().toString().trim());
+                }
             }
         });
-        String str_address = edtChangeAddress.getText().toString().trim();
-        String str_city = edtChangeCity.getText().toString().trim();
-        String email= tvEmail.getText().toString().trim();
-        String password=UserManager.getInstance().getCurrentUser().getPassword();
-        //checked nam nu
-        Boolean isGenderChecked = radio_Nam.isChecked() || radio_nu.isChecked();
-        boolean isMale = isGenderChecked && radio_Nam.isChecked();
+        edtChangeAddress.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        if (TextUtils.isEmpty(str_user_name)) {
-            Toast.makeText(getApplicationContext(), "Bạn chưa nhập tên người dùng", Toast.LENGTH_SHORT).show();
-        } else if (!isGenderChecked) {
-            Toast.makeText(getApplicationContext(), "Bạn chưa chọn giới tính", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(str_phone_number)) {
-            Toast.makeText(getApplicationContext(), "Bạn chưa nhập số điên thoại", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(str_address)) {
-            Toast.makeText(getApplicationContext(), "Bạn chưa nhập địa chỉ", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(str_city)) {
-            Toast.makeText(getApplicationContext(), "Bạn chưa nhập thành phố", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (edtChangeAddress.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Bạn chưa nhập địa chỉ", Toast.LENGTH_SHORT).show();
+                } else {
+                    user.setAddress(edtChangeAddress.getText().toString().trim());
+                }
+            }
+        });
+        edtChangeCity.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (edtChangeCity.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Bạn chưa nhập thành phố", Toast.LENGTH_SHORT).show();
+                } else {
+                    user.setCity(edtChangeCity.getText().toString().trim());
+                }
+            }
+        });
+        //checked nam nu
+        if (radio_Nam.isChecked()) {
+            user.setGender("Nam");
         } else {
-            apiInterface.updateUser(id,str_user_name, isMale ? "Nam" : "Nữ", str_phone_number, str_address, str_city,email,password).enqueue(new Callback<ResponseUpDateUser>() {
+            user.setGender("Nữ");
+        }
+    }
+
+    private void updateUser() {
+        String id = UserManager.getInstance().getCurrentUser().getUser_id();
+        String email = tvEmail.getText().toString().trim();
+        String password = user.getPassword();
+
+        if (
+                !user.getEmail().isEmpty() && !user.getCity().isEmpty() && !user.getAddress().isEmpty() && !user.getPhoneNumber().isEmpty()
+        ) {
+            apiInterface.updateUser(id, user.getUsername(), user.getGender(), user.getPhoneNumber(), user.getAddress(), user.getCity(), email, password)
+                    .enqueue(new Callback<ResponseUpDateUser>() {
                 @Override
                 public void onResponse(Call<ResponseUpDateUser> call, Response<ResponseUpDateUser> response) {
                     if (response.isSuccessful()) {
 
                         if (response.body() != null) {
                             String status = String.valueOf(response.body().getMessage());
-                            Log.d("AAA","aa"+status);
-
-
-
-
+                            Log.d("AAA", "aa" + status);
                         }
-
+                        UserManager.getInstance().setCurrentUser(user);
                         Toast.makeText(UpDateMyProfile.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
-                    Toast.makeText(UpDateMyProfile.this, "Cập nhật thất ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpDateMyProfile.this, "Cập nhật thất ", Toast.LENGTH_SHORT).show();
 
                     }
                 }
@@ -147,8 +177,6 @@ public class UpDateMyProfile extends AppCompatActivity {
                 }
             });
         }
-
-////
     }
 
 
@@ -165,14 +193,19 @@ public class UpDateMyProfile extends AppCompatActivity {
         radio_nu = findViewById(R.id.radio_nu);
         btnUpdate = findViewById(R.id.btn_update);
 
-        tvEmail.setText(UserManager.getInstance().getCurrentUser().getEmail());
-        edtChangeName.setText(UserManager.getInstance().getCurrentUser().getUsername());
-        edtChangeAddress.setText(UserManager.getInstance().getCurrentUser().getAddress());
-        edtChangeCity.setText(UserManager.getInstance().getCurrentUser().getCity());
-        edtChangePhone.setText(UserManager.getInstance().getCurrentUser().getPhoneNumber());
+        user = UserManager.getInstance().getCurrentUser();
 
-        radio_Nam.setChecked(UserManager.getInstance().getCurrentUser().getGender().equals("Nam"));
-        radio_nu.setChecked(UserManager.getInstance().getCurrentUser().getGender().equals("Nữ"));
+        tvEmail.setText(user.getEmail());
+        edtChangeName.setText(user.getUsername());
+        edtChangeAddress.setText(user.getAddress());
+        edtChangeCity.setText(user.getCity());
+        edtChangePhone.setText(user.getPhoneNumber());
+
+        if (user.getGender().equals("Nam")) {
+            radio_Nam.setChecked(true);
+        } else {
+            radio_nu.setChecked(true);
+        }
 
     }
 

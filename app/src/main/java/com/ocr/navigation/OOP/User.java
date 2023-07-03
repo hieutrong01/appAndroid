@@ -6,6 +6,9 @@ public class User implements Serializable {
 
     private String user_id;
 
+    public User() {
+    }
+
     public User(String user_id, String username, String gender, String phoneNumber, String address, String city, String email, String password) {
         this.user_id = user_id;
         this.username = username;
