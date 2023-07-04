@@ -1,9 +1,9 @@
-package com.ocr.navigation.retrofit.com.ocr.navigation;
+package com.ocr.navigation.retrofit;
 
-import com.ocr.navigation.OOP.User;
+
+import com.ocr.navigation.OOP.ResponePost;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -21,21 +21,36 @@ public interface ApiInterface {
 //                    .build()
 //                    .create(ApiInterface.class);
 
-    @GET("getUser/read.php")
+    @GET("getSignIn/readGetUser.php")
     Call<GetUserResponse> getListUser();
 
-    @POST("getUser/dangky.php")
+    @POST("dangky.php")
     @FormUrlEncoded
     Call<SignUpResponse> dangky(
             @Field("username") String username,
             @Field("gender") String gender,
+            @Field("dateofbirth") String dateofbirth,
             @Field("phoneNumber") String phonenumber,
             @Field("address") String address,
             @Field("city") String city,
-            @Field("email") String email,
-            @Field("password") String password
+            @Field("email") String email
     );
 
+    @POST("donhang.php")
+    @FormUrlEncoded
+    Call<ResponePost> createOder(
+            @Field("user_id")int user_id,
+            @Field("soluong") int soluong,
+            @Field("total_money") int total_money,
+            @Field("status") String status,
+            @Field("payment_methods") String payment_methods,
+            @Field("note") String note,
+            @Field("email") String email,
+            @Field("sdt") String sdt,
+            @Field("diachi") String diachi,
+            @Field("created_date") String created_date,
+            @Field("chitiet") String chitiet
+    );
 
     @POST("getUser/update_user.php")
     @FormUrlEncoded
@@ -49,7 +64,6 @@ public interface ApiInterface {
             @Field("email") String email,
             @Field("password") String password
     );
-
 }
 
 

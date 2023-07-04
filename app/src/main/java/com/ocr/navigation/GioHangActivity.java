@@ -85,17 +85,19 @@ public class GioHangActivity extends AppCompatActivity implements ClickCongTruGi
         }
     }
     private void tinhTongTien() {
-        int sum=0;
-        int totalItem=0;
-        for (int i=0; i<Utils.manggiohang.size();i++){
-            sum+=Utils.manggiohang.get(i).getPrice()*Utils.manggiohang.get( i ).getSoluong();
-            totalItem=totalItem + Utils.manggiohang.get(i).getSoluong();
+        if (Utils.manggiohang != null) {
+            int sum = 0;
+            int totalItem = 0;
+            for (int i = 0; i < Utils.manggiohang.size(); i++) {
+                sum += Utils.manggiohang.get( i ).getPrice() * Utils.manggiohang.get( i ).getSoluong();
+                totalItem = totalItem + Utils.manggiohang.get( i ).getSoluong();
+            }
+            DecimalFormat decimalFormat = new DecimalFormat( "###,###,###" );
+            tvThanhToan.setText( decimalFormat.format( sum ) + " VND" );
+            tvTongDon.setText( decimalFormat.format( sum ) + " VND" );
+            tvTongCong.setText( decimalFormat.format( sum ) + " VND" );
+            tvSoLuong.setText( String.valueOf( totalItem ) );
         }
-        DecimalFormat decimalFormat= new DecimalFormat("###,###,###");
-        tvThanhToan.setText( decimalFormat.format( sum )+" VND" );
-        tvTongDon.setText( decimalFormat.format( sum )+" VND" );
-        tvTongCong.setText( decimalFormat.format( sum )+" VND" );
-        tvSoLuong.setText( String.valueOf( totalItem ) );
     }
 
     @Override

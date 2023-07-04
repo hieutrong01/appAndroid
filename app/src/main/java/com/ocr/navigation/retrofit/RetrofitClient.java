@@ -1,10 +1,8 @@
 package com.ocr.navigation.retrofit;
 
 import com.google.gson.GsonBuilder;
-import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
 import com.ocr.navigation.utils.Utils;
 
-import kotlin.Unit;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -35,4 +33,6 @@ public class RetrofitClient {
         }
         return apiInterface;
     }
+
+
 }

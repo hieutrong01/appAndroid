@@ -73,6 +73,7 @@
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/tv_name_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
@@ -80,6 +81,7 @@
                     android:textColor="@color/black"
                     android:text="@string/demo"/>
                 <TextView
+                    android:id="@+id/tv_dia_chi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
@@ -87,6 +89,7 @@
                     android:textColor="@color/black"
                     android:text="@string/demo1"/>
                 <TextView
+                    android:id="@+id/tv_sdt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
@@ -119,6 +122,15 @@
                     android:layout_marginStart="15dp"
                     android:textColor="@color/black"
                     android:text="@string/phivanchuyen"/>
+                <TextView
+                    android:id="@+id/tv_date_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/black"
+                    />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -156,10 +168,9 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
                 android:layout_marginVertical="10dp"/>
         </LinearLayout>
         <LinearLayout
@@ -182,20 +193,24 @@
                 android:textColor="@color/black"
                 android:text="@string/thoigian"/>
             <RadioGroup
+                android:id="@+id/radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="15dp">
                 <RadioButton
+                    android:id="@+id/radio_nhan_hang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="25dp"
                     android:elevation="1dp"
+                    android:checked="true"
                     android:textSize="15sp"
                     android:background="@color/white"
                     android:text="@string/phuongthuc1"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
                 <RadioButton
+                    android:id="@+id/radio_zalopay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="25dp"
@@ -293,6 +308,7 @@
                         android:textColor="@color/black" />
 
                     <TextView
+                        android:id="@+id/tv_tong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -359,6 +375,15 @@
                         android:textColor="@color/black" />
                 </RelativeLayout>
             </LinearLayout>
+            <EditText
+                android:id="@+id/edt_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="Bạn có muốn yêu cầu gì với shop"
+                android:textColor="@color/black">
+
+            </EditText>
 
         </LinearLayout>
 
@@ -387,6 +412,7 @@
         android:textSize="15sp"
         />
     <Button
+        android:id="@+id/btn_dathang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ĐẶT HÀNG"

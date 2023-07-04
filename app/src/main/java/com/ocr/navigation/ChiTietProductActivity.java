@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -38,6 +39,8 @@ public class ChiTietProductActivity extends AppCompatActivity {
     private NotificationBadge badge;
     private   Product productList;
     private boolean isAnimationRunning = false;
+    private LinearLayout linearLayout ;
+    private ImageView imgMota;
     private Handler handler = new Handler();
 
 
@@ -102,6 +105,8 @@ public class ChiTietProductActivity extends AppCompatActivity {
         btnFavorite =findViewById( R.id.btn_them_favorite );
         tvTenSP=findViewById( R.id.tv_chitiet_product );
         tvGia=findViewById( R.id.tv_gia );
+        linearLayout=findViewById( R.id.linea_mota );
+        imgMota=findViewById( R.id.img_1 );
         tvMaSP=findViewById( R.id.tv_ma_product );
         tvMoTa=findViewById( R.id.tv_mo_ta );
         imgSP=findViewById( R.id.img_product );
@@ -181,6 +186,24 @@ public class ChiTietProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 themGioHang();
+            }
+        } );
+
+        linearLayout.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                if (tvMoTa.getVisibility() == View.GONE) {
+                    tvMoTa.setVisibility( View.VISIBLE );
+                    imgMota.setImageResource( R.drawable.ic_baseline_expand_more );
+                }
+                else {
+                    tvMoTa.setVisibility( View.GONE );
+                    imgMota.setImageResource( R.drawable.ic_baseline_chevron_left );
+                }
+
+
             }
         } );
     }

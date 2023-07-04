@@ -1,12 +1,15 @@
 package com.ocr.navigation.framgentHome;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -41,6 +44,7 @@ public class TopFragment extends Fragment {
     private List<Product> mList;
     private SanPhamNoiBatAdapter adapter;
     private SanPhamNoiBatAdapter adapterSale;
+    private VideoView videoView;
 
     private Handler mHandler= new Handler( Looper.getMainLooper());
     private Runnable mRunnable= new Runnable() {
@@ -83,6 +87,7 @@ public class TopFragment extends Fragment {
 
         GridLayoutManager gridLayoutManager= new GridLayoutManager( getActivity(),3);
         mRecyclerView.setLayoutManager( gridLayoutManager );
+        mRecyclerView.setNestedScrollingEnabled( false );
         adapter.setData( getListProduct( ), new ClickItemProduc() {
             @Override
             public void onItemProductClick(Product product) {
@@ -98,6 +103,7 @@ public class TopFragment extends Fragment {
         //
         GridLayoutManager gridLayoutManager1= new GridLayoutManager( getActivity(),3);
         saleRecyclerView.setLayoutManager( gridLayoutManager1 );
+        saleRecyclerView.setNestedScrollingEnabled( false );
         adapterSale.setData( getListProductSale( ), new ClickItemProduc() {
             @Override
             public void onItemProductClick(Product product) {
@@ -111,11 +117,18 @@ public class TopFragment extends Fragment {
         } );
         saleRecyclerView.setAdapter( adapterSale );
 
+        MediaController mediaController= new MediaController( requireContext() );
+        mediaController.setAnchorView( videoView );
+        videoView.setMediaController( mediaController );
+        videoView.setVideoURI( Uri.parse( "https://image.uniqlo.com/UQ/ST3/jp/imagesother/sport-utility-wear/23ss_summer/img/common/hero_1-pc.mp4#t=0.001") );
+        videoView.start();
+
         return view;
     }
     public void initUI(){
         mRecyclerView =view.findViewById( R.id.recyc_product );
         saleRecyclerView=view.findViewById( R.id.recyc_product_sale );
+       videoView=view.findViewById( R.id.video_view );
         adapter = new SanPhamNoiBatAdapter( getActivity() );
         adapterSale=new SanPhamNoiBatAdapter( getActivity() );
 

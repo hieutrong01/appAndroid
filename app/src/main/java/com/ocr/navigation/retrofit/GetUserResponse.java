@@ -1,4 +1,4 @@
-package com.ocr.navigation.retrofit.com.ocr.navigation;
+package com.ocr.navigation.retrofit;
 
 
 import com.google.gson.annotations.Expose;

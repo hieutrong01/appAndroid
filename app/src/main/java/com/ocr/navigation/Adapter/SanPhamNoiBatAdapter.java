@@ -69,7 +69,7 @@ public class SanPhamNoiBatAdapter extends RecyclerView.Adapter<SanPhamNoiBatAdap
     @Override
     public int getItemCount() {
         if (mproList!=null){
-            return Math.min(mproList.size(), 6);
+            return Math.min(mproList.size(), 9);
         }
         return 0;
     }

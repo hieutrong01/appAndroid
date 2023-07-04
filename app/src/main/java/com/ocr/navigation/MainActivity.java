@@ -39,6 +39,11 @@ public class MainActivity extends AppCompatActivity implements IntegerCallBack {
 
     private SearchFramgent searchFramgent;
 
+    private HomeFramgent homeFramgent;
+    private PesonFramgent pesonFramgent;
+    private FavouriteFramgent favouriteFramgent;
+    private QRFramgent qrFramgent;
+
 
 
     private long backTime;
@@ -50,11 +55,11 @@ public class MainActivity extends AppCompatActivity implements IntegerCallBack {
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         init();
 
-        HomeFramgent homeFramgent= new HomeFramgent(this::integerCallBack);
-        PesonFramgent pesonFramgent= new PesonFramgent();
+         homeFramgent= new HomeFramgent(this);
+         pesonFramgent= new PesonFramgent();
         searchFramgent = new SearchFramgent();
-        QRFramgent qrFramgent= new QRFramgent();
-        FavouriteFramgent favouriteFramgent= new FavouriteFramgent();
+         qrFramgent= new QRFramgent();
+         favouriteFramgent= new FavouriteFramgent();
 
         //bắt sự kiện navigation
         adapter= new ViewPageAdapter( getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -177,4 +182,5 @@ public class MainActivity extends AppCompatActivity implements IntegerCallBack {
                 searchFramgent.setCurrentPage( i - 1);
             }
     }
+
 }

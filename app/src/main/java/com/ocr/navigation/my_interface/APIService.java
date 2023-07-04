@@ -3,12 +3,16 @@ package com.ocr.navigation.my_interface;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ocr.navigation.OOP.DataProduct;
+import com.ocr.navigation.OOP.DonHangResponse;
 import com.ocr.navigation.utils.Utils;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface APIService {
@@ -50,9 +54,35 @@ public interface APIService {
 
     @GET("getMan/read.php")
     Call<DataProduct> getLisAoMen();
+    @GET("getMan/readDoMacNgoai.php")
+    Call<DataProduct> getLisDoMacNgoaiMen();
+
+    @GET("getMan/readQuan.php")
+    Call<DataProduct> getLisQuanMen();
+
+    @GET("getMan/readDoLot.php")
+    Call<DataProduct> getLisDoLot();
+
+    @GET("getMan/readDoMacNha.php")
+    Call<DataProduct> getLisDoMacNha();
 
     @GET("getWommen/readAoNu.php")
     Call<DataProduct> getLisAoWomen();
+
+    @GET("getWommen/readDoMacNgoai.php")
+    Call<DataProduct> getLisDoMacNgoaiWomem();
+
+    @GET("getWommen/readQuan.php")
+    Call<DataProduct> getLisQuanWomen();
+
+    @GET("getWommen/readVay.php")
+    Call<DataProduct> getLisVayWomen();
+
+    @GET("getWommen/readBau.php")
+    Call<DataProduct> getLisBauWomen();
+
+    @GET("getWommen/readDoLot.php")
+    Call<DataProduct> getLisLotWomen();
 
     @GET("getkids/readao.php")
     Call<DataProduct> getLisAoKids();
@@ -63,10 +93,23 @@ public interface APIService {
     @GET("sanphamnoibat/readSale.php")
     Call<DataProduct> getSanPhamSale();
 
+    @GET("sanphamnoibat/readSanPhamMoi.php")
+    Call<DataProduct> getSanPhamMoiNam();
+
+
+    @GET("sanphamnoibat/readSanPhamNu.php")
+    Call<DataProduct> getSanPhamMoiNu();
+
     @GET("postTimKiem/getSearch.php")
     Call<DataProduct> search(
             @Query("search") String search
     );
+
+    @POST("xemdonhang.php")
+    @FormUrlEncoded
+    Call<DonHangResponse> xemDonHang(
+            @Field("user_id") int user_id
+            );
 }
 
 

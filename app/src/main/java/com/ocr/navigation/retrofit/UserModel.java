@@ -1,6 +1,7 @@
-package com.ocr.navigation.retrofit.com.ocr.navigation;
+package com.ocr.navigation.retrofit;
 
 import com.google.gson.annotations.SerializedName;
+import com.ocr.navigation.OOP.User;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class UserModel {
 
     @SerializedName("message")
     String message;
-    List<com.ocr.navigation.OOP.User> result = null;
+    List<User> result = null;
 
     public boolean isSuccess() {
         return success;
@@ -28,11 +29,11 @@ public class UserModel {
         this.message = message;
     }
 
-    public List<com.ocr.navigation.OOP.User> getResult() {
+    public List<User> getResult() {
         return result;
     }
 
-    public void setResult(List<com.ocr.navigation.OOP.User> result) {
+    public void setResult(List<User> result) {
         this.result = result;
     }
 }

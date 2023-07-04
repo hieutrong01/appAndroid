@@ -1,5 +1,6 @@
 package com.ocr.navigation.framgentHome;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,11 +11,19 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.ocr.navigation.Adapter.ImageAdapter;
+import com.ocr.navigation.Adapter.SanPhamNoiBatAdapter;
+import com.ocr.navigation.ChiTietProductActivity;
+import com.ocr.navigation.OOP.DataProduct;
 import com.ocr.navigation.OOP.Image;
+import com.ocr.navigation.OOP.Product;
 import com.ocr.navigation.R;
+import com.ocr.navigation.my_interface.APIService;
+import com.ocr.navigation.my_interface.ClickItemProduc;
 import com.ocr.navigation.my_interface.IntegerCallBack;
 import com.squareup.picasso.Picasso;
 
@@ -23,6 +32,9 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import me.relex.circleindicator.CircleIndicator3;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class WomenFragment extends Fragment {
@@ -38,6 +50,10 @@ public class WomenFragment extends Fragment {
     private IntegerCallBack integerCallBack;
 
     private TableLayout tableLayout;
+
+    private RecyclerView mRecyclerView, saleRecyclerView;
+    private List<Product> mList;
+    private SanPhamNoiBatAdapter adapter;
 
     public WomenFragment(IntegerCallBack listener){
         this.integerCallBack = listener;
@@ -79,6 +95,23 @@ public class WomenFragment extends Fragment {
                 mHandler.postDelayed( mRunnable,3000 );
             }
         } );
+
+        GridLayoutManager gridLayoutManager= new GridLayoutManager( getActivity(),3);
+        mRecyclerView.setLayoutManager( gridLayoutManager );
+        adapter.setData( getListProduct( ), new ClickItemProduc() {
+            @Override
+            public void onItemProductClick(Product product) {
+                onClickgotoChitiet(product);
+            }
+
+            @Override
+            public void onClickFavoriteItem(int pos) {
+
+            }
+        } );
+        mRecyclerView.setAdapter( adapter );
+        //
+        GridLayoutManager gridLayoutManager1= new GridLayoutManager( getActivity(),3);
         return view;
     }
 
@@ -103,6 +136,8 @@ public class WomenFragment extends Fragment {
         mViewPager2= view.findViewById( R.id.view_page_top );
         mIndicator3= view.findViewById( R.id.circleIndicator3 );
         tableLayout = view.findViewById( R.id.tb_featured_category );
+        adapter = new SanPhamNoiBatAdapter( getActivity() );
+        mRecyclerView =view.findViewById( R.id.recyc_product_sale );
     }
     private void loadURLImg() {
         String imageUrl1 = "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/453032/item/goods_69_453032.jpg?width=750";
@@ -133,6 +168,48 @@ public class WomenFragment extends Fragment {
         list.add( new Image("https://im.uniqlo.com/global-cms/spa/res35d9299d01c3eec4246da9f7ab8c62a1fr.jpg") );
         list.add( new Image("https://im.uniqlo.com/global-cms/spa/res069c5c13d5ed474c16a614406fb3de59fr.jpg") );
         return list;
+    }
+    private List<Product> getListProduct() {
+        List<Product> list = new ArrayList<>();
+
+        callApiAoWomen();
+        return list;
+    }
+
+    private void onClickgotoChitiet(Product product) {
+        Intent intent = new Intent( getActivity(), ChiTietProductActivity.class );
+        Bundle bundle= new Bundle();
+        bundle.putSerializable("object_product", product);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+    private void callApiAoWomen() {
+        APIService.apiServiceKids.getSanPhamMoiNu().enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+            }
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                //Toast.makeText( getActivity(), "Call api fall", Toast.LENGTH_SHORT ).show();
+
+            }
+        } );
     }
 
 }

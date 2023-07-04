@@ -11,10 +11,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.ocr.navigation.retrofit.ApiInterface;
 import com.ocr.navigation.retrofit.RetrofitClient;
-import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
-import com.ocr.navigation.retrofit.com.ocr.navigation.SignUpResponse;
-import com.ocr.navigation.retrofit.com.ocr.navigation.UserModel;
+import com.ocr.navigation.retrofit.SignUpResponse;
+
 
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import retrofit2.Call;

@@ -7,6 +7,6 @@ import java.util.List;
 public class Utils {
     public static List<GioHang> manggiohang;
 
-    public static final String BASE_URL="http://192.168.1.32/DIOR/";
+    public static final String BASE_URL="http://192.168.22.20/DIOR/";
 
 }

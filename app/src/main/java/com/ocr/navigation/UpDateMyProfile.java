@@ -16,9 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ocr.navigation.OOP.User;
 import com.ocr.navigation.OOP.UserManager;
+import com.ocr.navigation.retrofit.ApiInterface;
+import com.ocr.navigation.retrofit.ResponseUpDateUser;
 import com.ocr.navigation.retrofit.RetrofitClient;
-import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
-import com.ocr.navigation.retrofit.com.ocr.navigation.ResponseUpDateUser;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -153,29 +154,29 @@ public class UpDateMyProfile extends AppCompatActivity {
         ) {
             apiInterface.updateUser(id, user.getUsername(), user.getGender(), user.getPhoneNumber(), user.getAddress(), user.getCity(), email, password)
                     .enqueue(new Callback<ResponseUpDateUser>() {
-                @Override
-                public void onResponse(Call<ResponseUpDateUser> call, Response<ResponseUpDateUser> response) {
-                    if (response.isSuccessful()) {
+                        @Override
+                        public void onResponse(Call<ResponseUpDateUser> call, Response<ResponseUpDateUser> response) {
+                            if (response.isSuccessful()) {
 
-                        if (response.body() != null) {
-                            String status = String.valueOf(response.body().getMessage());
-                            Log.d("AAA", "aa" + status);
+                                if (response.body() != null) {
+                                    String status = String.valueOf(response.body().getMessage());
+                                    Log.d("AAA", "aa" + status);
+                                }
+                                UserManager.getInstance().setCurrentUser(user);
+                                Toast.makeText(UpDateMyProfile.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Toast.makeText(UpDateMyProfile.this, "Cập nhật thất ", Toast.LENGTH_SHORT).show();
+
+                            }
                         }
-                        UserManager.getInstance().setCurrentUser(user);
-                        Toast.makeText(UpDateMyProfile.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
-                        finish();
-                    } else {
-                        Toast.makeText(UpDateMyProfile.this, "Cập nhật thất ", Toast.LENGTH_SHORT).show();
 
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<ResponseUpDateUser> call, Throwable t) {
-                    Toast.makeText(UpDateMyProfile.this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
-                    t.printStackTrace();
-                }
-            });
+                        @Override
+                        public void onFailure(Call<ResponseUpDateUser> call, Throwable t) {
+                            Toast.makeText(UpDateMyProfile.this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                            t.printStackTrace();
+                        }
+                    });
         }
     }
 

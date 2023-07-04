@@ -168,9 +168,150 @@ public class MenListItem extends AppCompatActivity {
                 break;
             }
             case 1: {
-
+                callApiDoMacNgoai();
+                break;
+            }
+            case 2: {
+                callApiQuan();
+                break;
+            }
+            case 3:{
+                callApiDoLot();
+                break;
+            }
+            case 4:{
+                callApiDoMacNha();
+                break;
             }
         }
+    }
+
+    private void callApiDoMacNha() {
+        APIService.apiService.getLisDoMacNha( ).enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( MenListItem.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+            }
+        } );
+    }
+
+    private void callApiDoLot() {
+        APIService.apiService.getLisDoLot( ).enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( MenListItem.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+            }
+        } );
+    }
+
+    private void callApiQuan() {
+        APIService.apiService.getLisQuanMen( ).enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( MenListItem.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+            }
+        } );
+    }
+
+    private void callApiDoMacNgoai() {
+        APIService.apiService.getLisDoMacNgoaiMen( ).enqueue( new Callback<DataProduct>() {
+            @Override
+            public void onResponse(Call<DataProduct> call, Response<DataProduct> response) {
+                if (response.body() == null) return;
+                DataProduct data = response.body();
+                mList = data.getData();
+                adapter.setData( mList, new ClickItemProduc() {
+                    @Override
+                    public void onItemProductClick(Product product) {
+                        onClickgotoChitiet(product);
+                    }
+
+                    @Override
+                    public void onClickFavoriteItem(int pos) {
+
+                    }
+                } );
+                mRecyclerView.setAdapter( adapter );
+
+                int itemCount = adapter.getItemCount();
+                tvSoLuong.setText( Integer.toString(itemCount) );
+            }
+
+            @Override
+            public void onFailure(Call<DataProduct> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText( MenListItem.this, "Call api fall", Toast.LENGTH_SHORT ).show();
+            }
+        } );
     }
 
     private void callApiAoMen() {
@@ -201,7 +342,6 @@ public class MenListItem extends AppCompatActivity {
             public void onFailure(Call<DataProduct> call, Throwable t) {
                 t.printStackTrace();
                 Toast.makeText( MenListItem.this, "Call api fall", Toast.LENGTH_SHORT ).show();
-
             }
         } );
     }

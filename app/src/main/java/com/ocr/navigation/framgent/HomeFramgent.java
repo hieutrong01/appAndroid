@@ -35,6 +35,9 @@ public class HomeFramgent extends Fragment {
 
     private IntegerCallBack integerCallBack;
 
+    public HomeFramgent() {
+    }
+
     public HomeFramgent(IntegerCallBack listener){
         this.integerCallBack = listener;
     }

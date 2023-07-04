@@ -1,10 +1,6 @@
 package com.ocr.navigation;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,16 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.ocr.navigation.OOP.UserManager;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import com.ocr.navigation.retrofit.RetrofitClient;
-import com.ocr.navigation.retrofit.com.ocr.navigation.ApiInterface;
-import com.ocr.navigation.retrofit.com.ocr.navigation.GetUserResponse;
 import com.ocr.navigation.OOP.User;
+import com.ocr.navigation.OOP.UserManager;
+import com.ocr.navigation.retrofit.ApiInterface;
+import com.ocr.navigation.retrofit.GetUserResponse;
+import com.ocr.navigation.retrofit.RetrofitClient;
 
 import java.util.List;
 
@@ -72,7 +65,7 @@ public class SignInActivity extends AppCompatActivity {
         txtSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                 startActivity(intent);
             }
         });
