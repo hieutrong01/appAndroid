@@ -29,13 +29,9 @@ public class SignInActivity extends AppCompatActivity {
     private LinearLayout layoutSignUp;
     private EditText edtEmailSignIn, edtPasswordSignIn;
     private Button btnSignIn;
-//    private TextView textViewResult;
-
     private List<User> mListUser;
     private User mUser;
-
     private ApiInterface apiInterface;
-
     private TextView txtSignUp;
 
 
@@ -50,11 +46,12 @@ public class SignInActivity extends AppCompatActivity {
 
 //      Tạo đối tượng ApiInterface từ Retrofit
         apiInterface = RetrofitClient.getApi();
-        getListUser();
+
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getListUser();
                 clickLogin();
             }
         });
@@ -65,7 +62,7 @@ public class SignInActivity extends AppCompatActivity {
         txtSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(intent);
             }
         });

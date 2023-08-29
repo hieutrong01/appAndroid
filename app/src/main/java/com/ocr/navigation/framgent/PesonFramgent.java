@@ -5,38 +5,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-
 import android.view.View;
 import android.view.ViewGroup;
-
-
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.ocr.navigation.UpDateMyProfile;
 import com.ocr.navigation.ChangePasswordActivity;
+import com.ocr.navigation.LichSuDonHangActivity;
+import com.ocr.navigation.MainViewModel;
 import com.ocr.navigation.OOP.User;
 import com.ocr.navigation.OOP.UserManager;
 import com.ocr.navigation.R;
 import com.ocr.navigation.SignInActivity;
-import com.ocr.navigation.MainViewModel;
 import com.ocr.navigation.UpDateMyProfile;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class PesonFramgent extends Fragment {
     private View mView;
-    private Button btnDangXuat,btnChinhSuaHoSo, btnChangePassword, btnChangeDiaChi;
-    private EditText edtEmailSignIn, edtPasswordSignIn;
-    private ImageView ivAvatar;
+    private Button btnDangXuat,btnChinhSuaHoSo, btnChangePassword,  btnLichSu;
+
+
     private TextView tvUserName,tvEmail;
 
     private List<User> mListUser;
@@ -45,7 +38,7 @@ public class PesonFramgent extends Fragment {
 
     private MainViewModel mainViewModel;
 
-    private ArrayList<String> mArrayLichSu;
+
 
     @Override
     public void onResume() {
@@ -81,6 +74,7 @@ public class PesonFramgent extends Fragment {
         tvEmail=mView.findViewById( R.id.tv_show_email );
         btnChinhSuaHoSo=mView.findViewById( R.id.btn_chinh_sua_profile );
         btnChangePassword=mView.findViewById(R.id.btn_change_password);
+        btnLichSu=mView.findViewById( R.id.btn_lich_su_don_hang );
 //        edtEmailSignIn = mView.findViewById(R.id.edt_email)
 
 
@@ -117,6 +111,11 @@ public class PesonFramgent extends Fragment {
                 startActivity(intent);
             }
         });
+        btnLichSu.setOnClickListener( v->{
+            Intent intent= new Intent(getActivity(), LichSuDonHangActivity.class );
+            startActivity( intent );
+        } );
+
 
     }
 

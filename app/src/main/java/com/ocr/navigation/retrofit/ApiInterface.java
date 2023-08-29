@@ -24,16 +24,16 @@ public interface ApiInterface {
     @GET("getSignIn/readGetUser.php")
     Call<GetUserResponse> getListUser();
 
-    @POST("dangky.php")
+    @POST("getUser/dangky.php")
     @FormUrlEncoded
     Call<SignUpResponse> dangky(
             @Field("username") String username,
             @Field("gender") String gender,
-            @Field("dateofbirth") String dateofbirth,
             @Field("phoneNumber") String phonenumber,
             @Field("address") String address,
             @Field("city") String city,
-            @Field("email") String email
+            @Field("email") String email,
+             @Field("password") String password
     );
 
     @POST("donhang.php")
@@ -64,6 +64,15 @@ public interface ApiInterface {
             @Field("email") String email,
             @Field("password") String password
     );
+
+    @POST("getUser/update_pass.php")
+    @FormUrlEncoded
+    Call<ResponseUpDatePass> updatePass(
+            @Field("user_id") String user_id,
+            @Field("password") String password
+    );
+
+
 }
 
 

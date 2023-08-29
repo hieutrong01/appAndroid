@@ -1,23 +1,35 @@
 
-F
-java:S1066ˆ"/Merge this if statement with the enclosing one.(©§¹
+E
+java:S1604."(Make this anonymous inner class a lambda(ÔÅË8–ŸÕ‘š1
+J
+java:S16045"(Make this anonymous inner class a lambda(Ìò¢õÿÿÿÿÿ8™ŸÕ‘š1
+p	java:S116""TRename this field "radio_Nam" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶ö­8Ü Õ‘š1
+o	java:S116""SRename this field "radio_nu" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶ö­8İ Õ‘š1
+g
+java:S1659 "JDeclare "edtChangeCity" and all following declarations on a separate line.(…Ú×í8Ù¡Õ‘š1
 C
-java:S1604+"(Make this anonymous inner class a lambda(Ş¡ó¢úÿÿÿÿ
-C
-java:S1604a"(Make this anonymous inner class a lambda(º©±­ûÿÿÿÿ
->
-java:S1604g"(Make this anonymous inner class a lambda(„Ñî¿
-C
-java:S1604n"(Make this anonymous inner class a lambda(Ìò¢õÿÿÿÿÿ
-D
-java:S1604¤"(Make this anonymous inner class a lambda(„¬é¿øÿÿÿÿ
-=
-java:S1659%"'Declare "imgAvatar" on a separate line.(Ÿ½è“
-A
-java:S1659&"&Declare "edtEmail" on a separate line.(”Å÷úÿÿÿÿ
-L
-java:S18746"1Remove this use of "getBitmap"; it is deprecated.(ÇèÀêüÿÿÿÿ
-f
-java:S1874…"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Ó»×¶şÿÿÿÿ
-X
-java:S1144u"=Remove this unused private "onClickRequestPermission" method.(€ã›Õÿÿÿÿÿ
+java:S1659""&Declare "radio_nu" on a separate line.(¶ö­8Ú¡Õ‘š1
+t
+java:S1450""WRemove the "radio_nu" field and declare it as a local variable in the relevant methods.(¶ö­8Û¡Õ‘š1
+
+java:S1186="€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(«û³±8‡¢Õ‘š1
+£
+java:S1186B"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê¥¾àûÿÿÿÿ8ˆ¢Õ‘š1
+
+java:S1186Q"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(«û³±8š¢Õ‘š1
+£
+java:S1186V"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê¥¾àûÿÿÿÿ8›¢Õ‘š1
+
+java:S1186e"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(«û³±8ª¢Õ‘š1
+£
+java:S1186j"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê¥¾àûÿÿÿÿ8«¢Õ‘š1
+
+java:S1186y"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(«û³±8³¢Õ‘š1
+£
+java:S1186~"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê¥¾àûÿÿÿÿ8´¢Õ‘š1
+m
+java:S1874Õ"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(œƒƒ©ùÿÿÿÿ8ó¢Õ‘š1
+K
+java:S1185Õ"(Remove this method to simply inherit it.(œƒƒ©ùÿÿÿÿ8ö¢Õ‘š1
+]
+java:S1161Õ":Add the "@Override" annotation above this method signature(œƒƒ©ùÿÿÿÿ8ø¢Õ‘š1

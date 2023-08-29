@@ -1,8 +1,0 @@
-
-k	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æà°ûÿÿÿÿ
-k	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨«óæùÿÿÿÿ
-f	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öı¢ª
-k	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İÜ™øÿÿÿÿ
-Q	java:S107"<Method has 8 parameters, which is greater than 7 authorized.(¦ËëÆ
-R	java:S107*"=Method has 11 parameters, which is greater than 7 authorized.(•‰äœ
-V	java:S125"<This block of commented-out lines of code should be removed.(‘š”›ùÿÿÿÿ

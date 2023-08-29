@@ -98,6 +98,7 @@ public class WomenFragment extends Fragment {
 
         GridLayoutManager gridLayoutManager= new GridLayoutManager( getActivity(),3);
         mRecyclerView.setLayoutManager( gridLayoutManager );
+        mRecyclerView.setNestedScrollingEnabled( false );
         adapter.setData( getListProduct( ), new ClickItemProduc() {
             @Override
             public void onItemProductClick(Product product) {

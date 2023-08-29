@@ -1,8 +1,5 @@
 package com.ocr.navigation;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -140,11 +137,11 @@ public class MainActivity extends AppCompatActivity implements IntegerCallBack {
             }
         } );
 
-        if (isConnect( this )){
-            Toast.makeText( this, "kết nối", Toast.LENGTH_SHORT ).show();
-        }else {
-            Toast.makeText( this, "không có kết nối internet", Toast.LENGTH_SHORT ).show();
-        }
+//        if (isConnect( this )){
+//            Toast.makeText( this, "kết nối", Toast.LENGTH_SHORT ).show();
+//        }else {
+//            Toast.makeText( this, "không có kết nối internet", Toast.LENGTH_SHORT ).show();
+//        }
     }
     private void init() {
         mdrawerLayout = findViewById(R.id.drawer_layout);
@@ -165,15 +162,15 @@ public class MainActivity extends AppCompatActivity implements IntegerCallBack {
             mToast.show();
         } backTime=System.currentTimeMillis();
     }
-    private boolean isConnect (Context context){
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService( Context.CONNECTIVITY_SERVICE );
-        NetworkInfo wifi = connectivityManager.getNetworkInfo( ConnectivityManager.TYPE_WIFI );
-        NetworkInfo mobile = connectivityManager.getNetworkInfo( ConnectivityManager.TYPE_MOBILE );
-        if (wifi!=null&& wifi.isConnected()||mobile!=null&&mobile.isConnected()){
-            return true;
-        }else
-            return false;
-    }
+//    private boolean isConnect (Context context){
+//        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService( Context.CONNECTIVITY_SERVICE );
+//        NetworkInfo wifi = connectivityManager.getNetworkInfo( ConnectivityManager.TYPE_WIFI );
+//        NetworkInfo mobile = connectivityManager.getNetworkInfo( ConnectivityManager.TYPE_MOBILE );
+//        if (wifi!=null&& wifi.isConnected()||mobile!=null&&mobile.isConnected()){
+//            return true;
+//        }else
+//            return false;
+//    }
     @Override
     public void integerCallBack(int i) {
         mViewPager.setCurrentItem( 1 );

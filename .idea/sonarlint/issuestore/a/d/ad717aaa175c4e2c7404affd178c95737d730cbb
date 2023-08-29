@@ -1,18 +1,0 @@
-
->
-java:S1604"(Make this anonymous inner class a lambda(¯£ò
-E
-java:S1659"*Declare "edtReNewPass" on a separate line.(¸ˆå®úÿÿÿÿ
-t
-java:S1450"YRemove the "edtNewPass" field and declare it as a local variable in the relevant methods.(¸ˆå®úÿÿÿÿ
-]	java:S125#"<This block of commented-out lines of code should be removed.(„ßÄ‡şÿÿÿÿ8ÜÇ½Ó‘1
-e
-java:S1874)"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(œƒƒ©ùÿÿÿÿ
-C
-java:S1185)"(Remove this method to simply inherit it.(œƒƒ©ùÿÿÿÿ
-U
-java:S1161)":Add the "@Override" annotation above this method signature(œƒƒ©ùÿÿÿÿ
-I
-java:S1068".Remove this unused "edtNewPass" private field.(¸ˆå®úÿÿÿÿ
-K
-java:S1068"0Remove this unused "edtReNewPass" private field.(¸ˆå®úÿÿÿÿ

@@ -1,12 +1,12 @@
 
-
-java:S1319"fThe type of "kichco" should be an interface such as "List" rather than the implementation "ArrayList".(ëÎÎÈûÿÿÿÿ
-k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÎÎÈûÿÿÿÿ
-k	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŒ¸õúÿÿÿÿ
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ìÕ©ø
-o	java:S116"URename this field "product_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Îšßûüÿÿÿÿ
-f
-java:S1206y"PThis class overrides "equals()" and should therefore also override "hashCode()".(ÜÑã
-\	java:S107"BConstructor has 10 parameters, which is greater than 7 authorized.(ëÎÎÈûÿÿÿÿ
-c	java:S1000"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕŸÅõ
-h	java:S1004"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŒ¸õúÿÿÿÿ
+ˆ
+java:S1319"fThe type of "kichco" should be an interface such as "List" rather than the implementation "ArrayList".(ëÎÎÈûÿÿÿÿ8¢‘Õ‘š1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÎÎÈûÿÿÿÿ8¢‘Õ‘š1
+r	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŒ¸õúÿÿÿÿ8£‘Õ‘š1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ìÕ©ø8¨‘Õ‘š1
+v	java:S116"URename this field "product_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Îšßûüÿÿÿÿ8”’Õ‘š1
+m
+java:S1206y"PThis class overrides "equals()" and should therefore also override "hashCode()".(ÜÑã8—’Õ‘š1
+c	java:S107"BConstructor has 10 parameters, which is greater than 7 authorized.(ëÎÎÈûÿÿÿÿ8­’Õ‘š1
+j	java:S1000"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕŸÅõ8º’Õ‘š1
+o	java:S1004"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üŒ¸õúÿÿÿÿ8¼’Õ‘š1

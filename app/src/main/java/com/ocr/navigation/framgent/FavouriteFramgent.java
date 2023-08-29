@@ -54,6 +54,27 @@ public class FavouriteFramgent extends Fragment implements SwipeRefreshLayout.On
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), linearLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
 
+        // Cập nhật dữ liệu cho adapter từ FavoriteProductsManager
+        items= Database.getInstance( getActivity() ).favouriteDAO().getListFavourite();
+        mItemAdapter.setData( items, new ClickItemProduc() {
+            @Override
+            public void onItemProductClick(Product product) {
+                onClickgotoChitiet( product );
+            }
+
+            @Override
+            public void onClickFavoriteItem(int pos) {
+
+            }
+        } );
+        if (mItemAdapter != null && mItemAdapter.getItemCount() == 0) {
+            imgNen.setVisibility(View.VISIBLE);
+
+        } else {
+            imgNen.setVisibility(View.GONE);
+        }
+        tvSoLuong.setText( Integer.toString(mItemAdapter.getItemCount()) );
+
         onClickList();
         swipeRefreshLayout.setOnRefreshListener( this );
         return mView;
