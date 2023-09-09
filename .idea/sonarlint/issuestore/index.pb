@@ -21,8 +21,6 @@ r
 Bapp/src/main/java/com/ocr/navigation/Adapter/FavouriteAdapter.java,2\2\22faf45fe2f4364222abeeb3ff91b790bfc35f91
 o
 ?app/src/main/java/com/ocr/navigation/LichSuDonHangActivity.java,e\f\ef5941305754786e374d4495018c91cf88895297
-t
-Dapp/src/main/java/com/ocr/navigation/Adapter/ListProductAdapter.java,1\2\127d4c7954f2028f7fbce7a596680353848ef1d2
 r
 Bapp/src/main/java/com/ocr/navigation/Adapter/ThanhToanAdapter.java,f\7\f753ffc0897a24810d88bbdcca7319f3d7addfce
 p
@@ -43,3 +41,27 @@ r
 Bapp/src/main/java/com/ocr/navigation/retrofit/GetUserResponse.java,f\a\fa4da64a881b40e13547008f4f491825c37a75ba
 h
 8app/src/main/java/com/ocr/navigation/SignUpActivity.java,2\2\2250952eb3af351b219f716173b9bd7a87eb53ec
+g
+7app/src/main/java/com/ocr/navigation/dataLocal/DAO.java,6\8\68d60e966e14de2541bb658f75f804774ac5dfe1
+q
+Aapp/src/main/java/com/ocr/navigation/my_interface/APIService.java,5\a\5aa6a37b407946f6060d2a5eef06b7b2e34b7441
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+p
+@app/src/main/java/com/ocr/navigation/ChangePasswordActivity.java,a\d\ad717aaa175c4e2c7404affd178c95737d730cbb
+t
+Dapp/src/main/java/com/ocr/navigation/framgent/FavouriteFramgent.java,5\0\50a5ab73bec760362d91a1e50d556887ceee437f
+f
+6app/src/main/java/com/ocr/navigation/MainActivity.java,f\c\fc626023a4f4d0b3045a9824ec0c28fd399328d0
+p
+@app/src/main/java/com/ocr/navigation/framgent/PesonFramgent.java,d\b\db1f743b8bf7c32863947710d0497b2da10bf006
+h
+8app/src/main/java/com/ocr/navigation/SignInActivity.java,5\b\5b3206d8a40ea432dabdf6c9152f48294f5f693f
+t
+Dapp/src/main/java/com/ocr/navigation/framgentHome/WomenFragment.java,0\9\09dc319475c85929be5760808569f50e6b8dc569
+e
+5app/src/main/java/com/ocr/navigation/utils/Utils.java,e\c\ec99b09f452e97958b2059d1bfaeffa818ea4043
+o
+?app/src/main/java/com/ocr/navigation/framgent/HomeFramgent.java,0\7\078a90448c1df29daa35032f357074c008450144
+r
+Bapp/src/main/java/com/ocr/navigation/framgentHome/TopFragment.java,1\3\13526307f8eb49e9a069ca79c59e1eccb9f31551
