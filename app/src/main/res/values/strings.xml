@@ -12,18 +12,18 @@
     <string name="navigation_drawer_close"> Close navigation drawer</string>
 
     //item top
-    <string name="item_top"> TOP</string>
-    <string name="item_women"> WOMEN </string>
-    <string name="item_men"> MEN </string>
-    <string name="item_kids"> KIDS </string>
+    <string name="item_top"> HOME </string>
+    <string name="item_women"> NỮ </string>
+    <string name="item_men"> NAM </string>
+    <string name="item_kids"> TRẺ EM </string>
 
     //item up
-    <string name="item_home"> TRANG CHỦ</string>
-    <string name="item_search"> DANH MỤC</string>
-    <string name="item_favỏite"> YÊU THÍCH</string>
+    <string name="item_home"> Home</string>
+    <string name="item_search"> Danh mục</string>
+    <string name="item_favỏite"> Yêu thích</string>
 
-    <string name="item_qrCode"> THÔNG BÁO</string>
-    <string name="item_person"> CÁ NHÂN</string>
+    <string name="item_qrCode"> Thông báo</string>
+    <string name="item_person"> Thành viên</string>
 
     <string name="search_hint">Bạn đang tìm sản phẩm gì?</string>
     <!-- TODO: Remove or change this placeholder text -->

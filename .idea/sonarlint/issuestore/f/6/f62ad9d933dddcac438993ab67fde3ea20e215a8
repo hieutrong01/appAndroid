@@ -1,9 +1,0 @@
-
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯øíö
-u
-java:S1450"ZRemove the "itemAdapter" field and declare it as a local variable in the relevant methods.(í¾øôûÿÿÿÿ
-t
-java:S1450"YRemove the "rcvItemMen" field and declare it as a local variable in the relevant methods.(°ÞÊÜúÿÿÿÿ
-V	java:S125>"<This block of commented-out lines of code should be removed.(¿œæÑùÿÿÿÿ
-C
-java:S1185T"(Remove this method to simply inherit it.(Ýßéàúÿÿÿÿ

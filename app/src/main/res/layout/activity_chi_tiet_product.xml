@@ -180,7 +180,7 @@
                         android:id="@+id/btn_them_gio_hang"
                         android:layout_width="320dp"
                         android:layout_height="70dp"
-                        android:backgroundTint="#EC1909"
+                        android:backgroundTint="#FF6347"
                         android:text="@string/themproduct"
                         android:textColor="@color/white" />
 

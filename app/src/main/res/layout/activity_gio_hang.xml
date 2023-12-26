@@ -199,9 +199,9 @@
                     android:layout_height="wrap_content"
                     android:padding="15dp"
                     android:layout_marginHorizontal="15dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:layout_marginEnd="5dp"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="#FF6347"
                     android:drawableLeft="@drawable/ic_vocher"
                     android:text="@string/phieugiamgia"
                     android:drawablePadding="8dp" />
@@ -269,7 +269,7 @@
                     android:layout_gravity="end"
                     android:text="THANH TOÁN"
                     android:textColor="@color/white"
-                    android:backgroundTint="#EF1303"
+                    android:backgroundTint="#FF6347"
                     android:visibility="gone"/>
 
             </LinearLayout>

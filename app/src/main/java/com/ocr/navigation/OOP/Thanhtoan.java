@@ -1,8 +1,9 @@
 package com.ocr.navigation.OOP;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Thanhtoan  {
+public class Thanhtoan implements Serializable {
     int order_id;
     int user_id;
     String diachi;

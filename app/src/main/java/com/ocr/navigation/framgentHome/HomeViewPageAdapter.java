@@ -41,14 +41,14 @@ public class HomeViewPageAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "TOP";
+                return "HOME";
             case 1:
-                return "MEN";
+                return "NAM";
             case 2:
-                return "WOMEN";
+                return "NỮ";
             case 3:
-                return "KIDS";
-            default:return "TOP";
+                return "TRẺ EM";
+            default:return "HOME";
         }
 
     }

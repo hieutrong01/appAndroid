@@ -43,7 +43,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     private ThanhToanAdapter adapter;
     CompositeDisposable compositeDisposable= new CompositeDisposable();
     private ApiInterface apiInterface;
-    private TextView tvNameUser,tvSDT,tvAdress,tvTongCong,tvTong, tvTongTien,tvNgayThang;
+    private TextView tvEdit, tvNameUser,tvSDT,tvAdress,tvTongCong,tvTong, tvTongTien,tvNgayThang;
     private RadioGroup radioGroup;
     private RadioButton button1, button2;
     private EditText edtNote;
@@ -96,6 +96,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         button1=findViewById( R.id.radio_nhan_hang );
         button2=findViewById( R.id.radio_zalopay );
         edtNote=findViewById( R.id.edt_note );
+        tvEdit=findViewById( R.id.tv_edit );
         if (button1.isChecked()){
             selectedOption = "1";
         } else {
@@ -155,59 +156,62 @@ public class ThanhToanActivity extends AppCompatActivity {
         btnBack.setOnClickListener( v->{
             onBackPressed();
         } );
-        btnDatHang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Lấy ngày tháng hiện tại
-                Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-                String currentDate = dateFormat.format(calendar.getTime());
+        btnDatHang.setOnClickListener( v -> {
+            // Lấy ngày tháng hiện tại
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+            String currentDate = dateFormat.format(calendar.getTime());
 
 
-                int id = Integer.parseInt(UserManager.getInstance().getCurrentUser().getUser_id());
-                String sdt = UserManager.getInstance().getCurrentUser().getPhoneNumber();
-                String diachi = UserManager.getInstance().getCurrentUser().getAddress() + ", " + UserManager.getInstance().getCurrentUser().getCity();
+            int id = Integer.parseInt(UserManager.getInstance().getCurrentUser().getUser_id());
+            String sdt = UserManager.getInstance().getCurrentUser().getPhoneNumber();
+            String diachi = UserManager.getInstance().getCurrentUser().getAddress() + ", " + UserManager.getInstance().getCurrentUser().getCity();
 
-                int sum = 0;
-                int totalItem = 0;
-                int tongtien=0;
-                String status = "no";
-                String email = UserManager.getInstance().getCurrentUser().getEmail();
+            int sum = 0;
+            int totalItem = 0;
+            int tongtien=0;
+            String status = "1";
+            String email = UserManager.getInstance().getCurrentUser().getEmail();
 
-                for (int i = 0; i < Utils.manggiohang.size(); i++) {
-                    sum =sum+ Utils.manggiohang.get(i).getPrice() * Utils.manggiohang.get(i).getSoluong();
-               totalItem += Utils.manggiohang.get(i).getSoluong();
-                }
-                tongtien=sum+50000;
-                
-                String chitiet = new Gson().toJson( Utils.manggiohang );
+            for (int i = 0; i < Utils.manggiohang.size(); i++) {
+                sum =sum+ Utils.manggiohang.get(i).getPrice() * Utils.manggiohang.get(i).getSoluong();
+           totalItem += Utils.manggiohang.get(i).getSoluong();
+            }
+            tongtien=sum+50000;
 
-                Log.d( "TAGa", "onClick:}" + selectedOption );
+            String chitiet = new Gson().toJson( Utils.manggiohang );
 
-                // Lưu ý: Ở đây, bạn cần thay thế `apiInterface` bằng đối tượng đã khởi tạo từ Retrofit.
-                apiInterface.createOder( id, totalItem, tongtien, status, selectedOption, note, email,sdt,diachi, currentDate,chitiet  )
-                        .enqueue( new Callback<ResponePost>() {
-                            @Override
-                            public void onResponse(Call<ResponePost> call, Response<ResponePost> response) {
-                                if (response.body() != null) {
-                                    if (response.body().isSuccess()){
-                                        Toast.makeText( ThanhToanActivity.this, "Success", Toast.LENGTH_SHORT ).show();
-                                        Utils.manggiohang.clear();
-                                        Intent intent =new Intent(ThanhToanActivity.this, MainActivity.class);
-                                        finishAffinity();
-                                        startActivity( intent );
-                                    }
+
+            // Lưu ý: cần thay thế `apiInterface` bằng đối tượng đã khởi tạo từ Retrofit.
+            apiInterface.createOder( id, totalItem, tongtien, status, selectedOption, note, email,sdt,diachi, currentDate,chitiet  )
+                    .enqueue( new Callback<ResponePost>() {
+                        @Override
+                        public void onResponse(Call<ResponePost> call, Response<ResponePost> response) {
+                            if (response.body() != null) {
+                                if (response.body().isSuccess()){
+                                    Toast.makeText( ThanhToanActivity.this, "Success", Toast.LENGTH_SHORT ).show();
+                                    Utils.manggiohang.clear();
+                                    Intent intent =new Intent(ThanhToanActivity.this, MainActivity.class);
+                                    finishAffinity();
+                                    startActivity( intent );
                                 }
                             }
+                        }
 
-                            @Override
-                            public void onFailure(Call<ResponePost> call, Throwable t) {
-                                Log.d( "TAGa", "onFailure: " + t.getMessage() );
-                                Toast.makeText( ThanhToanActivity.this, "Fail" + t.getMessage(), Toast.LENGTH_SHORT ).show();
-                            }
-                        } );
+                        @Override
+                        public void onFailure(Call<ResponePost> call, Throwable t) {
+                            Log.d( "TAGa", "onFailure: " + t.getMessage() );
+                            Toast.makeText( ThanhToanActivity.this, "Fail" + t.getMessage(), Toast.LENGTH_SHORT ).show();
+                        }
+                    } );
+        } );
+        tvEdit.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ThanhToanActivity.this,UpDateMyProfile.class);
+                startActivity( intent );
             }
-        });
+        } );
 
 
     }
@@ -216,5 +220,11 @@ public class ThanhToanActivity extends AppCompatActivity {
     protected void onDestroy() {
         compositeDisposable.clear();
         super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        compositeDisposable.clear();
+        super.onPause();
     }
 }

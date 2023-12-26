@@ -36,7 +36,6 @@
                 android:id="@+id/linear_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -46,7 +45,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="44dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:text="@string/spbanchay"
                     android:textColor="@color/black"

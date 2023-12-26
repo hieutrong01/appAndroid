@@ -43,8 +43,10 @@
             android:id="@+id/bottom_nav"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#EFEFEF"
-            app:labelVisibilityMode="selected"
+            android:background="#FAFAFA"
+            android:elevation="30dp"
+            app:elevation="30dp"
+            app:labelVisibilityMode="labeled"
             app:itemIconTint="@color/color_navigation"
             app:itemTextColor="@color/color_navigation"
             app:menu="@menu/menu_toolbar_up" />

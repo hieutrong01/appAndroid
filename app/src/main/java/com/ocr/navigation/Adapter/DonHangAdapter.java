@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,10 +20,16 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
     private RecyclerView.RecycledViewPool pool = new RecyclerView.RecycledViewPool();
     private List<Thanhtoan> list;
     private Context context;
+    private onClick onClick;
+    public interface onClick{
+        void onClick(Thanhtoan thanhtoan);
+    }
 
-    public DonHangAdapter(List<Thanhtoan> list, Context context) {
+    public DonHangAdapter(List<Thanhtoan> list, Context context, onClick onClick) {
         this.list = list;
         this.context = context;
+        this.onClick=onClick;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -39,6 +46,12 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
             return;
         }
         holder.tvDonHang.setText( "Đơn Hàng Số: "+thanhtoan.getOrder_id() +" ");
+        holder.cvDelete.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClick.onClick( thanhtoan );
+            }
+        } );
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(
         holder.recyclerChitiet.getContext(),LinearLayoutManager.VERTICAL,false
         );
@@ -63,10 +76,12 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
     public class DonHangViewHolder extends RecyclerView.ViewHolder {
         private TextView tvDonHang;
         private RecyclerView recyclerChitiet;
+        private CardView cvDelete;
         public DonHangViewHolder(@NonNull View itemView) {
             super( itemView );
             tvDonHang=itemView.findViewById( R.id.tv_don_hang );
             recyclerChitiet=itemView.findViewById( R.id.Recycler_chitiet );
+            cvDelete=itemView.findViewById( R.id.cv_delete );
         }
     }
 }

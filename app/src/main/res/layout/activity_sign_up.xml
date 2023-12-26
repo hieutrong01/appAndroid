@@ -198,7 +198,7 @@
             android:background="@drawable/bocong"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="15dp"
-            android:hint="email"
+            android:hint="Email"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="#737272" />
@@ -251,12 +251,14 @@
 
         <Button
             android:id="@+id/btn_sign_up"
-            android:layout_width="274dp"
+            android:layout_width="wrap_content"
+            android:paddingHorizontal="56dp"
+            android:paddingVertical="12dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:backgroundTint="#EDEBEB"
-            android:textColor="@color/black"
+            android:backgroundTint="#FF6347"
+            android:textColor="@color/white"
             android:text="Đăng ký" />
 
     </LinearLayout>

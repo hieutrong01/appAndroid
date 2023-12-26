@@ -71,6 +71,11 @@ public interface ApiInterface {
             @Field("user_id") String user_id,
             @Field("password") String password
     );
+    @POST("deleteHoaDon.php")
+    @FormUrlEncoded
+    Call<ResponePost>deleteBill(
+            @Field( "order_id" ) int order_id
+    );
 
 
 }
